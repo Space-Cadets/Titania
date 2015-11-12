@@ -8,18 +8,71 @@ from datetime          import timedelta
 from functools         import update_wrapper
 from werkzeug.security import safe_str_cmp
 
+import schema
 import os.path
 import config                    # secrets live here (Create a config.py file)
 
-secret = config.Config.MONGO_URI # Config should never be pushed to git repo
+secret  = config.Config.MONGO_URI # Config should never be pushed to git repo
 mclient = MongoClient(secret)
-db = mclient.novacourses
+db      = mclient.novacourses
 reviews = db.novateachers
 
-app = Flask(__name__)
+app  = Flask(__name__)
 cors = CORS(app, resources={r"/foo": {"origins": "*"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
-api = Api(app)
+api  = Api(app)
+
+class UserAPI(Resource):
+    def get(self):
+        pass
+
+    def put(self):
+        pass
+
+    def post(self):
+        pass
+
+class ReviewAPI(Resource):
+    def __init__(self):
+        self.reqparse = reqparse.RequestParser()
+        self.reqparse.add_argument('instructor', required=True, type=str, location='json')
+        super(ReviewAPI, self).__init__()
+
+    def get(self, review_id):
+        review = db.novateachers.find({'review_id': review_id})
+        return output_json(review, 200)
+
+    def put(self, review_id):
+        args = self.reqparse.parse_args()
+        # print
+        return output_json("To Implement", 200)
+
+    def post(self, review_id):
+        args = self.reqparse.parse_args()
+        print args['instructor']
+        return output_json("HI", 200)
+
+class ReviewListAPI(Resource):
+    def __init__(self):
+        self.reqparse = reqparse.RequestParser()
+        self.reqparse.add_argument('instructor', type = str, default = None)
+        self.reqparse.add_argument('course-num', type = str, default = None)
+
+    def get(self):
+        args = self.reqparse.parse_args()
+        instructor = args['instructor']
+        course_num = args['course-num']
+        query = None
+        if instructor and course_num:
+            query = {'instructor': instructor, 'course-num': course_num}
+        if instructor:
+            query = {'instructor': instructor}
+        if course_num:
+            query = {'course-num': course_num}
+        reviews = [review for review in db.novateachers.find(query)]
+        if len(reviews) == 0:
+            return output_json("Exception 404", 404)
+        return output_json(reviews, 200)
 
 # Crossdomain decorator: use @crossdomain
 def crossdomain(origin=None, methods=None, headers=None,
@@ -71,94 +124,10 @@ def output_json(obj, code, headers=None):
     resp.headers.extend(headers or {})
     return resp
 
-user_fields = {
-    'first_name': fields.String,
-    'last_name': fields.String,
-    'email': fields.String
-}
-
-review_fields = {
-    'instructor': fields.String,
-    'course_name': fields.String,
-    'course_num': fields.String,
-    'semester': fields.String,
-    'course_rating': fields.Integer,
-    'instructor_rating': fields.Integer,
-    'tags': fields.List,
-    'body': fields.String,
-    'date': fields.DateTime,
-    'review_id': fields.Integer
-}
-
-review_list_fields = {
-    'reviews': fields.List(
-        fields.Nested(review_fields)
-        ),
-    'count': fields.Integer
-}
-
-class UserAPI(Resource):
-    def get(self):
-        pass
-
-    def put(self):
-        pass
-
-    def post(self):
-        pass
-
-class ReviewAPI(Resource):
-    def __init__(self):
-        self.reqparse = reqparse.RequestParser()
-        self.reqparse.add_argument('instructor', required = True, type = str, location = 'json')
-        #self.reqparse.add_argument('instructor', type = str, location = 'json')
-        #self.reqparse.add_argument('instructor', type = str, location = 'json')
-        #self.reqparse.add_argument('instructor', type = str, location = 'json')
-        #self.reqparse.add_argument('instructor', type = str, location = 'json')
-        super(ReviewAPI, self).__init__()
-
-    def get(self, review_id):
-        review = db.novateachers.find({'review_id': review_id})
-        return output_json(review, 200)
-
-    def put(self, review_id):
-        args = self.reqparse.parse_args()
-        print
-
-    def post(self, review_id):
-        args = self.reqparse.parse_args()
-        print args['instructor']
-        return output_json("HI", 200)
-
-class ReviewListAPI(Resource):
-    def __init__(self):
-        self.reqparse = reqparse.RequestParser()
-        self.reqparse.add_argument('instructor', type = str, default = None)
-        self.reqparse.add_argument('course-num', type = str, default = None)
-
-    def get(self):
-        args = self.reqparse.parse_args()
-        instructor = args['instructor']
-        course_num = args['course-num']
-        query = None
-        if instructor and course_num:
-            query = {'instructor': instructor, 'course-num': course_num}
-        if instructor:
-            query = {'instructor': instructor}
-        if course_num:
-            query = {'course-num': course_num}
-        reviews = [review for review in db.novateachers.find(query)]
-        if len(reviews) == 0:
-            return output_json("Exception 404", 404)
-        return output_json(reviews, 200)
-
-api.add_resource(ReviewListAPI, '/api/reviews/')
-api.add_resource(ReviewAPI, '/api/reviews/<int:review_id>')
-
-def root_dir():  # pragma: no cover
+def root_dir(): 
     return os.path.abspath(os.path.dirname(__file__))
 
-def get_file(filename):  # pragma: no cover
+def get_file(filename):  
     try:
         src = os.path.join(root_dir(), filename)
         return open(src).read()
@@ -184,4 +153,6 @@ def get_resource(path):
     return Response(content, mimetype=mimetype)
 
 if __name__ == '__main__':
+    api.add_resource(ReviewListAPI, '/api/reviews/')
+    api.add_resource(ReviewAPI, '/api/reviews/<int:review_id>')
     app.run(host="0.0.0.0", debug=True)
