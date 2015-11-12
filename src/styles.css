@@ -1,0 +1,225 @@
+/**
+ * Global Styles ---------------------------------------------------------------
+ */
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  min-height: 100%;
+}
+#Login-Main {
+  display: flex;
+  position: relative;
+  flex: 1 100%;
+  min-height: 100%;
+  flex-flow: column;
+  overflow-y: hidden;
+}
+
+/**
+ * Login Page Styles, Hopefully Few Media Queries Needed
+ */
+#Login-Navbar {
+
+  /* Set the navbar to be an inline block */
+  display: inline-flex;
+
+  /* Set Background Color to deep purple */
+  background-color: #FFF;
+
+  /* Font Color to White */
+  color: #404040;
+
+  /* Spans 100% */
+  flex: 1 100%;
+
+  /* Specify flow for the Navbar */
+  flex-direction: row;
+
+  /* Set Border for the bottom of the nav */
+  border-bottom: 1px solid #ececec;
+  min-height: 90px;
+  max-height: 90px;
+}
+
+#Login-Logo {
+
+  /* Place the Logo all the way to the left */
+  justify-content: flex-start;
+  margin: auto 20px;
+}
+
+#Login-Description {
+  font-family: helvetica;
+  margin: auto;
+  min-width: 300px;
+}
+#Login-Login {
+  padding-right: 120px;
+  /* Set the width to 100% */
+  flex: 1 100%;
+
+  /* Set the login section to be at the very end of the Navbar*/
+  justify-content: flex-end;
+
+  /* Set the login section to be an inline box */
+  display: inline-flex;
+  margin: auto 20px;
+}
+.Login-Login-Section {
+  margin: 0px 5px;
+}
+.Login-Login-Item {
+
+  /* Allows the Login Elements to be in the center (height-wise) */
+  margin: auto;
+}
+.Login-Login-Input {
+  height: 30px;
+  width: 175px;
+  justify-content: space-between;
+}
+#Login-Login-Button {
+  color: white;
+  border: none;
+  background-color: #3e78ad;
+  height: 35px;
+  width: 70px;
+  margin-top: 15px;
+}
+
+#Login-Signup {
+  background-color: #f8f8f8;
+  padding-bottom: 2.5%;
+  margin: auto;
+  max-height: 300px;
+  padding: 5%;
+  /* Initialize Flexbox in signup section */
+  display: flex;
+  flex-direction: column;
+  /* Set Main Section Background Color */
+  background-color: #FFF;
+
+  /* Set the width of the signup section to 40%*/
+  order: 2;
+  align-items: center;
+}
+#Login-Signup-Description {
+  margin: 0;
+}
+
+.Login-Signup-Section {
+  display: flex;
+  min-width: 350px;
+  max-width: 470px;
+  width: 70%;
+  margin-top: 10px;
+}
+.Login-Signup-Item-Full {
+  height: 40px;
+  width: 70%;
+  flex-grow: 2;
+}
+#Login-Signup-Name {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+#Login-Signup-FName {
+  height: 40px;
+  flex-grow: 2;
+  margin-top: 10px;
+  margin-right: 2.5px;
+}
+#Login-Signup-LName {
+  height: 40px;
+  flex-grow: 2;
+  margin-top: 10px;
+  margin-left: 2.5px;
+}
+#Login-Signup-Button {
+  justify-content: center;
+  background-color: #5cb85c;
+  height: 40px;
+  border: none;
+  color: white;
+}
+#Login-RightAside {
+  width: 275px;
+  order: 3;
+}
+
+#Login-LeftAside {
+  width: 275px;
+}
+#Login-Footer {
+  padding: 5px;
+  line-height: 3;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #ececec;
+  margin-top: 20px;
+  min-height: 40px;
+  background-color: #e2e2e2;
+  color: white;
+  flex: 1 100%;
+  order: 4;
+}
+#Login-Footer > a {
+  padding: 5px;
+  text-decoration: none;
+  color: grey;
+}
+
+/**
+ * End Global Styles -----------------------------------------------------------
+ */
+
+/**
+ * Medium screens -------------------------------------------------------------
+ */
+@media screen and (max-width: 917px) {
+  /**
+   * Login Styles
+   */
+   #Login-RightAside {
+     margin: 0 auto;
+     flex: 1 100%;
+   }
+   #Login-LeftAside {
+     margin: 0 auto;
+     order: 2;
+     flex: 1 100%;
+   }
+
+
+   .Login-Signup-Section {
+     min-width: 300px;
+     max-width: 470px;
+   }
+ }
+
+
+/**
+ * Small Tablet screens --------------------------------------------------------
+ */
+ @media screen and (max-width: 600px) {
+  /**
+   * Login Styles
+   */
+
+   #Login-Login {
+     /* Hide Login Sections and Replace with Icon*/
+     display: none;
+   }
+
+   #Login-Signup {
+     margin-top: 40px;
+     flex: 3 40%;
+     padding: 2%;
+   }
+}
