@@ -1,12 +1,15 @@
-from flask import Flask, url_for, jsonify, make_response, request, current_app, Response
-from flask.ext.cors import CORS
+from flask             import Flask, url_for, jsonify, make_response, request, current_app, Response
+from flask.ext.cors    import CORS
 from flask.ext.restful import Api, Resource, fields, marshal, reqparse
-from pymongo import MongoClient
-from bson.json_util import dumps
-from datetime import timedelta
-from functools import update_wrapper
+from pymongo           import MongoClient
+from mongoengine       import *
+from bson.json_util    import dumps
+from datetime          import timedelta
+from functools         import update_wrapper
+from werkzeug.security import safe_str_cmp
+
 import os.path
-import config # secrets live here (Create a config.py file)
+import config                    # secrets live here (Create a config.py file)
 
 secret = config.Config.MONGO_URI # Config should never be pushed to git repo
 mclient = MongoClient(secret)
@@ -18,6 +21,7 @@ cors = CORS(app, resources={r"/foo": {"origins": "*"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 api = Api(app)
 
+# Crossdomain decorator: use @crossdomain
 def crossdomain(origin=None, methods=None, headers=None,
                 max_age=21600, attach_to_all=True,
                 automatic_options=True):
@@ -163,7 +167,7 @@ def get_file(filename):  # pragma: no cover
 
 @app.route('/site')
 def serve_site():
-    content = get_file('./build/index.html')
+    content = get_file('../build/index.html')
     return Response(content, mimetype="text/html")
 
 def get_resource(path):  
