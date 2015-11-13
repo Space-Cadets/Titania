@@ -14,9 +14,9 @@ var _data            = {};
  * Utility functions for store -- for mutating store data
  */
 
- function _addToken(token) {
+function _addToken(token) {
   _data['access-token'] = token;
- }
+}
 
 
 
