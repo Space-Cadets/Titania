@@ -11,8 +11,9 @@ from app               import app
 import schema
 import os.path
 import utils
-import auth
 
+
+# (TODO) Move this code into auth
 class User(object):
     def __init__(self, id, username, password):
         self.id = id
@@ -40,17 +41,12 @@ def identity(payload):
     user_id = payload['identity']
     return userid_table.get(user_id, None)
 
-app = Flask(__name__)
-app.debug = True
-app.config['SECRET_KEY'] = 'super-secret'
-
 jwt = JWT(app, authenticate, identity)
 
 @app.route('/protected')
 @jwt_required()
 def protected():
     return '%s' % current_identity
-
 
 # Review API routes
 @app.route('/api/reviews/', methods=['GET'])
@@ -60,3 +56,8 @@ def get_reviews():
 @app.route('/api/reviews')
 def hello():
 	return 1
+
+@app.route('/login/', methods=['GET'])
+def serve_login_page():
+    content = utils.get_file('../../build/index.html')
+    return Response(content, mimetype="text/html")

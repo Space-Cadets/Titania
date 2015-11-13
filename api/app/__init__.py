@@ -13,8 +13,5 @@ reviews = db.novateachers         # Get teachers collection (where review object
 
 app.config['SECRET_KEY'] = config.Config.SECRET_KEY
 
-# Step 3: Initialize JWT & Protected decorator
-import auth
-
-# Step 4: Add routes to App
-import routes
+# Step 3: Add routes to App
+from app import routes
