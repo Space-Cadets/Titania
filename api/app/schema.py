@@ -1,5 +1,6 @@
 from mongoengine import *
 import datetime
+
 class User(Document):
     email    = EmailField(required=True)
     username = StringField(required=True, max_length=100)

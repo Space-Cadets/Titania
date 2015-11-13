@@ -10,8 +10,9 @@ from werkzeug.security import safe_str_cmp
 
 import schema
 import os.path
-import config                    # secrets live here (Create a config.py file)
+import config
 
+# Placed all in init.py -- CORS seems to be unnecessary for now
 secret  = config.Config.MONGO_URI # Config should never be pushed to git repo
 mclient = MongoClient(secret)
 db      = mclient.novacourses
@@ -22,6 +23,7 @@ cors = CORS(app, resources={r"/foo": {"origins": "*"}})
 app.config['CORS_HEADERS'] = 'Content-Type'
 api  = Api(app)
 
+# Integrating apis individually (lines 27 - 77 in progress)
 class UserAPI(Resource):
     def get(self):
         pass
@@ -44,7 +46,6 @@ class ReviewAPI(Resource):
 
     def put(self, review_id):
         args = self.reqparse.parse_args()
-        # print
         return output_json("To Implement", 200)
 
     def post(self, review_id):
@@ -55,8 +56,8 @@ class ReviewAPI(Resource):
 class ReviewListAPI(Resource):
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
-        self.reqparse.add_argument('instructor', type = str, default = None)
-        self.reqparse.add_argument('course-num', type = str, default = None)
+        self.reqparse.add_argument('instructor', type=str, default=None)
+        self.reqparse.add_argument('course-num', type=str, default=None)
 
     def get(self):
         args = self.reqparse.parse_args()
@@ -73,6 +74,8 @@ class ReviewListAPI(Resource):
         if len(reviews) == 0:
             return output_json("Exception 404", 404)
         return output_json(reviews, 200)
+
+# Below has been integrated (see utils.py)
 
 # Crossdomain decorator: use @crossdomain
 def crossdomain(origin=None, methods=None, headers=None,
@@ -139,6 +142,7 @@ def serve_site():
     content = get_file('../build/index.html')
     return Response(content, mimetype="text/html")
 
+# Placed in utils
 def get_resource(path):  
     mimetypes = {
         ".css": "text/css",
