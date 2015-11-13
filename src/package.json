@@ -4,6 +4,7 @@
   "description": "An app for teacher reviews",
   "main": "index.js",
   "scripts": {
+    "build" : "",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -16,7 +17,7 @@
     "Ants in my eyes Johnson"
   ],
   "author": "Kent Wu, David Siah, Albert Hermida, Drew Mihal",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Space-Cadets/Titania/issues"
   },
