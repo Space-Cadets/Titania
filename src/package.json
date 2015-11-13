@@ -1,0 +1,26 @@
+{
+  "name": "titania",
+  "version": "1.0.0",
+  "description": "An app for teacher reviews",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Space-Cadets/Titania"
+  },
+  "keywords": [
+    "teacher",
+    "reviews",
+    "swag",
+    "money",
+    "4ever"
+  ],
+  "author": "Kent Wu, David Siah, Albert Hermida, Drew Mihal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Space-Cadets/Titania/issues"
+  },
+  "homepage": "https://github.com/Space-Cadets/Titania"
+}
