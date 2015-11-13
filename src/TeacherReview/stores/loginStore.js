@@ -9,7 +9,6 @@ var CHANGE_EVENT     = 'change';
 var _data            = {};
 
 
-
 /**
  * Utility functions for store -- for mutating store data
  */
@@ -17,8 +16,6 @@ var _data            = {};
 function _addToken(token) {
   _data['access-token'] = token;
 }
-
-
 
  /**
   * Object through which store data is accessed -- *NOT MUTATED*
@@ -50,8 +47,8 @@ loginStore.dispatchToken = AppDispatcher.register(function(payload) {
   var action = payload.action;
   switch(action.actionType) {
 
-    case LoginConstants.DO_SOMETHING:
-      _addHandle(action.something);
+    case LoginConstants.LOGIN_USER_SUCCESS:
+      _addToken(action.token);
       break;
 
     default:

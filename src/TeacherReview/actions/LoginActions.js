@@ -21,20 +21,21 @@ module.exports = {
   },
 
   //api call
-  sendRequest: function(money) {
-    request.get('http://localhost:8080/api/' + money)
+  loginUser: function(email, password) {
+    request.post('http://localhost:5000/auth')
+    .send({'username': email, 'password': password})
     .end(function(err, res) {
         if (err) {
           //handle fail
           AppDispatcher.handleViewAction({
-            actionType: LoginConstants.LOAD_MESSAGES,
-            messages: res.body.messages
+            actionType: LoginConstants.LOGIN_USER_FAIL,
+            messages: res.body.description
           });
         }
         //handle success
         AppDispatcher.handleViewAction({
-          actionType: LoginConstants.LOAD_MESSAGES,
-          messages: res.body.messages
+          actionType: LoginConstants.LOGIN_USER_SUCCESS,
+          token: res.body['access-token']
         });
     });
   }
