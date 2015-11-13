@@ -2,10 +2,13 @@
  * Top Level App, Routing is handled from here. Routes manage full page components.
  */
 var React       = require('react');
-var Router      = require('react-router');
-var routes      = require('./routes.jsx');
+var ReactDOM    = require('react-dom');
+var ReactRouter = require('react-router');
+var Router      = ReactRouter.Router;
+var Route       = ReactRouter.Route;
+var Login       = require('./components/Login/Login.jsx');
 
 //run router
-Router.run(routes, Router.HistoryLocation, function(Handler, state) {
-  React.render(<Handler/>, document.body);
-});
+ReactDOM.render(<Router>
+                  <Route path="/" component={Login}/>
+                </Router>, document.getElementById('TeacherReview'));
