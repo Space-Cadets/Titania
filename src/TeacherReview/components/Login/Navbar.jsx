@@ -34,11 +34,11 @@ module.exports = React.createClass({
         <span id="Login-Login">
           <span className="Login-Login-Section">
             <h5 className="Login-Login-Item">Email:</h5>
-            <input className="Login-Login-Input"type="text" onChange={this.onChangeEmail}>
+            <input className="Login-Login-Input"type="text" onChange={this.onChangeEmail}/>
           </span>
           <span className="Login-Login-Section">
             <h5 className="Login-Login-Item">Password:</h5>
-            <input className="Login-Login-Input" type="password" onChange={this.onChangePassword}>
+            <input className="Login-Login-Input" type="password" onChange={this.onChangePassword}/>
           </span>
           <button id="Login-Login-Button" onClick={this.onClick}>Sign In</button>
         </span>

@@ -4,7 +4,7 @@
   "description": "An app for teacher reviews",
   "main": "index.js",
   "scripts": {
-    "build" : "",
+    "build": "browserify -t [ babelify --presets [ react ] ] ./TeacherReview/client.js -o ../build/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,8 +23,17 @@
   },
   "homepage": "https://github.com/Space-Cadets/Titania",
   "dependencies": {
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "flux": "^2.1.1",
     "history": "^1.13.0",
+    "keymirror": "^0.1.1",
+    "object-assign": "^4.0.1",
     "react": "^0.14.2",
-    "react-router": "^1.0.0"
+    "react-router": "^1.0.0",
+    "superagent": "^1.4.0"
+  },
+  "devDependencies": {
+    "babel-preset-react": "^6.1.18"
   }
 }

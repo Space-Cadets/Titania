@@ -5,7 +5,7 @@ DevUtils/
 pids
 *.pid
 *.seed
-
+build/*
 
 # node-waf configuration
 .lock-wscript
