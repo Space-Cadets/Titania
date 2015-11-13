@@ -13,14 +13,17 @@
   "keywords": [
     "teacher",
     "reviews",
-    "swag",
-    "money",
-    "4ever"
+    "Ants in my eyes Johnson"
   ],
   "author": "Kent Wu, David Siah, Albert Hermida, Drew Mihal",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Space-Cadets/Titania/issues"
   },
-  "homepage": "https://github.com/Space-Cadets/Titania"
+  "homepage": "https://github.com/Space-Cadets/Titania",
+  "dependencies": {
+    "history": "^1.13.0",
+    "react": "^0.14.2",
+    "react-router": "^1.0.0"
+  }
 }
