@@ -49,9 +49,15 @@ def protected():
     return '%s' % current_identity
 
 # Temporary, may need to move entire build process into app directory inside app
-@app.route('/public/<filename>')
-def serve(filename):
-    return jsonify(file=filename)
+@app.route('/public/styles.css')
+def serveCSS():
+    content = utils.get_file('./build/styles.css')
+    return Response(content, mimetype="text/css")
+
+@app.route('/public/app.js')
+def serveJS():
+    content = utils.get_file('./build/app.js')
+    return Response(content, mimetype="text/js")
 
 # Review API routes
 @app.route('/api/reviews/', methods=['GET'])
@@ -64,5 +70,5 @@ def hello():
 
 @app.route('/login/', methods=['GET'])
 def serve_login_page():
-    content = utils.get_file('../../build/index.html')
+    content = utils.get_file('./build/index.html')
     return Response(content, mimetype="text/html")
