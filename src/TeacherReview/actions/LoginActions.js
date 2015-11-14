@@ -32,10 +32,11 @@ module.exports = {
             messages: res.body.description
           });
         }
+        console.log(res.body);
         //handle success
         AppDispatcher.handleViewAction({
           actionType: LoginConstants.LOGIN_USER_SUCCESS,
-          token: res.body['access-token']
+          token: res.body['access_token']
         });
     });
   }

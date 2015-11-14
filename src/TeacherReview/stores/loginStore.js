@@ -49,6 +49,11 @@ loginStore.dispatchToken = AppDispatcher.register(function(payload) {
 
     case LoginConstants.LOGIN_USER_SUCCESS:
       _addToken(action.token);
+      console.log(action, 'successfully stored.');
+      break;
+
+    case LoginConstants.LOGIN_USER_FAIL:
+      console.log(action.message);
       break;
 
     default:
