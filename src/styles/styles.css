@@ -7,6 +7,10 @@ html {
 body {
   margin: 0;
   height: 100%;
+}
+#TeacherReview {
+  margin: 0;
+  height: 100%;
   display: flex;
   flex-flow: column;
   min-height: 100%;
