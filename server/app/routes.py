@@ -48,6 +48,11 @@ jwt = JWT(app, authenticate, identity)
 def protected():
     return '%s' % current_identity
 
+# Temporary, may need to move entire build process into app directory inside app
+@app.route('/public/<filename>')
+def serve(filename):
+    return jsonify(file=filename)
+
 # Review API routes
 @app.route('/api/reviews/', methods=['GET'])
 def get_reviews():
