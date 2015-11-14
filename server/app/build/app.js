@@ -111,7 +111,7 @@ module.exports = React.createClass({
     //login view
     return React.createElement(
       'div',
-      { id: 'Login' },
+      { id: 'TeacherReview' },
       React.createElement(
         'main',
         { id: 'Login-Main' },
