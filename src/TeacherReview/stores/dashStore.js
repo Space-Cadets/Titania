@@ -42,8 +42,8 @@ var dashStore = assign({}, EventEmitter.prototype, {
 dashStore.dispatchToken = AppDispatcher.register(function(payload) {
   var action = payload.action;
   switch(action.actionType) {
-
-    case LoginConstants.LOGIN_USER_SUCCESS:
+    //--boilerplate
+    case DashConstants.XXX:
       _addToken(action.token);
       console.log(action, 'successfully stored.');
       break;

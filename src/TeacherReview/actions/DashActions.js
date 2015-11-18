@@ -6,7 +6,7 @@
 //filters actions for one way data flow
 var AppDispatcher    = require('../dispatchers/AppDispatcher.js');
 //defined user actions
-var LoginConstants   = require('../constants/LoginConstants.js');
+var DashConstants   = require('../constants/DashConstants.js');
 //Superagent request
 var request          = require('superagent');
 

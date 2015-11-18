@@ -3,7 +3,7 @@
  */
 var React       = require('react');
 var Router      = require('react-router');
-var dashStore   = require('../../stores/dashStore.js');
+var DashStore   = require('../../stores/dashStore.js');
 var DashActions = require('../../actions/dashActions.js');
 var Signup      = require('./Signup.jsx');
 var Navbar      = require('./Navbar.jsx');
@@ -14,7 +14,7 @@ var Footer      = require('../Shared/Footer.jsx');
  */
 function getState() {
   return {
-    data: LoginStore.getData()
+    data: DashStore.getData()
   };
 }
 
@@ -37,12 +37,12 @@ module.exports = React.createClass({
 
   //Fires post-mount,
   componentDidMount: function() {
-    LoginStore.addChangeListener(this._onChange);
+    DashStore.addChangeListener(this._onChange);
   },
 
   // Remove change listers from stores
   componentWillUnmount: function() {
-    LoginStore.removeChangeListener(this._onChange);
+    DashStore.removeChangeListener(this._onChange);
   },
 
   //fires on every change
@@ -50,7 +50,6 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    //login view
     return (
     );
   },
