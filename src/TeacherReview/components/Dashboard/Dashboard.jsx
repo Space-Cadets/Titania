@@ -1,15 +1,16 @@
 /**
- * Component for Login Application
+ * Component for Dashboard Application
  */
-var React        = require('react');
-var Router       = require('react-router');
-var LoginStore   = require('../../stores/loginStore.js');
-var LoginActions = require('../../actions/LoginActions.js');
-var Signup       = require('./Signup.jsx');
-var Navbar       = require('../Shared/Navbar.jsx');
-var Footer       = require('../Shared/Footer.jsx');
+var React       = require('react');
+var Router      = require('react-router');
+var dashStore   = require('../../stores/dashStore.js');
+var DashActions = require('../../actions/dashActions.js');
+var Signup      = require('./Signup.jsx');
+var Navbar      = require('./Navbar.jsx');
+var Footer      = require('../Shared/Footer.jsx');
+
 /**
- * Utility functions for Login Application
+ * Utility functions for Dashboard Application
  */
 function getState() {
   return {
@@ -51,13 +52,6 @@ module.exports = React.createClass({
   render: function() {
     //login view
     return (
-      <div id="TeacherReview">
-        <main id="Login-Main">
-          <Navbar />
-          <Signup />
-        </main>
-        <Footer/>
-      </div>
     );
   },
 

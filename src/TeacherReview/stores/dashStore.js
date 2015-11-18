@@ -1,8 +1,8 @@
 /**
- * Store for Login Application
+ * Store for Dashboard Application
  */
 var AppDispatcher    = require('../dispatchers/AppDispatcher.js');
-var LoginConstants   = require('../constants/LoginConstants.js');
+var DashConstants    = require('../constants/DashConstants.js');
 var EventEmitter     = require('events').EventEmitter;
 var assign           = require('object-assign');
 var CHANGE_EVENT     = 'change';
@@ -13,14 +13,11 @@ var _data            = {};
  * Utility functions for store -- for mutating store data
  */
 
-function _addToken(token) {
-  _data['access-token'] = token;
-}
 
- /**
-  * Object through which store data is accessed -- *NOT MUTATED*
-  */
-var loginStore = assign({}, EventEmitter.prototype, {
+/**
+ * Object through which store data is accessed -- *NOT MUTATED*
+ */
+var dashStore = assign({}, EventEmitter.prototype, {
 
   emitChange: function() {
     this.emit(CHANGE_EVENT);
@@ -42,7 +39,7 @@ var loginStore = assign({}, EventEmitter.prototype, {
 /**
  * REGISTER EVENTS WITH DISPATCHER WHEN THEY ARE CALLED
  */
-loginStore.dispatchToken = AppDispatcher.register(function(payload) {
+dashStore.dispatchToken = AppDispatcher.register(function(payload) {
   var action = payload.action;
   switch(action.actionType) {
 
@@ -51,16 +48,12 @@ loginStore.dispatchToken = AppDispatcher.register(function(payload) {
       console.log(action, 'successfully stored.');
       break;
 
-    case LoginConstants.LOGIN_USER_FAIL:
-      console.log(action.message);
-      break;
-
     default:
       return true;
   }
 
-  loginStore.emitChange();
+  dashStore.emitChange();
 
 });
 
-module.exports = loginStore;
+module.exports = dashStore;
