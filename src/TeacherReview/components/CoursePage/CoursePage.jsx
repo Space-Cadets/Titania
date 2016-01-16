@@ -10,7 +10,7 @@ var Navbar      = require('../Shared/NavbarIn.jsx');
 // var Footer      = require('../Shared/Footer.jsx');
 
 /**
- * Utility functions for Course Page 
+ * Utility functions for Course Page
  */
 function getState() {
   return {
