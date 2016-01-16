@@ -3,6 +3,7 @@
  */
 html {
   height: 100%;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -218,6 +219,12 @@ body {
   width: 275px;
 }
 
+#content-box {
+  display: flex;
+  flex-flow: row;
+  margin-top: 20px;
+}
+
 #Login-Footer {
   padding: 5px;
   line-height: 3;
@@ -236,6 +243,39 @@ body {
   padding: 5px;
   text-decoration: none;
   color: grey;
+}
+
+#feed-container {
+  width: 62%;
+  background-color: lightgrey;
+  min-height: 500px;
+  border-radius: 3px;
+  margin-left: 20px;
+}
+
+#post-btn {
+  width: 66%;
+  height: 40px;
+  margin-top: 15px;
+  margin-left: 16.5%;
+  margin-bottom: 15px;
+}
+
+#trend-column {
+  width: 33%;
+  border-radius: 3px;
+  margin-left: 20px;
+  background-color: lightgrey;
+  max-height: 465px;
+}
+
+#trending-box {
+  min-height: 350px;
+  margin-left: 5%;
+  width: 90%;
+  background-color: orange;
+  border-radius: 3px;
+
 }
 
 /**
@@ -259,13 +299,11 @@ body {
      flex: 1 100%;
    }
 
-
    .Login-Signup-Section {
      min-width: 300px;
      max-width: 470px;
    }
  }
-
 
 /**
  * Small Tablet screens --------------------------------------------------------
