@@ -6,7 +6,7 @@ var Router      = require('react-router');
 var DashStore   = require('../../stores/dashStore.js');
 var DashActions = require('../../actions/dashActions.js');
 //var Signup      = require('./Signup.jsx');
-//var Navbar      = require('./Navbar.jsx');
+var Navbar      = require('../Shared/NavbarIn.jsx');
 var Footer      = require('../Shared/Footer.jsx');
 
 var Router = require('react-router').Router;
@@ -54,7 +54,9 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    return (<div>Hi this is the Dashboard
+    return (<div>
+      <Navbar />
+      <p>Hi this is the Dashboard</p>
       <Link to="/login">Go to Login</Link>
       <Link to="/CoursePage/1">Go to Course 1</Link>
       <Link to="/TeacherPage/1">Go to Teacher 1</Link>

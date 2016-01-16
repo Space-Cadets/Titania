@@ -59,16 +59,16 @@ module.exports = React.createClass({
         <main id="Login-Main">
           <Navbar />
           <Signup />
+          <Link to="/">Go to Dashboard</Link>
         </main>
-        <Link to="/">Go to Dashboard</Link>
-        <Footer/>
+        {/*<Footer/>-->*/}
       </div>
     );
   },
 
   //sets page to rerender on every change
   _onChange: function() {
-  this.setState(getState());
+     this.setState(getState());
   }
 
 });
