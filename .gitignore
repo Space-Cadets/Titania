@@ -6,6 +6,7 @@ pids
 *.pid
 *.seed
 ./server/app/build/*.js
+build/*.js
 
 # node-waf configuration
 .lock-wscript

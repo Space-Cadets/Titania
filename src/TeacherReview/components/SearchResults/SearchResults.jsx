@@ -6,8 +6,7 @@ var Router      = require('react-router');
 var DashStore   = require('../../stores/dashStore.js');
 var DashActions = require('../../actions/dashActions.js');
 //var Signup      = require('./Signup.jsx');
-//var Navbar      = require('./Navbar.jsx');
-// var Footer      = require('../Shared/Footer.jsx');
+var Navbar      = require('../Shared/NavbarIn.jsx');
 
 /**
  * Utility functions for Search Results Page 
@@ -50,7 +49,9 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    return (<div>Welcome to the Search Results View
+    return (<div>
+      <Navbar />
+      Welcome to the Search Results View
     </div>);
   },
 

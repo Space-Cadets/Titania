@@ -6,7 +6,7 @@ var Router      = require('react-router');
 var DashStore   = require('../../stores/dashStore.js');
 var DashActions = require('../../actions/dashActions.js');
 //var Signup      = require('./Signup.jsx');
-//var Navbar      = require('./Navbar.jsx');
+var Navbar      = require('../Shared/NavbarIn.jsx');
 // var Footer      = require('../Shared/Footer.jsx');
 
 /**
@@ -50,7 +50,9 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    return (<div>Welcome to the Course Page View
+    return (<div>
+      <Navbar />
+      Welcome to the Course Page View
     </div>);
   },
 

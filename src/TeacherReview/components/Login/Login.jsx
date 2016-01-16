@@ -6,7 +6,7 @@ var Router       = require('react-router');
 var LoginStore   = require('../../stores/loginStore.js');
 var LoginActions = require('../../actions/LoginActions.js');
 var Signup       = require('./Signup.jsx');
-var Navbar       = require('../Shared/Navbar.jsx');
+var Navbar       = require('../Shared/NavbarIn.jsx');
 var Footer       = require('../Shared/Footer.jsx');
 
 var Router = require('react-router').Router;
@@ -59,9 +59,7 @@ module.exports = React.createClass({
         <main id="Login-Main">
           <Navbar />
           <Signup />
-          <Link to="/">Go to Dashboard</Link>
         </main>
-        {/*<Footer/>-->*/}
       </div>
     );
   },
