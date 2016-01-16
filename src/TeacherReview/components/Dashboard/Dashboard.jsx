@@ -5,8 +5,8 @@ var React       = require('react');
 var Router      = require('react-router');
 var DashStore   = require('../../stores/dashStore.js');
 var DashActions = require('../../actions/dashActions.js');
-var Signup      = require('./Signup.jsx');
-var Navbar      = require('./Navbar.jsx');
+//var Signup      = require('./Signup.jsx');
+//var Navbar      = require('./Navbar.jsx');
 var Footer      = require('../Shared/Footer.jsx');
 
 /**
@@ -50,8 +50,8 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    return (
-    );
+    return (<div>Hi
+    </div>);
   },
 
   //sets page to rerender on every change
