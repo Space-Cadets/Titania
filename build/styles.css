@@ -4,10 +4,12 @@
 html {
   height: 100%;
 }
+
 body {
   margin: 0;
   height: 100%;
 }
+
 #TeacherReview {
   margin: 0;
   height: 100%;
@@ -15,6 +17,7 @@ body {
   flex-flow: column;
   min-height: 100%;
 }
+
 #Login-Main {
   display: flex;
   position: relative;
@@ -98,6 +101,7 @@ body {
   margin: auto;
   min-width: 300px;
 }
+
 #Login-Login {
   padding-right: 120px;
   /* Set the width to 100% */
@@ -110,19 +114,23 @@ body {
   display: inline-flex;
   margin: auto 20px;
 }
+
 .Login-Login-Section {
   margin: 0px 5px;
 }
+
 .Login-Login-Item {
 
   /* Allows the Login Elements to be in the center (height-wise) */
   margin: auto;
 }
+
 .Login-Login-Input {
   height: 30px;
   width: 175px;
   justify-content: space-between;
 }
+
 #Login-Login-Button {
   color: white;
   border: none;
@@ -148,6 +156,7 @@ body {
   order: 2;
   align-items: center;
 }
+
 #Login-Signup-Description {
   margin: 0;
 }
@@ -159,28 +168,33 @@ body {
   width: 70%;
   margin-top: 10px;
 }
+
 .Login-Signup-Item-Full {
   height: 40px;
   width: 70%;
   flex-grow: 2;
 }
+
 #Login-Signup-Name {
   display: inline-flex;
   flex-direction: row;
   flex-wrap: nowrap;
 }
+
 #Login-Signup-FName {
   height: 40px;
   flex-grow: 2;
   margin-top: 10px;
   margin-right: 2.5px;
 }
+
 #Login-Signup-LName {
   height: 40px;
   flex-grow: 2;
   margin-top: 10px;
   margin-left: 2.5px;
 }
+
 #Login-Signup-Button {
   justify-content: center;
   background-color: #5cb85c;
@@ -188,6 +202,7 @@ body {
   border: none;
   color: white;
 }
+
 #Login-RightAside {
   width: 275px;
   order: 3;
@@ -196,6 +211,7 @@ body {
 #Login-LeftAside {
   width: 275px;
 }
+
 #Login-Footer {
   padding: 5px;
   line-height: 3;
@@ -209,6 +225,7 @@ body {
   flex: 1 100%;
   order: 4;
 }
+
 #Login-Footer > a {
   padding: 5px;
   text-decoration: none;
