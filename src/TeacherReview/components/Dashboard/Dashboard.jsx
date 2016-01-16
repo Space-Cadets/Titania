@@ -9,6 +9,10 @@ var DashActions = require('../../actions/dashActions.js');
 //var Navbar      = require('./Navbar.jsx');
 var Footer      = require('../Shared/Footer.jsx');
 
+var Router = require('react-router').Router;
+var Route = require('react-router').Route;
+var Link = require('react-router').Link;
+
 /**
  * Utility functions for Dashboard Application
  */
@@ -50,13 +54,16 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    return (<div>Hi
+    return (<div>Hi this is the Dashboard
+      <Link to="/login">Go to Login</Link>
+      <Link to="/CoursePage/1">Go to Course 1</Link>
+      <Link to="/TeacherPage/1">Go to Teacher 1</Link>
     </div>);
   },
 
   //sets page to rerender on every change
   _onChange: function() {
-  this.setState(getState());
+    this.setState(getState());
   }
 
 });

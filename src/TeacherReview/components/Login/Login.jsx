@@ -8,6 +8,10 @@ var LoginActions = require('../../actions/LoginActions.js');
 var Signup       = require('./Signup.jsx');
 var Navbar       = require('../Shared/Navbar.jsx');
 var Footer       = require('../Shared/Footer.jsx');
+
+var Router = require('react-router').Router;
+var Route = require('react-router').Route;
+var Link = require('react-router').Link;
 /**
  * Utility functions for Login Application
  */
@@ -56,6 +60,7 @@ module.exports = React.createClass({
           <Navbar />
           <Signup />
         </main>
+        <Link to="/">Go to Dashboard</Link>
         <Footer/>
       </div>
     );
