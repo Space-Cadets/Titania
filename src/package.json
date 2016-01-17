@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "browserify -t [ babelify --presets [ react ] ] ./TeacherReview/client.js -o ../build/app.js",
+    "build:watch": "npm run build -- -w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

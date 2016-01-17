@@ -6,10 +6,13 @@ var Router      = require('react-router');
 var DashStore   = require('../../stores/dashStore.js');
 var DashActions = require('../../actions/dashActions.js');
 
-var Navbar      = require('../Shared/NavbarIn.jsx');
-var CourseCard  = require('./CourseCard.jsx');
+var Navbar       = require('../Shared/NavbarIn.jsx');
+var CourseCard   = require('./CourseCard.jsx');
 var TeacherLinks = require('./TeacherLinks.jsx');
-// var Footer      = require('../Shared/Footer.jsx');
+var Trait        = require('../Shared/Trait.jsx');
+var Review       = require('../Shared/Review.jsx');
+
+var trait_data = require('../../utils/courseTraits.json');
 
 /**
  * Utility functions for Course Page
@@ -52,6 +55,15 @@ module.exports = React.createClass({
   },
 
   render: function() {
+
+    var traits = trait_data.map(function(d) {
+      return (<Trait traitName={d.name} count={d.val} key={d.name} />);
+    });
+
+    var reviews = trait_data.map(function(d) {
+      return (<Review key={d.name} />);
+    });
+
     return (<div>
       <Navbar />
       <div id="content"> 
@@ -59,8 +71,18 @@ module.exports = React.createClass({
           <CourseCard />
           <TeacherLinks />
         </div>
-        <div id="trait-row">Trait Row</div>
-        <div id="review-row">Reviews Row</div>
+        <div id="trait-row-container">
+          <div className="row-title">Traits</div>
+          <div id="trait-row">
+            {traits}
+          </div>
+        </div>
+        <div id="review-row-container">
+          <div className="row-title">Reviews</div>
+          <div id="review-row">
+            {reviews}
+          </div>
+        </div>
       </div>
     </div>
     );
