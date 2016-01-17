@@ -1,13 +1,14 @@
 /**
- * Component for Dashboard Application
+ * Component for Teacher Page View
  */
 var React       = require('react');
 var Router      = require('react-router');
 var DashStore   = require('../../stores/dashStore.js');
 var DashActions = require('../../actions/dashActions.js');
-//var Signup      = require('./Signup.jsx');
+
 var Navbar      = require('../Shared/NavbarIn.jsx');
-// var Footer      = require('../Shared/Footer.jsx');
+var TeacherCard = require('./TeacherCard.jsx');
+var CourseLinks = require('./CourseLinks.jsx');
 
 /**
  * Utility functions for Teacher Page 
@@ -52,8 +53,16 @@ module.exports = React.createClass({
   render: function() {
     return (<div>
       <Navbar />
-      Welcome to the Teacher Page View
-    </div>);
+      <div id="content"> 
+        <div id="bio-row">
+          <TeacherCard />
+          <CourseLinks />
+        </div>
+        <div id="trait-row">Trait Row</div>
+        <div id="review-row">Reviews Row</div>
+      </div>
+    </div>
+    );
   },
 
   //sets page to rerender on every change

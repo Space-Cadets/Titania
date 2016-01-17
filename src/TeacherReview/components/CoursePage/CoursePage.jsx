@@ -1,12 +1,14 @@
 /**
- * Component for Dashboard Application
+ * Component for Course Page View
  */
 var React       = require('react');
 var Router      = require('react-router');
 var DashStore   = require('../../stores/dashStore.js');
 var DashActions = require('../../actions/dashActions.js');
-//var Signup      = require('./Signup.jsx');
+
 var Navbar      = require('../Shared/NavbarIn.jsx');
+var CourseCard  = require('./CourseCard.jsx');
+var TeacherLinks = require('./TeacherLinks.jsx');
 // var Footer      = require('../Shared/Footer.jsx');
 
 /**
@@ -52,8 +54,16 @@ module.exports = React.createClass({
   render: function() {
     return (<div>
       <Navbar />
-      Welcome to the Course Page View
-    </div>);
+      <div id="content"> 
+        <div id="bio-row">
+          <CourseCard />
+          <TeacherLinks />
+        </div>
+        <div id="trait-row">Trait Row</div>
+        <div id="review-row">Reviews Row</div>
+      </div>
+    </div>
+    );
   },
 
   //sets page to rerender on every change

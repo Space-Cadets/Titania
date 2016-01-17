@@ -86,12 +86,19 @@ body {
   margin: auto 20px;
 }
 
+#content {
+  display: flex;
+  flex-flow:column;
+  align-items: center;
+}
+
 .pref-btn {
   min-height: 25px;
   max-height: 25px;
   width: 10%;
   margin-left: 10px;
 }
+
 
 #Login-Logo {
   /* Place the Logo all the way to the left */
@@ -276,6 +283,58 @@ body {
   background-color: orange;
   border-radius: 3px;
 
+}
+
+#results-box {
+  width: 62%;
+  background-color: lightgrey;
+  min-height: 500px;
+  border-radius: 3px;
+  margin-left: 20px;
+}
+
+.info-card {
+  background-color: white;
+  height: 70%;
+  width: 40%;
+  margin-left: 20px;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.link-card {
+  background-color: white;
+  height: 70%;
+  width: 52%;
+  margin-left: 20px;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+#bio-row {
+  height: 120px;
+  width: 95%;
+  margin-top: 15px;
+  background-color: lightgrey;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+}
+
+#trait-row {
+  height: 90px;
+  width: 95%;
+  margin-top: 15px;
+  background-color: lightgrey;
+  border-radius: 3px;
+}
+
+#review-row {
+  height: 300px;
+  width: 95%;
+  margin-top: 15px;
+  background-color: lightgrey;
+  border-radius: 3px;
 }
 
 /**

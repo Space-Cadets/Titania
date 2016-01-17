@@ -7,6 +7,8 @@ var DashStore   = require('../../stores/dashStore.js');
 var DashActions = require('../../actions/dashActions.js');
 //var Signup      = require('./Signup.jsx');
 var Navbar      = require('../Shared/NavbarIn.jsx');
+var TrendColumn = require('../Shared/TrendColumn.jsx');
+var Results     = require('./Results.jsx');
 
 /**
  * Utility functions for Search Results Page 
@@ -51,7 +53,10 @@ module.exports = React.createClass({
   render: function() {
     return (<div>
       <Navbar />
-      Welcome to the Search Results View
+      <div id="content-box">
+        <Results />
+        <TrendColumn />
+      </div>
     </div>);
   },
 

@@ -13,6 +13,8 @@ module.exports = React.createClass({
 			<div><Link to="/login">Go to Login</Link></div>
       <div><Link to="/CoursePage/1">Go to Course 1</Link></div>
       <div><Link to="/TeacherPage/1">Go to Teacher 1</Link></div>
+      <div><Link to="/results/teacher/bilbo_baggins">Search for Prof</Link></div>
+      <div><Link to="/results/course/middle_earth">Search for Course</Link></div>
 		</div>);	
 	}
 })

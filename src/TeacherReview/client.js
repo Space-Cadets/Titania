@@ -21,4 +21,5 @@ ReactDOM.render(<Router >
                   <Route path="/" component={Dashboard} />
                   <Route path="/TeacherPage/*" component={TeacherPage} />
                   <Route path="/CoursePage/*" component={CoursePage} />
+                  <Route path="/results/*/*" component={SearchResults} />
                 </Router>, document.getElementById('TeacherReview'));
