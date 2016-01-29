@@ -6,12 +6,13 @@ var Router      = require('react-router');
 var DashStore   = require('../../stores/dashStore.js');
 var DashActions = require('../../actions/dashActions.js');
 
+//Components
 var Navbar      = require('../Shared/NavbarIn.jsx');
 var TeacherCard = require('./TeacherCard.jsx');
 var CourseLinks = require('./CourseLinks.jsx');
 
 /**
- * Utility functions for Teacher Page 
+ * Utility functions for Teacher Page
  */
 function getState() {
   return {
@@ -36,7 +37,7 @@ module.exports = React.createClass({
 
   },
 
-  //Fires post-mount,
+  //Fires post-mount, load data here
   componentDidMount: function() {
     DashStore.addChangeListener(this._onChange);
   },
@@ -53,7 +54,7 @@ module.exports = React.createClass({
   render: function() {
     return (<div>
       <Navbar />
-      <div id="content"> 
+      <div id="content">
         <div id="bio-row">
           <TeacherCard />
           <CourseLinks />

@@ -1,5 +1,5 @@
 /**
- * Navbar Login Component & Login
+ * Navbar Login Component & Login -- The One for Dashboard -- Handles Search Input
  */
 var React = require('react');
 var Router = require('react-router');

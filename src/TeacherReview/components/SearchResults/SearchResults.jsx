@@ -1,17 +1,18 @@
 /**
- * Component for Dashboard Application
+ * Component for Searching Courses -- Wraps the Results, and handles input
  */
 var React       = require('react');
 var Router      = require('react-router');
+
+//Components
 var DashStore   = require('../../stores/dashStore.js');
 var DashActions = require('../../actions/dashActions.js');
-//var Signup      = require('./Signup.jsx');
 var Navbar      = require('../Shared/NavbarIn.jsx');
 var TrendColumn = require('../Shared/TrendColumn.jsx');
 var Results     = require('./Results.jsx');
 
 /**
- * Utility functions for Search Results Page 
+ * Utility functions for Search Results Page
  */
 function getState() {
   return {

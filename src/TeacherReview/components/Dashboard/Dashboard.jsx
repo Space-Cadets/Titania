@@ -1,16 +1,17 @@
 /**
- * Component for Dashboard Application
+ * Component for Dashboard -- The Central View to the App
  */
+
 var React       = require('react');
 var Router      = require('react-router');
 var DashStore   = require('../../stores/dashStore.js');
 var DashActions = require('../../actions/dashActions.js');
-//var Signup      = require('./Signup.jsx');
+
+//Components
 var Navbar      = require('../Shared/NavbarIn.jsx');
 var Post        = require('../Shared/Post.jsx');
 var Footer      = require('../Shared/Footer.jsx');
 var TrendColumn = require('../Shared/TrendColumn.jsx');
-
 var Feed        = require('./Feed.jsx');
 var Router      = require('react-router').Router;
 var Route       = require('react-router').Route;
@@ -42,7 +43,7 @@ module.exports = React.createClass({
 
   },
 
-  //Fires post-mount,
+  //Fires post-mount, load data here!
   componentDidMount: function() {
     DashStore.addChangeListener(this._onChange);
   },

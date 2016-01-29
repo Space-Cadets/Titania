@@ -1,5 +1,6 @@
 /**
  * Navbar Component & Login
+ * TODO: Reshape to better suit the site
  */
 var React = require('react');
 var Router = require('react-router');

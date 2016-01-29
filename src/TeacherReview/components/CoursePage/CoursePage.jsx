@@ -1,17 +1,21 @@
 /**
  * Component for Course Page View
+ *
+ *  TODO: Init AJAX (in ComponentDidMount), Populate TeacherLinks & Card, Setup Store & Actions
  */
 var React       = require('react');
 var Router      = require('react-router');
 var DashStore   = require('../../stores/dashStore.js');
 var DashActions = require('../../actions/dashActions.js');
 
+//Components
 var Navbar       = require('../Shared/NavbarIn.jsx');
 var CourseCard   = require('./CourseCard.jsx');
 var TeacherLinks = require('./TeacherLinks.jsx');
 var Trait        = require('../Shared/Trait.jsx');
 var Review       = require('../Shared/Review.jsx');
 
+//Data
 var trait_data = require('../../utils/courseTraits.json');
 
 /**
@@ -40,7 +44,7 @@ module.exports = React.createClass({
 
   },
 
-  //Fires post-mount,
+  //Fires post-mount, this is where we load data!
   componentDidMount: function() {
     DashStore.addChangeListener(this._onChange);
   },
@@ -56,17 +60,19 @@ module.exports = React.createClass({
 
   render: function() {
 
-    var traits = trait_data.map(function(d) {
-      return (<Trait traitName={d.name} count={d.val} key={d.name} />);
+    //get array of trait components
+    var traits = trait_data.map(function(trait) {
+      return (<Trait traitName={trait.name} count={trait.val} key={trait.name} />);
     });
 
-    var reviews = trait_data.map(function(d) {
-      return (<Review key={d.name} />);
+    //get array of review components
+    var reviews = trait_data.map(function(review) {
+      return (<Review key={review.name} />);
     });
 
     return (<div>
       <Navbar />
-      <div id="content"> 
+      <div id="content">
         <div id="bio-row">
           <CourseCard />
           <TeacherLinks />

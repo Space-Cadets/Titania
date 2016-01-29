@@ -1,5 +1,5 @@
 /**
- * Tag Component
+ * Tag Component  -- Numbers associated with tags are passed in via props (tag ranking)
  *
  * takes optional props for the number -- but '0' is a falsey value, so the
  * usual ternary statement could be problematic.
