@@ -4,11 +4,49 @@
  */
 
 //filters actions for one way data flow
-var AppDispatcher    = require('../dispatchers/AppDispatcher.js');
+var AppDispatcher  = require('../dispatchers/AppDispatcher.js');
 //defined user actions
-var LoginConstants   = require('../constants/LoginConstants.js');
+var LoginConstants = require('../constants/LoginConstants.js');
 //Superagent request
-var request          = require('superagent');
+var request        = require('superagent');
+
+function validateForm(userInfo) {
+  //check Emails for @villanova.edu && equality
+  if (userInfo.email !== userInfo.confirmEmail) {
+    //return info
+    return {
+      success: false,
+      description: "Emails need to match"
+    };
+  }
+  if ( userInfo.email.substr(userInfo.email.length - 14).toLowerCase() !== "@villanova.edu") {
+    //return info
+    return {
+      success: false,
+      description: "Please enter a Villanova.edu email"
+    };
+  }
+  //check Names
+  if (!userInfo.firstName || !userInfo.lastName) {
+    return {
+      success: false,
+      description: "Please enter a first and last name"
+    };
+  }
+
+  //check password
+  if (userInfo.password.length < 7) {
+    return {
+      success: false,
+      description: "Passwords must be 7+ characters"
+    };
+  }
+
+  return {
+    success: true,
+    description: "Check your email to validate your account"
+  }
+}
 
 module.exports = {
 
@@ -39,5 +77,47 @@ module.exports = {
           token: res.body['access_token']
         });
     });
+  },
+
+  signupUser: function(userInfo) {
+    var response = validateForm(userInfo);
+    /*
+      {
+        success: boolean,
+        description: string
+      }
+    */
+    if (!response.success) {
+      AppDispatcher.handleViewAction({
+        actionType: LoginConstants.SIGNUP_FAILURE,
+        info: response
+      });
+      return;
+    }
+    request.post('http://localhost:5000/signup')
+      .send(userInfo)
+      .end(function(err, res){
+        if (err) {
+          AppDispatcher.handleViewAction({
+            actionType: LoginConstants.SIGNUP_FAILURE,
+            info: {
+              success: false,
+              description: "Something went wrong"
+            }
+          });
+          return;
+        }
+        if (res.success) {
+          AppDispatcher.handleViewAction({
+            actionType: LoginConstants.SIGNUP_SUCCESS,
+            info: res
+          });
+        } else {
+          AppDispatcher.handleViewAction({
+            actionType: LoginConstants.SIGNUP_FAILURE,
+            info: res
+          });
+        }
+      });
   }
 };

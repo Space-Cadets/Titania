@@ -6,7 +6,7 @@ var Router       = require('react-router');
 var LoginStore   = require('../../stores/loginStore.js');
 var LoginActions = require('../../actions/LoginActions.js');
 var Signup       = require('./Signup.jsx');
-var Navbar       = require('../Shared/NavbarIn.jsx');
+var Navbar       = require('../Shared/Navbar.jsx');
 var Footer       = require('../Shared/Footer.jsx');
 
 var Router = require('react-router').Router;
@@ -52,6 +52,13 @@ module.exports = React.createClass({
   componentDidUpdate: function() {
   },
 
+  renderNotification: function() {
+    var notification = this.state.data.signup.notification;
+    if (notification.show) {
+      return (<div className={notification.success ? "signupSuccess" : "signupFailure"}>{notification.description}</div>);
+    }
+  },
+
   render: function() {
     //login view
     return (
@@ -59,6 +66,7 @@ module.exports = React.createClass({
         <main id="Login-Main">
           <Navbar />
           <Signup />
+          {this.renderNotification()}
         </main>
       </div>
     );
