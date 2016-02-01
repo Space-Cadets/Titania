@@ -53,7 +53,7 @@ module.exports = React.createClass({
 
   render: function() {
     return (<div>
-      <Navbar />
+      <Navbar name="Kent"/>
       <div id="content">
         <div id="bio-row">
           <TeacherCard />

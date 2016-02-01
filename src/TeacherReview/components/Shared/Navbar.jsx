@@ -23,14 +23,21 @@ module.exports = React.createClass({
     this.setState({password: event.target.value});
   },
 
+  reload: function() {
+    window.location = "/";
+  },
+
   render: function() {
     return (
       <nav id="Login-Navbar">
-        <h1 id="Login-Logo">
-          TeacherReview
-        </h1>
+          <h1 onClick={this.reload} className="Login-Logo">
+            Mandingo
+          </h1>
+          <h1 onClick={this.reload} className="Login-LogoRight">
+            net
+          </h1>
         <h5 id="Login-Description">
-          | Teacher Reviews Done Right
+          | Teacher Reviews (if ya know what I mean)
         </h5>
         <span id="Login-Login">
           <span className="Login-Login-Section">

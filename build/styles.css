@@ -78,15 +78,14 @@ body {
 
   /* Set Border for the bottom of the nav */
   border-bottom: 1px solid #ececec;
-  min-height: 90px;
-  max-height: 90px;
+  min-height: 85px;
+  max-height: 85px;
 }
 
 /* Logged-In Navbar styles */
 #In-Navbar {
   display: flex;
-  background-color: lightgrey;
-  color: #404040;
+  background-color: #FFFFFF;
   flex: 1 100%;
   flex-direction: row;
   border-bottom: 1px solid #ececec;
@@ -96,23 +95,30 @@ body {
 }
 
 #Search-Input {
-  width: 95%;
-  min-height: 25px;
-  max-height: 25px !important;
-  font-size: 20px;
+  border: solid 1px #ccc;
+  border-radius: 2px;
+  width: 50%;
+  min-height: 35px;
+  max-height: 35px !important;
+  font-size: 15px;
   text-indent: 5px;
   padding: 0px;
-  border:none;
+  max-width: 900px;
+  margin: auto;
 }
 
-#nav-contents {
-  flex-flow: row;
-  display: inline-flex;
-  padding-right: 120px;
-  flex: 1 100%;
-  display: inline-flex;
-  margin: auto 20px;
+#Search-Input:focus{
+  outline: lightcyan;
 }
+
+#Search-btn {
+  position: fixed;
+  top: 12px;
+  padding: 9px;
+  border-radius: 2px;
+  right: 22%;
+}
+
 
 #content {
   display: flex;
@@ -121,21 +127,55 @@ body {
 }
 
 .pref-btn {
+  cursor: pointer;
+  display: inline-flex;
+  justify-content: flex-end;
+  margin: auto 10px auto 10px;
   min-height: 25px;
   max-height: 25px;
-  width: 10%;
-  margin-left: 10px;
+  font-size: 17px;
+  margin: auto 45px auto 5px;
+}
+#pref-btn-caret {
+  cursor: pointer;
+  font-size: 11px;
+  margin: 4px 0px 2px 0px;
 }
 
-
-#Login-Logo {
+.Logo-Dash {
+  display:inline-flex;
+  justify-content: flex-start;
+}
+.Login-Logo:hover {
+  cursor: pointer;
+}
+.Login-LogoRight:hover {
+  cursor: pointer;
+}
+.Login-Logo {
+  color: #2895F1;
   /* Place the Logo all the way to the left */
   justify-content: flex-start;
-  margin: auto 20px;
+  margin: auto 1px auto 20px;
+}
+
+.Login-LogoRight {
+  color: #FFFFFF;
+  text-shadow: -0.7px 0 black, 0 0.7px black, 0.7px 0 black, 0 -0.7px black;
+  /* Place the Logo all the way to the left */
+  margin: auto 20px auto 0px;
 }
 
 #nav-contents > a {
   text-decoration: none;
+}
+
+#nav-contents {
+  flex-flow: row;
+  display: inline-flex;
+  padding-right: 0px;
+  flex: 1 100%;
+  margin: auto 20px;
 }
 
 #Login-Description {

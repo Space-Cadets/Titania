@@ -70,27 +70,28 @@ module.exports = React.createClass({
       return (<Review key={review.name} />);
     });
 
-    return (<div>
-      <Navbar />
-      <div id="content">
-        <div id="bio-row">
-          <CourseCard />
-          <TeacherLinks />
-        </div>
+    return (
+      <div>
+        <Navbar name="Kent"/>
+        <div id="content">
+          <div id="bio-row">
+            <CourseCard />
+            <TeacherLinks />
+          </div>
         <div id="trait-row-container">
           <div className="row-title">Traits</div>
-          <div id="trait-row">
-            {traits}
+            <div id="trait-row">
+              {traits}
+            </div>
           </div>
-        </div>
         <div id="review-row-container">
           <div className="row-title">Reviews</div>
-          <div id="review-row">
-            {reviews}
+            <div id="review-row">
+              {reviews}
+            </div>
           </div>
         </div>
       </div>
-    </div>
     );
   },
 
