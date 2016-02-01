@@ -322,10 +322,11 @@ body {
 
 #feed-container {
   width: 62%;
-  background-color: lightgrey;
   min-height: 500px;
   border-radius: 3px;
+  border: solid 1px #2895F1;
   margin-left: 20px;
+  padding: 10px;
 }
 
 #post-btn {
@@ -337,10 +338,10 @@ body {
 }
 
 #trend-column {
-  width: 33%;
+  width: 31%;
   border-radius: 3px;
   margin-left: 20px;
-  background-color: lightgrey;
+  border: solid 1px #2895F1;
   max-height: 465px;
 }
 
@@ -348,14 +349,13 @@ body {
   min-height: 350px;
   margin-left: 5%;
   width: 90%;
-  background-color: orange;
   border-radius: 3px;
-
+  text-align: center;
 }
 
 #results-box {
   width: 62%;
-  background-color: lightgrey;
+  border: solid 1px #2895F1;
   min-height: 500px;
   border-radius: 3px;
   margin-left: 20px;
@@ -363,6 +363,7 @@ body {
 
 .info-card {
   background-color: white;
+  border: solid 1px #2895F1;
   height: 70%;
   width: 40%;
   margin-left: 20px;
@@ -372,6 +373,7 @@ body {
 
 .link-card {
   background-color: white;
+  border: solid 1px #2895F1;
   height: 70%;
   width: 52%;
   margin-left: 20px;
@@ -383,7 +385,7 @@ body {
   height: 120px;
   width: 95%;
   margin-top: 15px;
-  background-color: lightgrey;
+  border: solid 1px #2895F1;
   border-radius: 3px;
   display: flex;
   align-items: center;
@@ -401,7 +403,7 @@ body {
   flex-direction: column;
   align-items: center;
   margin-top: 15px;
-  background-color: lightgrey;
+  border: solid 1px #2895F1;
   width: 95%;
 }
 
@@ -412,7 +414,7 @@ body {
   height: 300px;
   width: 95%;
   margin-top: 15px;
-  background-color: lightgrey;
+  border: solid 1px #2895F1;
   border-radius: 3px;
 }
 
