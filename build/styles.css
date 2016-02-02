@@ -9,6 +9,7 @@ html {
 body {
   margin: 0;
   height: 100%;
+  background-color: #f2f2f2;
 }
 
 #TeacherReview {
@@ -85,17 +86,17 @@ body {
 /* Logged-In Navbar styles */
 #In-Navbar {
   display: flex;
-  background-color: #FFFFFF;
+  background-color: #2895f1;
   flex: 1 100%;
   flex-direction: row;
-  border-bottom: 1px solid #ececec;
   min-height: 60px;
   max-height: 60px;
   align-items: flex-start;
+  box-shadow: 0px 5px 4px #ccc;
 }
 
 #Search-Input {
-  border: solid 1px #ccc;
+  border: none;
   border-radius: 2px;
   width: 50%;
   min-height: 35px;
@@ -104,6 +105,8 @@ body {
   text-indent: 5px;
   padding: 0px;
   max-width: 900px;
+  background: #67BAFF;
+  color: white;
   margin: auto;
 }
 
@@ -112,11 +115,12 @@ body {
 }
 
 #Search-btn {
-  position: fixed;
+  position: absolute;
   top: 12px;
+  color: #FFFFFF;
   padding: 9px;
   border-radius: 2px;
-  right: 22%;
+  right: 25%;
 }
 
 
@@ -149,21 +153,12 @@ body {
 .Login-Logo:hover {
   cursor: pointer;
 }
-.Login-LogoRight:hover {
-  cursor: pointer;
-}
+
 .Login-Logo {
-  color: #2895F1;
+  color: #FFFFFF;
   /* Place the Logo all the way to the left */
   justify-content: flex-start;
   margin: auto 1px auto 20px;
-}
-
-.Login-LogoRight {
-  color: #FFFFFF;
-  text-shadow: -0.7px 0 black, 0 0.7px black, 0.7px 0 black, 0 -0.7px black;
-  /* Place the Logo all the way to the left */
-  margin: auto 20px auto 0px;
 }
 
 #nav-contents > a {
@@ -323,10 +318,10 @@ body {
 #feed-container {
   width: 62%;
   min-height: 500px;
-  border-radius: 3px;
-  border: solid 1px #2895F1;
   margin-left: 20px;
+  background: white;
   padding: 10px;
+  box-shadow: 0px 5px 25px #ccc;
 }
 
 #post-btn {
@@ -339,9 +334,9 @@ body {
 
 #trend-column {
   width: 31%;
-  border-radius: 3px;
   margin-left: 20px;
-  border: solid 1px #2895F1;
+  background: #FFFFFF;
+  box-shadow: 0px 5px 25px #ccc;
   max-height: 465px;
 }
 

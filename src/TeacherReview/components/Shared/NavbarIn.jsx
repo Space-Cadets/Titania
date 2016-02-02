@@ -38,20 +38,17 @@ module.exports = React.createClass({
       <nav id="In-Navbar">
         <span id="nav-contents">
           <Link to="/" className="Logo-Dash">
-            <h1 className="Login-Logo">Dart</h1>
-            <h1 className="Login-LogoRight">board</h1>
+            <h1 className="Login-Logo">Dartboard</h1>
           </Link>
           <input id="Search-Input" type="text" />
           <span id="Search-btn"><i className="fa fa-search"></i></span>
-          <span style={this.state.dropdown ? {"color" : "#ccc"} : {"color" : "black"}}
+          <span style={this.state.dropdown ? {"color" : "#ccc"} : {"color" : "#fff"}}
                 onClick={this.toggleDropdown}
                 className="pref-btn">
             {this.props.name}
             {this.state.dropdown ? (<span style={{"color": "#ccc"}} id="pref-btn-caret">&#9650;</span>) :
               (<span id="pref-btn-caret">&#9660;</span>)
             }
-
-
           </span>
         </span>
       </nav>
