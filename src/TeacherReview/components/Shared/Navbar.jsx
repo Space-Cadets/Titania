@@ -31,10 +31,10 @@ module.exports = React.createClass({
     return (
       <nav id="Login-Navbar">
           <h1 onClick={this.reload} className="Login-Logo">
-            Mandingo
+            Dart
           </h1>
           <h1 onClick={this.reload} className="Login-LogoRight">
-            net
+            board
           </h1>
         <h5 id="Login-Description">
           | Teacher Reviews (if ya know what I mean)
