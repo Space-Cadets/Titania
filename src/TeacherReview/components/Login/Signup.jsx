@@ -10,54 +10,37 @@ module.exports = React.createClass({
     return {
       email: '',
       confirmEmail: '',
-      firstName: '',
-      lastName: '',
+      name: '',
       password: ''
     };
   },
   submit: function() {
+    //split up name
+    var firstName;
+    var lastName;
     LoginActions.signupUser({
       email: this.state.email,
-      confirmEmail: this.state.confirmEmail,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       password: this.state.password
     });
   },
 
-  fnameInput: function(e) {
+  nameInput: function(e) {
     if (e.keyCode === 13) {
-      this.refs.lname.focus();
+      this.refs.name.focus();
     }
     this.setState({
-      firstName: e.target.value || ''
-    });
-  },
-
-  lnameInput: function(e) {
-    if (e.keyCode === 13) {
-      this.refs.email.focus();
-    }
-    this.setState({
-      lastName: e.target.value || ''
+      name: e.target.value || ''
     });
   },
 
   emailInput: function(e) {
     if (e.keyCode === 13) {
-      this.refs.confirmEmail.focus();
-    }
-    this.setState({
-      email: e.target.value || ''
-    });
-  },
-
-  confirmEmailInput: function(e) {
-    if (e.keyCode === 13) {
       this.refs.password.focus();
     }
     this.setState({
-      confirmEmail: e.target.value || ''
+      email: e.target.value || ''
     });
   },
 
@@ -74,25 +57,20 @@ module.exports = React.createClass({
   render: function() {
     return (
           <div id="Login-Signup">
+            <h1 id="Login-Signup-Title">Dartboard</h1>
             <h5 id="Login-Signup-Description">Find teachers, rate classes, and more</h5>
-            <div className="Login-Signup-Section Login-Signup-Item" id="Login-Signup-Name">
-              <input onKeyUp={this.fnameInput} type="text" id="Login-Signup-FName" placeholder="First Name"/>
-              <input ref="lname" onKeyUp={this.lnameInput} type="text" id="Login-Signup-LName" placeholder="Last Name"/>
+            <div className="Login-Signup-Section Login-Signup-Item" className="Login-Signup-Section">
+              <input id="Login-Signup-Name" onKeyUp={this.nameInput} type="text" className="Login-Signup-Item-Full" placeholder="Your Name"/>
             </div>
             <div className="Login-Signup-Item Login-Signup-Section">
               <input ref="email"
+                     id="Login-Signup-Email"
                      onKeyUp={this.emailInput}
                      className="Login-Signup-Item-Full" placeholder="Villanova Email Address" type="text"/>
             </div>
             <div className="Login-Signup-Item Login-Signup-Section">
-              <input ref="confirmEmail"
-                     onKeyUp={this.confirmEmailInput}
-                     className="Login-Signup-Item-Full"
-                     placeholder="Re-Enter Villanova Email Address"
-                     type="text"/>
-            </div>
-            <div className="Login-Signup-Item Login-Signup-Section">
               <input ref="password"
+                     id="Login-Signup-Password"
                      onKeyUp={this.passwordInput}
                      className="Login-Signup-Item-Full"
                      placeholder="New Password"

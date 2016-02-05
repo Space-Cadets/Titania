@@ -31,10 +31,7 @@ module.exports = React.createClass({
     return (
       <nav id="Login-Navbar">
           <h1 onClick={this.reload} className="Login-Logo">
-            Dart
-          </h1>
-          <h1 onClick={this.reload} className="Login-LogoRight">
-            board
+            Dartboard
           </h1>
         <h5 id="Login-Description">
           | Teacher Reviews (if ya know what I mean)

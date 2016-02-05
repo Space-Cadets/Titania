@@ -62,7 +62,7 @@ module.exports = React.createClass({
   render: function() {
     //login view
     return (
-      <div id="TeacherReview">
+      <div id="TeacherReview" className="TeacherReviewSignup">
         <main id="Login-Main">
           <Navbar />
           <Signup />

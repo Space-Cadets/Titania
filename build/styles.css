@@ -20,6 +20,16 @@ body {
   min-height: 100%;
 }
 
+.TeacherReviewSignup {
+  background: url("img/bookshelf.jpg") no-repeat fixed;
+  background-color: #cccccc;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+
 #Login-Main {
   display: flex;
   position: relative;
@@ -65,8 +75,7 @@ body {
   /* Set the navbar to be an inline block */
   display: inline-flex;
 
-  /* Set Background Color to deep purple */
-  background-color: #FFF;
+  /* Set Background Color */
 
   /* Font Color to White */
   color: #404040;
@@ -78,9 +87,8 @@ body {
   flex-direction: row;
 
   /* Set Border for the bottom of the nav */
-  border-bottom: 1px solid #ececec;
-  min-height: 85px;
-  max-height: 85px;
+  min-height: 60px;
+  max-height: 60px;
 }
 
 /* Logged-In Navbar styles */
@@ -233,32 +241,61 @@ body {
 }
 
 #Login-Signup {
-  background-color: #f8f8f8;
+  /* Set Main Section Background Color */
+
+
   padding-bottom: 2.5%;
   margin: auto;
-  max-height: 300px;
   padding: 5%;
   /* Initialize Flexbox in signup section */
   display: flex;
   flex-direction: column;
-  /* Set Main Section Background Color */
-  background-color: #FFF;
 
   /* Set the width of the signup section to 40%*/
   order: 2;
   align-items: center;
 }
 
-#Login-Signup-Description {
-  margin: 0;
+#Login-Signup-Title {
+  color: #FFFFFF;
+  font-size: 50px;
+  font-weight: 500;
+
 }
 
+#Login-Signup-Description {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 5px;
+}
+#Login-Signup-Name{
+  font-size: 10px;
+  outline: none;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+
+}
+#Login-Signup-Email {
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #ccc;
+}
+#Login-Signup-Password {
+  border: none;
+  outline: none;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  margin-bottom: 10px;
+}
 .Login-Signup-Section {
+
   display: flex;
-  min-width: 350px;
+  min-width: 300px;
   max-width: 470px;
   width: 70%;
-  margin-top: 10px;
 }
 
 .Login-Signup-Item-Full {
@@ -273,25 +310,14 @@ body {
   flex-wrap: nowrap;
 }
 
-#Login-Signup-FName {
-  height: 40px;
-  flex-grow: 2;
-  margin-top: 10px;
-  margin-right: 2.5px;
-}
 
-#Login-Signup-LName {
-  height: 40px;
-  flex-grow: 2;
-  margin-top: 10px;
-  margin-left: 2.5px;
-}
 
 #Login-Signup-Button {
   justify-content: center;
   background-color: #5cb85c;
   height: 40px;
   border: none;
+  border-radius: 2px;
   color: white;
 }
 
