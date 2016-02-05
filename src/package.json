@@ -32,6 +32,7 @@
     "react": "^0.14.2",
     "react-dom": "^0.14.2",
     "react-router": "^2.0.0-rc5",
+    "request": "^2.69.0",
     "superagent": "^1.4.0"
   },
   "devDependencies": {
