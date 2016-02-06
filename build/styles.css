@@ -75,13 +75,14 @@ body {
   /* Set the navbar to be an inline block */
   display: inline-flex;
 
-  /* Set Background Color */
-
   /* Font Color to White */
   color: #404040;
 
   /* Spans 100% */
   flex: 1 100%;
+  
+  /* Put them at opposite ends */
+  justify-content: space-between;
 
   /* Specify flow for the Navbar */
   flex-direction: row;
@@ -132,14 +133,20 @@ body {
 }
 
 .search-result {
-  background-color: #67BAFF;
+  background-color: #2895F1;
   color: white;
   vertical-align: middle;
-  /*border-radius: 3px;*/
+  cursor: pointer;
   box-shadow: 0px 3px 10px #ccc;
   margin: 15px;
   padding: 11px;
   display: flex;
+  transition: background-color 0.25s, box-shadow 0.25s;
+}
+
+.search-result:hover {
+  background-color: #67BAFF; 
+  box-shadow: 0px 0px 0px #ccc;
 }
 
 .search-result > img {
@@ -163,6 +170,7 @@ body {
   font-size: 17px;
   margin: auto 45px auto 5px;
 }
+
 #pref-btn-caret {
   cursor: pointer;
   font-size: 11px;
@@ -220,7 +228,6 @@ body {
 }
 
 .Login-Login-Item {
-
   /* Allows the Login Elements to be in the center (height-wise) */
   margin: auto;
 }
@@ -234,10 +241,15 @@ body {
 #Login-Login-Button {
   color: white;
   border: none;
-  background-color: #3e78ad;
-  height: 35px;
-  width: 70px;
+  height: 30px;
+  padding: 15px;
+  cursor: pointer;
+  font-size: 15px;
   margin-top: 15px;
+  line-height: 0px;
+  margin-right: 15px;
+  background-color: #3e78ad;
+  box-shadow: 2px 4px 12px rgba(0,0,0, 0.3);
 }
 
 #Login-Signup {
@@ -259,39 +271,47 @@ body {
 #Login-Signup-Title {
   color: #FFFFFF;
   font-size: 50px;
-  font-weight: 500;
-
+  font-weight: 700;
+  text-shadow: 0px 0px 5px #000;
 }
 
 #Login-Signup-Description {
   color: #fff;
-  font-size: 15px;
-  font-weight: 500;
   margin: 5px;
+  font-size: 15px;
+  font-weight: 700;
+  text-shadow: 0px 0px 5px #000;
 }
+
 #Login-Signup-Name{
   font-size: 10px;
   outline: none;
+  padding-left: 10px;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   border: none;
   border-bottom: 1px solid #ccc;
 
 }
+
 #Login-Signup-Email {
   border: none;
   outline: none;
+  padding-left: 10px;
   border-bottom: 1px solid #ccc;
 }
+
 #Login-Signup-Password {
   border: none;
   outline: none;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
+  padding-left: 10px;
   margin-bottom: 10px;
 }
-.Login-Signup-Section {
 
+.Login-Signup-Section {
+  cursor: pointer;
   display: flex;
   min-width: 300px;
   max-width: 470px;
@@ -357,7 +377,7 @@ body {
 }
 
 #feed-container {
-  width: 62%;
+  width: 60%;
   min-height: 500px;
   margin-left: 20px;
   background: white;
@@ -374,7 +394,7 @@ body {
 }
 
 #trend-column {
-  width: 31%;
+  width: 29%;
   margin-left: 20px;
   background: #FFFFFF;
   box-shadow: 0px 5px 25px #ccc;
@@ -421,8 +441,9 @@ body {
   height: 120px;
   width: 95%;
   margin-top: 15px;
-  border: solid 1px #2895F1;
-  border-radius: 3px;
+  background: white;
+  padding: 10px;
+  box-shadow: 0px 5px 25px #ccc;
   display: flex;
   align-items: center;
 }

@@ -30,23 +30,8 @@ module.exports = React.createClass({
   render: function() {
     return (
       <nav id="Login-Navbar">
-          <h1 onClick={this.reload} className="Login-Logo">
-            Dartboard
-          </h1>
-        <h5 id="Login-Description">
-          | Teacher Reviews (if ya know what I mean)
-        </h5>
-        <span id="Login-Login">
-          <span className="Login-Login-Section">
-            <h5 className="Login-Login-Item">Email:</h5>
-            <input className="Login-Login-Input"type="text" onChange={this.onChangeEmail}/>
-          </span>
-          <span className="Login-Login-Section">
-            <h5 className="Login-Login-Item">Password:</h5>
-            <input className="Login-Login-Input" type="password" onChange={this.onChangePassword}/>
-          </span>
-          <button id="Login-Login-Button" onClick={this.onClick}>Sign In</button>
-        </span>
+        <h1 onClick={this.reload} className="Login-Logo">Dartboard</h1>
+        <button id="Login-Login-Button" onClick={this.onClick}>Sign In</button>
       </nav>
     );
   }
