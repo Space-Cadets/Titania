@@ -12,10 +12,8 @@ module.exports = React.createClass({
 	render: function() {
 		return (
 		<div id="trend-column">
-			<PostButton />
 			<Trending />
-		</div>
-		);
+		</div>);
 	}
 
 });

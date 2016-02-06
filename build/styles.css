@@ -107,6 +107,26 @@ body {
 #Search-Input {
   border: none;
   border-radius: 2px;
+  width: 95%;
+  min-height: 35px;
+  max-height: 35px !important;
+  font-size: 15px;
+  text-indent: 5px;
+  padding: 0px 0px 0px 5px;
+  max-width: 900px;
+  background: #67BAFF;
+  color: white;
+  margin: auto;
+  transition: background-color .2s;
+}
+
+#Search-Input:focus{
+  outline: none;
+}
+
+#Search-Container {
+  border: none;
+  border-radius: 2px;
   width: 50%;
   min-height: 35px;
   max-height: 35px !important;
@@ -119,17 +139,15 @@ body {
   margin: auto;
 }
 
-#Search-Input:focus{
-  outline: lightcyan;
-}
-
-#Search-btn {
-  position: absolute;
-  top: 12px;
+#Search-mag {
   color: #FFFFFF;
   padding: 9px;
-  border-radius: 2px;
-  right: 25%;
+}
+
+.smag {
+  left: 24px;
+  position: absolute;
+  top: 6px;
 }
 
 .search-result {
@@ -192,13 +210,14 @@ body {
   margin: auto 1px auto 20px;
 }
 
-#nav-contents > a {
+#Nav-Contents > a {
   text-decoration: none;
 }
 
-#nav-contents {
+#Nav-Contents {
   flex-flow: row;
-  display: inline-flex;
+  display: flex;
+  justify-content: space-between;
   padding-right: 0px;
   flex: 1 100%;
   margin: auto 20px;
@@ -253,16 +272,12 @@ body {
 }
 
 #Login-Signup {
-  /* Set Main Section Background Color */
-
-
   padding-bottom: 2.5%;
   margin: auto;
   padding: 5%;
   /* Initialize Flexbox in signup section */
   display: flex;
   flex-direction: column;
-
   /* Set the width of the signup section to 40%*/
   order: 2;
   align-items: center;
@@ -304,10 +319,10 @@ body {
 #Login-Signup-Password {
   border: none;
   outline: none;
-  border-bottom-left-radius: 2px;
-  border-bottom-right-radius: 2px;
   padding-left: 10px;
   margin-bottom: 10px;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 
 .Login-Signup-Section {
@@ -394,7 +409,7 @@ body {
 }
 
 #trend-column {
-  width: 29%;
+  width: 33%;
   margin-left: 20px;
   background: #FFFFFF;
   box-shadow: 0px 5px 25px #ccc;
@@ -477,6 +492,23 @@ body {
 
 #review-row {
   width: inherit;
+}
+
+#Review-btn {
+  border: 0;
+  width: 12%;
+  min-width: 125px;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 2px;
+  background-color: #f7f7f7;
+  transition: box-shadow .2s;
+  box-shadow: 2px 1px 4px rgba(0,0,0,.35);
+  
+}
+
+#Review-btn:hover {
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.35);
 }
 
 .row-title {

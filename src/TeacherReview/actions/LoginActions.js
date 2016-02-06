@@ -8,7 +8,7 @@ var AppDispatcher  = require('../dispatchers/AppDispatcher.js');
 //defined user actions
 var LoginConstants = require('../constants/LoginConstants.js');
 //Superagent request
-var request        = require('superagent');
+var request        = require('request');
 
 function validateForm(userInfo) {
   //check Emails for @villanova.edu && equality

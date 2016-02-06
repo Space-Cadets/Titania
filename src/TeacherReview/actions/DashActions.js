@@ -4,11 +4,10 @@
  */
 
 //filters actions for one way data flow
-var AppDispatcher    = require('../dispatchers/AppDispatcher.js');
+var AppDispatcher = require('../dispatchers/AppDispatcher.js');
 //defined user actions
-var DashConstants   = require('../constants/DashConstants.js');
-//Superagent request
-var request          = require('superagent');
+var DashConstants = require('../constants/DashConstants.js');
+var request       = require('request');
 
 module.exports = {
 
