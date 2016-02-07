@@ -6,8 +6,7 @@ module.exports = React.createClass({
 		return (
 			<div className="info-card">
 				<div className="info-title">{this.props.name}</div>
-				{/* Taking first department for now */}
-				<div>DEPT</div>
+				<div>Department goes here</div>
 				<div className="info-rating">{this.props.rating}</div>
 			</div>
 		);

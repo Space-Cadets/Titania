@@ -17,6 +17,10 @@ function _stash_search(results) {
   _data.results = results;
 }
 
+function _tpage_load(results) {
+  _data.tpage = results;
+}
+
 /**
  * Object through which store data is accessed -- *NOT MUTATED*
  */
@@ -40,6 +44,10 @@ var dashStore = assign({}, EventEmitter.prototype, {
 
   getSearchResults: function() {
     return _data.results;
+  },
+
+  getTeacherPage: function() {
+    return _data.tpage;
   }
 });
 
@@ -49,17 +57,16 @@ var dashStore = assign({}, EventEmitter.prototype, {
 dashStore.dispatchToken = AppDispatcher.register(function(payload) {
   var action = payload.action;
   switch(action.actionType) {
-    //--boilerplate
-    // case DashConstants.XXX:
-    //   _addToken(action.token);
-    //   console.log(action, 'successfully stored.');
-    //   break;
 
     case DashConstants.SEARCH_SUCCESS:
       _stash_search(action.results);
-      console.log(action, 'sucessful search returned');
+      console.log(action, 'successful search returned');
       break;
 
+    case DashConstants.TLOAD_SUCCESS:
+      _tpage_load(action.info);
+      console.log(action, 'instructor information recieved');
+      break;
 
     default:
       return true;

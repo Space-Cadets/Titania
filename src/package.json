@@ -6,6 +6,7 @@
   "scripts": {
     "build": "browserify -t [ babelify --presets [ react ] ] ./TeacherReview/client.js -o ../build/app.js",
     "watch": "watchify -v -t [ babelify --presets [ react ] ] ./TeacherReview/client.js -o ../build/app.js",
+    "serve": "python -m SimpleHTTPServer",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

@@ -5,9 +5,9 @@ var React       = require('react');
 var Router      = require('react-router');
 var request     = require('request');
 var DashStore   = require('../../stores/dashStore.js');
-var DashActions = require('../../actions/dashActions.js');
+var DashActions = require('../../actions/DashActions.js');
 
-//Components
+// Components
 var Navbar      = require('../Shared/NavbarIn.jsx');
 var TeacherCard = require('./TeacherCard.jsx');
 var CourseLinks = require('./CourseLinks.jsx');
@@ -18,11 +18,10 @@ var Review      = require('../Shared/Review.jsx');
  */
 function getState() {
   return {
-    data: DashStore.getData()
+    data: DashStore.getTeacherPage()
   };
 }
 
-var opts = {url: 'http://localhost:5000/instructors/Anany Levitin'};
 
 /**
  * Component
@@ -38,23 +37,14 @@ module.exports = React.createClass({
       rating: 0,
       traits: [],
       courses: [],
+      reviews: [],
       departments: []
     };
   },
 
   // Fires before mount
   componentWillMount: function() {
-    // Should be an action
-    // this.serverRequest = request(opts, function (err, head, body) {
-    //   body = JSON.parse(body).data;
-    //   this.setState({ 
-    //     name: body.name,
-    //     traits: body.traits,
-    //     rating: body.rating,
-    //     courses: body.courses,
-    //     departments: body.departments[0]
-    //   });
-    // }.bind(this));
+    DashActions.loadTeacherPage('Anany Levitin');
   },
 
   // Fires post-mount, load data here
@@ -62,20 +52,52 @@ module.exports = React.createClass({
     DashStore.addChangeListener(this._onChange);
   },
 
-  // Remove change listers from stores
   componentWillUnmount: function() {
     DashStore.removeChangeListener(this._onChange);
   },
 
   render: function() {
+
+    // (TODO) Make this its own (sexy) component
+    var reviews = this.state.reviews.map(function(r, i) {
+      return (<div key={i}>
+        <h4>{r.course} with {r.instructor_name}</h4>
+        <p>{r.subject} {r.subject_level} <em>{r.date_created}</em></p>
+        <p>{r.text}</p>
+      </div>)
+    });
+
     return (<div>
       <Navbar name="Kent"/>
-      <div id="content"></div>
-    </div>
-    );
+      <div id="content">
+
+        <div id="bio-row">
+          <TeacherCard name={this.state.name} rating={this.state.rating}/>
+          <CourseLinks />
+        </div>
+        
+        <div id="trait-row-container">
+          <div className="row-title">Traits</div>
+          <div id="trait-row"></div>
+        </div>
+
+        <div id="review-row-container">
+          <div className="row-title">Reviews</div>
+          <div id="review-row">{reviews}</div>
+        </div>
+
+      </div>
+    </div>)
   },
 
   _onChange: function() {
-    console.log('123');
+    var payload = getState();
+    this.setState({
+      depts: payload.data.departments,
+      courses: payload.data.courses,
+      reviews: payload.data.reviews,
+      rating: payload.data.rating, 
+      name: payload.data.name
+    });
   }
 });
