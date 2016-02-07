@@ -27,6 +27,10 @@ module.exports = React.createClass({
     DashStore.addChangeListener(this._onChange);
   },
 
+  componentWillUnmount: function() {
+    DashStore.removeChangeListener(this._onChange);
+  },
+
   render: function() {
   	var res = this.state.results.map(function(r, i) {
   		return <Result name={r.course_name} key={i} type={'course'} />;

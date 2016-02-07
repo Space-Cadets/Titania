@@ -4,8 +4,13 @@
 var React = require('react');
 var Router = require('react-router');
 var Link = require('react-router').Link;
-var Searchbar = require('./Searchbar.jsx');
+
+// Import Dash Actions 
 var DashActions = require('../../actions/DashActions.js');
+
+// Import Components
+var Searchbar = require('./Searchbar.jsx');
+
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -13,6 +18,7 @@ module.exports = React.createClass({
       dropdown: false
     };
   },
+  
   componentDidMount: function () {
     //adds listener to click anywhere on page to close dropdown
     document.body.addEventListener('click', this.handleBodyClick);
@@ -51,7 +57,7 @@ module.exports = React.createClass({
           <Searchbar />
 
           <button id="Review-btn" onClick={this.fire}>
-            <i className="fa fa-pencil"></i> 
+            <i className="fa fa-pencil"></i>&nbsp;
             Post Review
           </button>
 

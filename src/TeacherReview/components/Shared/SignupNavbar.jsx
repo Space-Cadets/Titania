@@ -1,6 +1,6 @@
 /**
  * Navbar Component & Login
- * TODO: Reshape to better suit the site
+ * Please work watchify
  */
 var React = require('react');
 var Router = require('react-router');

@@ -8,7 +8,7 @@ module.exports = React.createClass({
 	render: function() {
 		return (
 			<div id="trending-box">
-				<h2>Trending</h2>
+				<h3>Trending</h3>
 			</div>);
 	}
 })

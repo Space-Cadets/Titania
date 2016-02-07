@@ -9,7 +9,8 @@ var Link  = require('react-router').Link;
 
 module.exports = React.createClass({
 	render: function() {
-		return (<div id="feed-container">
+		return (
+		<div id="feed-container">
 			<h2>Feed</h2>
 			<div><Link to="/register">Go to Signup</Link></div>
 			<div><Link to="/login">Go to Login</Link></div>
