@@ -34,7 +34,7 @@ module.exports = {
         actionType: DashConstants.SEARCH_SUCCESS,
         results: JSON.parse(res.body).data
       });
-    })
+    });
   },
 
   getRecent: function() {
@@ -60,7 +60,7 @@ module.exports = {
         results: JSON.parse(res.body).data
       });
     });
-  }
+  },
 
   getInstructor: function(instructorName) {
     request('http://localhost:5000/instructors/' + instructorName, function(err, res) {
@@ -72,8 +72,7 @@ module.exports = {
         results: JSON.parse(res.body).data
       });
     });
-  }
-
+  },
 
   // Api call -- MODEL (@Al why is this here and not in login actions, jw)
   loginUser: function(email, password) {
