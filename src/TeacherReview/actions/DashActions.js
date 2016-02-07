@@ -3,7 +3,7 @@
  * -- Send calls that will be lined up to mutate data in store
  */
 
-//filters actions for one way data flow
+// Filters actions for one way data flow
 var AppDispatcher = require('../dispatchers/AppDispatcher.js');
 var DashConstants = require('../constants/DashConstants.js');
 var request       = require('request');
@@ -20,8 +20,8 @@ module.exports = {
 
   // Trying this (@ Al Kenobi you're my only hope)
   search: function(query, type) {
-    // query is term, type is either instructor or course
-
+    
+    // Query is term, type is either instructor or course
     request('http://localhost:5000/'+ type + '/f/' + query, function(err, res) {
       if (err) {
         AppDispatcher.handleViewAction({
@@ -30,7 +30,7 @@ module.exports = {
         })
       }
 
-      console.log(res.body);
+      // console.log(res.body);
 
       AppDispatcher.handleViewAction({
         actionType: DashConstants.SEARCH_SUCCESS,
