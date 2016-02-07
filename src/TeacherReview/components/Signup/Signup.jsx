@@ -5,8 +5,8 @@ var React        = require('react');
 var Router       = require('react-router');
 var LoginStore   = require('../../stores/loginStore.js');
 var LoginActions = require('../../actions/LoginActions.js');
-var Login        = require('./LoginForm.jsx');
-var Navbar       = require('../Shared/LoginNavbar.jsx');
+var Signup       = require('./SignupForm.jsx');
+var Navbar       = require('../Shared/SignupNavbar.jsx');
 var Footer       = require('../Shared/Footer.jsx');
 
 var Router = require('react-router').Router;
@@ -64,8 +64,8 @@ module.exports = React.createClass({
     return (
       <div id="TeacherReview" className="TeacherReviewSignup">
         <main id="Login-Main">
-          <Navbar onLogin={true} type="Sign Up"/>
-          <Login />
+          <Navbar onLogin={false} type="Sign In"/>
+          <Signup />
           {this.renderNotification()}
         </main>
       </div>

@@ -6,7 +6,7 @@ var Router = require('react-router');
 var LoginActions = require('../../actions/LoginActions.js');
 
 module.exports = React.createClass({
-  getInitialState() {
+  getInitialState: function() {
     return {
       email: '',
       confirmEmail: '',
@@ -78,7 +78,7 @@ module.exports = React.createClass({
             </div>
             <button onClick={this.submit}
                     className="Login-Signup-Section"
-                    id="Login-Signup-Button">Sign up for TeacherReview</button>
+                    id="Login-Signup-Button">Sign up</button>
           </div>
     );
   }
