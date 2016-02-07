@@ -4,6 +4,7 @@
  */
 var React = require('react');
 var Router = require('react-router');
+var Link  = Router.Link;
 var LoginActions = require('../../actions/LoginActions.js');
 
 module.exports = React.createClass({
@@ -31,7 +32,8 @@ module.exports = React.createClass({
     return (
       <nav id="Login-Navbar">
         <h1 onClick={this.reload} className="Login-Logo">Dartboard</h1>
-        <button id="Login-Login-Button" onClick={this.onClick}>Sign In</button>
+        <Link to="/login"
+              id="Signup-Nav-Button">Sign in</Link>
       </nav>
     );
   }
