@@ -16,7 +16,7 @@ var Results     = require('./Results.jsx');
  */
 function getState() {
   return {
-    data: DashStore.getData()
+    data: DashStore.getSearchResults()
   };
 }
 
@@ -30,11 +30,6 @@ module.exports = React.createClass({
   //Implements utility function to get the View Data from store
   getInitialState: function() {
     return getState();
-  },
-
-  //Fires before mount
-  componentWillMount: function() {
-
   },
 
   //Fires post-mount,

@@ -5,13 +5,12 @@
 
 //filters actions for one way data flow
 var AppDispatcher = require('../dispatchers/AppDispatcher.js');
-//defined user actions
 var DashConstants = require('../constants/DashConstants.js');
 var request       = require('request');
 
 module.exports = {
 
-  //generic dispatcher call -- BOILERPLATE
+  // Generic dispatcher call -- BOILERPLATE
   doSomething: function(something) {
     AppDispatcher.handleSetterAction({
       actionType: LoginConstants.DO_SOMETHING,
@@ -19,20 +18,42 @@ module.exports = {
     });
   },
 
-  //api call -- BOILERPLATE
+  // Trying this (@ Al Kenobi you're my only hope)
+  search: function(query, type) {
+    // query is term, type is either instructor or course
+
+    request('http://localhost:5000/'+ type + '/f/' + query, function(err, res) {
+      if (err) {
+        AppDispatcher.handleViewAction({
+          actionType: DashConstants.SEARCH_FAILURE,
+          messages: res.body.description
+        })
+      }
+
+      console.log(res.body);
+
+      AppDispatcher.handleViewAction({
+        actionType: DashConstants.SEARCH_SUCCESS,
+        results: JSON.parse(res.body).data
+      });
+
+    })
+  },
+
+  // Api call -- MODEL (@Al why is this here and not in login actions, jw)
   loginUser: function(email, password) {
     request.post('http://localhost:5000/auth')
     .send({'username': email, 'password': password})
     .end(function(err, res) {
         if (err) {
-          //handle fail
+          // Handle fail
           AppDispatcher.handleViewAction({
             actionType: LoginConstants.LOGIN_USER_FAIL,
             messages: res.body.description
           });
         }
         console.log(res.body);
-        //handle success
+        // Handle success
         AppDispatcher.handleViewAction({
           actionType: LoginConstants.LOGIN_USER_SUCCESS,
           token: res.body['access_token']

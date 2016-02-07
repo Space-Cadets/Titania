@@ -1,6 +1,11 @@
 /**
  * Global Styles ---------------------------------------------------------------
  */
+@font-face {
+  font-family: 'Aleu Web';
+  src: url('fonts/aleo-regular-webfont.ttf');
+}
+
 html {
   height: 100%;
   font-family: Helvetica, Arial, sans-serif;
@@ -21,7 +26,7 @@ body {
 }
 
 .TeacherReviewSignup {
-  background: url("img/bookshelf.jpg") no-repeat fixed;
+  background: url("img/openbook.jpeg") no-repeat fixed;
   background-color: #cccccc;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -213,6 +218,7 @@ body {
   color: #FFFFFF;
   /* Place the Logo all the way to the left */
   justify-content: flex-start;
+  font-family: Aleu Web, Helvetica;
   margin: auto 1px auto 20px;
 }
 
@@ -278,15 +284,13 @@ body {
 }
 
 #Login-Signup {
-  padding-bottom: 2.5%;
-  margin: auto;
-  padding: 5%;
-  /* Initialize Flexbox in signup section */
-  display: flex;
-  flex-direction: column;
-  /* Set the width of the signup section to 40%*/
   order: 2;
+  padding: 5%;
+  margin: auto;
+  display: flex;
   align-items: center;
+  padding-bottom: 2.5%;
+  flex-direction: column;
 }
 
 #Login-Signup-Title {
@@ -439,34 +443,31 @@ body {
 }
 
 .info-card {
-  background-color: white;
-  border: solid 1px #2895F1;
   height: 70%;
   width: 40%;
   margin-left: 20px;
   padding: 10px;
-  border-radius: 3px;
+  background: white;
+  box-shadow: 0px 5px 25px #ccc;
 }
 
 .link-card {
   background-color: white;
-  border: solid 1px #2895F1;
   height: 70%;
   width: 52%;
   margin-left: 20px;
   padding: 10px;
-  border-radius: 3px;
+  background: white;
+  box-shadow: 0px 5px 25px #ccc;
 }
 
 #bio-row {
-  height: 120px;
   width: 95%;
-  margin-top: 15px;
-  background: white;
   padding: 10px;
-  box-shadow: 0px 5px 25px #ccc;
   display: flex;
+  margin-top: 15px;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 #trait-row {
@@ -477,23 +478,28 @@ body {
 }
 
 #trait-row-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 15px;
-  border: solid 1px #2895F1;
   width: 95%;
+  display: flex;
+  padding: 10px;
+  margin-top: 15px;
+  background: white;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0px 5px 25px #ccc;
 }
 
 #review-row-container {
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  height: 300px;
   width: 95%;
+  display:flex;
+  height: 300px;
+  padding: 10px;
   margin-top: 15px;
-  border: solid 1px #2895F1;
-  border-radius: 3px;
+  margin-bottom: 15px;
+  background: white;
+  align-items: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0px 5px 25px #ccc;
 }
 
 #review-row {

@@ -5,6 +5,7 @@ var React = require('react');
 var Router = require('react-router');
 var Link = require('react-router').Link;
 var Searchbar = require('./Searchbar.jsx');
+var DashActions = require('../../actions/DashActions.js');
 
 module.exports = React.createClass({
   getInitialState: function() {
@@ -35,6 +36,10 @@ module.exports = React.createClass({
     });
   },
   
+  fire: function() {
+    DashActions.search('Analysis', 'courses');
+  },
+
   render: function() {
     return (
       <nav id="In-Navbar">
@@ -45,7 +50,10 @@ module.exports = React.createClass({
 
           <Searchbar />
 
-          <button id="Review-btn"><i className="fa fa-pencil"></i> Post Review</button>
+          <button id="Review-btn" onClick={this.fire}>
+            <i className="fa fa-pencil"></i> 
+            Post Review
+          </button>
 
           {/* 
           <span style={this.state.dropdown ? {"color" : "#ccc"} : {"color" : "#fff"}}

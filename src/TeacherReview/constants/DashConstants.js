@@ -4,5 +4,6 @@
 var keyMirror = require('keymirror');
 
 module.exports = keyMirror({
-  XXX: null
+  SEARCH_SUCCESS: null,
+  SEARCH_FAILURE: null,
 });

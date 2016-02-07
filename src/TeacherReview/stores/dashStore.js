@@ -13,6 +13,9 @@ var _data            = {};
  * Utility functions for store -- for mutating store data
  */
 
+function _stash_search(results) {
+  _data.results = results;
+}
 
 /**
  * Object through which store data is accessed -- *NOT MUTATED*
@@ -33,6 +36,10 @@ var dashStore = assign({}, EventEmitter.prototype, {
 
   getData: function() {
     return _data;
+  },
+
+  getSearchResults: function() {
+    return _data.results;
   }
 });
 
@@ -43,10 +50,16 @@ dashStore.dispatchToken = AppDispatcher.register(function(payload) {
   var action = payload.action;
   switch(action.actionType) {
     //--boilerplate
-    case DashConstants.XXX:
-      _addToken(action.token);
-      console.log(action, 'successfully stored.');
+    // case DashConstants.XXX:
+    //   _addToken(action.token);
+    //   console.log(action, 'successfully stored.');
+    //   break;
+
+    case DashConstants.SEARCH_SUCCESS:
+      _stash_search(action.results);
+      console.log(action, 'sucessful search returned');
       break;
+
 
     default:
       return true;

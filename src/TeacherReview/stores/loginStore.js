@@ -51,6 +51,7 @@ var loginStore = assign({}, EventEmitter.prototype, {
  */
 loginStore.dispatchToken = AppDispatcher.register(function(payload) {
   var action = payload.action;
+  
   switch(action.actionType) {
 
     case LoginConstants.LOGIN_USER_SUCCESS:
