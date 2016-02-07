@@ -11,15 +11,7 @@ var LoginConstants = require('../constants/LoginConstants.js');
 var request        = require('request');
 
 function validateForm(userInfo) {
-  //check Emails for @villanova.edu && equality
-  if (userInfo.email !== userInfo.confirmEmail) {
-    //return info
-    return {
-      success: false,
-      description: "Emails need to match"
-    };
-  }
-  if ( userInfo.email.substr(userInfo.email.length - 14).toLowerCase() !== "@villanova.edu") {
+    if ( userInfo.email.substr(userInfo.email.length - 14).toLowerCase() !== "@villanova.edu") {
     //return info
     return {
       success: false,
@@ -94,9 +86,8 @@ module.exports = {
       });
       return;
     }
-    request.post('http://localhost:5000/signup')
-      .send(userInfo)
-      .end(function(err, res){
+    console.log(userInfo);
+    request.post({url: 'http://localhost:5000/signup', body: userInfo}, function(err, res){
         if (err) {
           AppDispatcher.handleViewAction({
             actionType: LoginConstants.SIGNUP_FAILURE,

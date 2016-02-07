@@ -9,15 +9,12 @@ module.exports = React.createClass({
   getInitialState() {
     return {
       email: '',
-      confirmEmail: '',
-      name: '',
+      firstName: '',
+      lastName: '',
       password: ''
     };
   },
   submit: function() {
-    //split up name
-    var firstName;
-    var lastName;
     LoginActions.signupUser({
       email: this.state.email,
       firstName: this.state.firstName,
@@ -26,14 +23,24 @@ module.exports = React.createClass({
     });
   },
 
-  nameInput: function(e) {
+  firstNameInput: function(e) {
     if (e.keyCode === 13) {
-      this.refs.name.focus();
+      this.refs.firstName.focus();
     }
     this.setState({
-      name: e.target.value || ''
+      firstName: e.target.value || ''
     });
   },
+
+  lastNameInput: function(e) {
+    if (e.keyCode === 13) {
+      this.refs.lastName.focus();
+    }
+    this.setState({
+      lastName: e.target.value || ''
+    });
+  },
+
 
   emailInput: function(e) {
     if (e.keyCode === 13) {
@@ -60,7 +67,8 @@ module.exports = React.createClass({
             <h1 id="Login-Signup-Title">Dartboard</h1>
             <h5 id="Login-Signup-Description">Find teachers, rate classes, and more</h5>
             <div className="Login-Signup-Section Login-Signup-Item" className="Login-Signup-Section">
-              <input id="Login-Signup-Name" onKeyUp={this.nameInput} type="text" className="Login-Signup-Item-Full" placeholder="Your Name"/>
+              <input id="Login-Signup-FirstName" onKeyUp={this.lastNameInput} type="text" className="Login-Signup-Item-Full" placeholder="First Name"/>
+              <input id="Login-Signup-LastName" onKeyUp={this.firstNameInput} type="text" className="Login-Signup-Item-Full" placeholder="Last Name"/>
             </div>
             <div className="Login-Signup-Item Login-Signup-Section">
               <input ref="email"
@@ -68,6 +76,7 @@ module.exports = React.createClass({
                      onKeyUp={this.emailInput}
                      className="Login-Signup-Item-Full" placeholder="Villanova Email Address" type="text"/>
             </div>
+
             <div className="Login-Signup-Item Login-Signup-Section">
               <input ref="password"
                      id="Login-Signup-Password"
