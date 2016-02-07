@@ -29,16 +29,51 @@ module.exports = {
           messages: res.body.description
         })
       }
-
       console.log(res.body);
-
       AppDispatcher.handleViewAction({
         actionType: DashConstants.SEARCH_SUCCESS,
         results: JSON.parse(res.body).data
       });
-
     })
   },
+
+  getRecent: function() {
+    request('http://localhost:5000/recent', function(err, res) {
+      if(err) {
+        /* what do i put here */
+      }
+      AppDispatcher.handleViewAction({
+        actionType: DashConstants.GET_RECENT_REVIEWS,
+        results: JSON.parse(res.body).data
+      });
+    });
+  },
+
+
+  getCourse: function(courseName) {
+    request('http://localhost:5000/courses/' + courseName, function(err, res) {
+      if (err) {
+        /* ERROR */
+      }
+      AppDispatcher.handleViewAction({
+        actionType: DashConstants.GET_COURSE,
+        results: JSON.parse(res.body).data
+      });
+    });
+  }
+
+  getInstructor: function(instructorName) {
+    request('http://localhost:5000/instructors/' + instructorName, function(err, res) {
+      if (err) {
+        /* ERROR */
+      }
+      AppDispatcher.handleViewAction({
+        actionType: DashConstants.GET_INSTRUCTOR,
+        results: JSON.parse(res.body).data
+      });
+    });
+  }
+
 
   // Api call -- MODEL (@Al why is this here and not in login actions, jw)
   loginUser: function(email, password) {
