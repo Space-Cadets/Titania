@@ -15,20 +15,22 @@ module.exports = React.createClass({
     };
   },
   submit: function() {
-    //split up name
-    var firstName;
-    var lastName;
-    LoginActions.signupUser({
-      email: this.state.email,
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      password: this.state.password
-    });
+    //split up name, only want first element and last element
+    //if they only put first name, then they're gonna have 2 first names.
+    if (this.state.password && this.state.email && this.state.name) {
+      var splitName = this.state.name.split(" ");
+      LoginActions.signupUser({
+        email: this.state.email,
+        firstName: splitName[0],
+        lastName: splitName[splitName.length - 1],
+        password: this.state.password
+      });
+    }
   },
 
   nameInput: function(e) {
     if (e.keyCode === 13) {
-      this.refs.name.focus();
+      this.refs.email.focus();
     }
     this.setState({
       name: e.target.value || ''
@@ -76,6 +78,7 @@ module.exports = React.createClass({
                      placeholder="New Password"
                      type="password"/>
             </div>
+            {this.props.notification}
             <button onClick={this.submit}
                     className="Login-Signup-Section"
                     id="Login-Signup-Button">Sign up</button>

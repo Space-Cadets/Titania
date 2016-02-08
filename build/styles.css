@@ -27,7 +27,7 @@ body {
 
 .TeacherReviewSignup {
   background: url("img/openbook.jpeg") no-repeat fixed;
-  background-color: #cccccc;
+  background-color: #263C34;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -269,7 +269,41 @@ body {
   justify-content: space-between;
 }
 
+.authFailure {
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  display: flex;
+  min-height: 40px;
+  color: white;
+  min-width: 300px;
+  max-width: 470px;
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 2px;
+  font-size: 15px;
+  cursor: pointer;
+  background-color: #b92b27;
+}
+.authFailure:hover {
+  color: #ccc;
+}
 
+.authSuccess {
+  display: flex;
+  color: white;
+  margin-bottom: 10px;
+  min-height: 40px;
+  min-width: 300px;
+  max-width: 470px;
+  border: none;
+  border-radius: 2px;
+  font-size: 15px;
+  background-color: #315e87;
+}
+.authSuccess:hover {
+  color: #ccc;
+}
 
 #Login-Signup {
   order: 2;
@@ -330,7 +364,7 @@ body {
   text-shadow: 0px 0px 5px #000;
 }
 
-#Login-Signup-Name{
+#Login-Signup-Name {
   font-size: 13px;
   outline: none;
   padding-left: 10px;
@@ -338,7 +372,16 @@ body {
   border-top-right-radius: 2px;
   border: none;
   border-bottom: 1px solid #ccc;
+}
 
+#Login-Login-Email {
+  font-size: 13px;
+  outline: none;
+  padding-left: 10px;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  border: none;
+  border-bottom: 1px solid #ccc;
 }
 
 #Login-Signup-Email {

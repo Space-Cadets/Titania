@@ -52,10 +52,18 @@ module.exports = React.createClass({
   componentDidUpdate: function() {
   },
 
+  hideNotification: function() {
+    this.refs.notification.style.display = 'none';
+
+  },
+
   renderNotification: function() {
-    var notification = this.state.data.signup.notification;
+    var notification = this.state.data.login.notification;
     if (notification.show) {
-      return (<div className={notification.success ? "signupSuccess" : "signupFailure"}>{notification.description}</div>);
+      if (this.refs.notification) {
+          this.refs.notification.style.display = 'flex';
+      }
+      return (<div ref="notification" onClick={this.hideNotification} title="Hide alert" className={notification.success ? "authSuccess" : "authFailure"}>{notification.description}</div>);
     }
   },
 
@@ -64,9 +72,8 @@ module.exports = React.createClass({
     return (
       <div id="TeacherReview" className="TeacherReviewSignup">
         <main id="Login-Main">
-          <Navbar onLogin={true} type="Sign Up"/>
-          <Login />
-          {this.renderNotification()}
+          <Navbar/>
+          <Login notification={this.renderNotification()}/>
         </main>
       </div>
     );
