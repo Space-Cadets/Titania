@@ -21,6 +21,10 @@ function _tpage_load(results) {
   _data.tpage = results;
 }
 
+function _cpage_load(results) {
+  _data.cpage = results;
+}
+
 /**
  * Object through which store data is accessed -- *NOT MUTATED*
  */
@@ -56,6 +60,7 @@ var dashStore = assign({}, EventEmitter.prototype, {
  */
 dashStore.dispatchToken = AppDispatcher.register(function(payload) {
   var action = payload.action;
+
   switch(action.actionType) {
 
     case DashConstants.SEARCH_SUCCESS:
@@ -67,6 +72,13 @@ dashStore.dispatchToken = AppDispatcher.register(function(payload) {
       _tpage_load(action.info);
       console.log(action, 'instructor information recieved');
       break;
+
+    case DashConstants.CLOAD_SUCCESS:
+      _cpage_load(action.info);
+      console.log(action, 'class information recieved');
+      break;
+
+    // (TODO) Add FAILURE cases
 
     default:
       return true;

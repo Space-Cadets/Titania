@@ -8,6 +8,7 @@ var AppDispatcher = require('../dispatchers/AppDispatcher.js');
 var DashConstants = require('../constants/DashConstants.js');
 var request       = require('request');
 
+// To Change
 var base = 'http://localhost:5000/';
 
 module.exports = {
@@ -46,7 +47,7 @@ module.exports = {
         AppDispatcher.handleViewAction({
           actionType: DashConstants.TLOAD_FAILURE,
           messages: res.body.description
-        })
+        });
       }
 
       AppDispatcher.handleViewAction({
@@ -54,6 +55,23 @@ module.exports = {
         info: JSON.parse(res.body).data
       });
     });
+  },
+
+  loadCoursePage: function(name) {
+    request(base + 'courses/' + name, function(err, res) {
+      if (err) {
+        AppDispatcher.handleViewAction({
+          actionType: DashConstants.CLOAD_FAILURE,
+          messages: res.body.description
+        });
+      }
+
+      AppDispatcher.handleViewAction({
+        actionType: DashConstants.CLOAD_SUCCESS,
+        info: JSON.parse(res.body).data
+      });
+
+    })
   }
 
   // Api call -- MODEL (@Al why is this here and not in login actions, jw)
