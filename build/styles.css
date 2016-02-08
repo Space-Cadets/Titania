@@ -569,8 +569,7 @@ body {
 
 #review-row-container {
   width: 95%;
-  display:flex;
-  height: 300px;
+  display: flex;
   padding: 10px;
   margin-top: 15px;
   margin-bottom: 15px;
