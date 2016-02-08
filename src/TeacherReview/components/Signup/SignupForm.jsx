@@ -17,7 +17,7 @@ module.exports = React.createClass({
   submit: function() {
     //split up name, only want first element and last element
     //if they only put first name, then they're gonna have 2 first names.
-    if (this.state.password && this.email && this.state.name) {
+    if (this.state.password && this.state.email && this.state.name) {
       var splitName = this.state.name.split(" ");
       LoginActions.signupUser({
         email: this.state.email,
