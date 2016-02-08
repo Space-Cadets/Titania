@@ -5,23 +5,37 @@ var AppDispatcher                  = require('../dispatchers/AppDispatcher.js');
 var LoginConstants                 = require('../constants/LoginConstants.js');
 var EventEmitter                   = require('events').EventEmitter;
 var assign                         = require('object-assign');
+var browserHistory                 = require('react-router').browserHistory;
 var CHANGE_EVENT                   = 'change';
 var _data                          = {};
     _data.signup                   = {};
     _data.signup.notification      = {};
     _data.signup.notification.show = false;
+    _data.login                    = {};
+    _data.login.notification       = {};
+    _data.login.notification.show  = false;
 
 /**
  * Utility functions for store -- for mutating store data
  */
 
-function _addToken(token) {
-  _data['access-token'] = token;
-}
-
+//signup should show notification for either success or failure
 function _signup(info) {
   _data.signup.notification = info;
   _data.signup.notification.show = true;
+}
+
+//login should only show notification for failure
+function _login(token) {
+  window.token = token; //keep token as a global for those private browsers (ಥ ͜ʖಥ)
+  localStorage.dartboardToken = token; //set it up
+  browserHistory.push('/'); //re-route to dashboard
+}
+
+//login failure
+function _loginFail(description) {
+  _data.login.notification = { success: false, description: description };
+  _data.login.notification.show = true;
 }
 
  /**
@@ -51,16 +65,15 @@ var loginStore = assign({}, EventEmitter.prototype, {
  */
 loginStore.dispatchToken = AppDispatcher.register(function(payload) {
   var action = payload.action;
-  
+
   switch(action.actionType) {
 
     case LoginConstants.LOGIN_USER_SUCCESS:
-      _addToken(action.token);
-      console.log(action, 'successfully stored.');
+      _login(action.token);
       break;
 
     case LoginConstants.LOGIN_USER_FAIL:
-      console.log(action.message);
+      _loginFail(action.description);
       break;
 
     case LoginConstants.SIGNUP_FAILURE:

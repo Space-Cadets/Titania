@@ -10,30 +10,17 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {
       email: '',
-      confirmEmail: '',
-      name: '',
       password: ''
     };
   },
   submit: function() {
-    //split up name
-    var firstName;
-    var lastName;
-    LoginActions.signupUser({
-      email: this.state.email,
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      password: this.state.password
-    });
-  },
-
-  nameInput: function(e) {
-    if (e.keyCode === 13) {
-      this.refs.name.focus();
+    //don't send if forms are empty
+    if (this.state.password && this.state.email) {
+      LoginActions.loginUser({
+        email: this.state.email,
+        password: this.state.password
+      });
     }
-    this.setState({
-      name: e.target.value || ''
-    });
   },
 
   emailInput: function(e) {
@@ -62,7 +49,7 @@ module.exports = React.createClass({
             <h5 id="Login-Signup-Description">Find teachers, rate classes, and more</h5>
             <div className="Login-Signup-Item Login-Signup-Section">
               <input ref="email"
-                     id="Login-Signup-Email"
+                     id="Login-Login-Email"
                      onKeyUp={this.emailInput}
                      className="Login-Signup-Item-Full" placeholder="Villanova Email Address" type="text"/>
             </div>
@@ -74,6 +61,7 @@ module.exports = React.createClass({
                      placeholder="Password"
                      type="password"/>
             </div>
+            {this.props.notification}
             <button onClick={this.submit}
                     className="Login-Signup-Section"
                     id="Login-Login-Button">Sign in</button>

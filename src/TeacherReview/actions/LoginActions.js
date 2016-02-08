@@ -7,18 +7,11 @@
 var AppDispatcher  = require('../dispatchers/AppDispatcher.js');
 //defined user actions
 var LoginConstants = require('../constants/LoginConstants.js');
-//Superagent request
+//request -- Ajax
 var request        = require('request');
 
-function validateForm(userInfo) {
-  //check Emails for @villanova.edu && equality
-  if (userInfo.email !== userInfo.confirmEmail) {
-    //return info
-    return {
-      success: false,
-      description: "Emails need to match"
-    };
-  }
+function validateSignupForm(userInfo) {
+  //check Email
   if ( userInfo.email.substr(userInfo.email.length - 14).toLowerCase() !== "@villanova.edu") {
     //return info
     return {
@@ -26,8 +19,8 @@ function validateForm(userInfo) {
       description: "Please enter a Villanova.edu email"
     };
   }
-  //check Names
-  if (!userInfo.firstName || !userInfo.lastName) {
+  //check Names for equality, hope we don't have some students with mean parents (same first and last name)
+  if (userInfo.firstName === userInfo.lastName) {
     return {
       success: false,
       description: "Please enter a first and last name"
@@ -42,6 +35,7 @@ function validateForm(userInfo) {
     };
   }
 
+  //all tests passed, send for server side auth
   return {
     success: true,
     description: "Check your email to validate your account"
@@ -59,28 +53,28 @@ module.exports = {
   },
 
   //api call
-  loginUser: function(email, password) {
-    request.post('http://localhost:5000/auth')
-    .send({'username': email, 'password': password})
-    .end(function(err, res) {
-        if (err) {
+  loginUser: function(userInfo) {
+    //login should be done server side -- give ambiguous errors ('either email or pw incorrect')
+    request.post({ url: 'http://localhost:5000/auth', form: userInfo },
+      function(err, res, body) {
+        if (err || res.statusCode !== 200 && res.statusCode !== 401) {
           //handle fail
           AppDispatcher.handleViewAction({
             actionType: LoginConstants.LOGIN_USER_FAIL,
-            messages: res.body.description
+            description: "Something went wrong"
           });
+          return;
         }
-        console.log(res.body);
         //handle success
         AppDispatcher.handleViewAction({
           actionType: LoginConstants.LOGIN_USER_SUCCESS,
-          token: res.body['access_token']
+          token: body['access_token']
         });
     });
   },
 
   signupUser: function(userInfo) {
-    var response = validateForm(userInfo);
+    var response = validateSignupForm(userInfo);
     /*
       {
         success: boolean,
@@ -94,10 +88,9 @@ module.exports = {
       });
       return;
     }
-    request.post('http://localhost:5000/signup')
-      .send(userInfo)
-      .end(function(err, res){
-        if (err) {
+    request.post({ url: 'http://localhost:5000/signup', form: userInfo },
+      function(err, res, body) {
+        if (err || res.statusCode !== 200 && res.statusCode !== 401) {
           AppDispatcher.handleViewAction({
             actionType: LoginConstants.SIGNUP_FAILURE,
             info: {
@@ -107,15 +100,21 @@ module.exports = {
           });
           return;
         }
-        if (res.success) {
+        if (res.statusCode === 200) {
           AppDispatcher.handleViewAction({
             actionType: LoginConstants.SIGNUP_SUCCESS,
-            info: res
+            info: {
+              success: true,
+              description: "Check your email to validate your account"
+            }
           });
         } else {
           AppDispatcher.handleViewAction({
             actionType: LoginConstants.SIGNUP_FAILURE,
-            info: res
+            info: {
+              success: false,
+              description: body.description
+            }
           });
         }
       });
