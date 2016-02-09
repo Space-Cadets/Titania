@@ -95,7 +95,7 @@ module.exports = React.createClass({
     );
   },
 
-  //sets page to rerender on every change
+  // Sets page to rerender on every change
   _onChange: function() {
     this.setState(getState());
   }

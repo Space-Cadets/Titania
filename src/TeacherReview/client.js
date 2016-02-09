@@ -21,6 +21,6 @@ ReactDOM.render(<Router history={browserHistory}>
                   <Route path="/register" component={Signup} />
                   <Route path="/login" component={Login} />
                   <Route path="/TeacherPage/*" component={TeacherPage} />
-                  <Route path="/CoursePage/*" component={CoursePage} />
+                  <Route path="/courses/*" component={CoursePage} />
                   <Route path="/results/*/*" component={SearchResults} />
                 </Router>, document.getElementById('TeacherReview'));

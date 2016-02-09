@@ -51,7 +51,6 @@ module.exports = React.createClass({
       <Navbar name="Kent"/>
       <div id="content-box">
         <Results />
-        <TrendColumn />
       </div>
     </div>);
   },
