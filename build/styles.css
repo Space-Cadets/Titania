@@ -129,11 +129,16 @@ body {
   outline: none;
 }
 
-#Search-Input::-webkit-input-placeholder{
-  color: white;
+#Search-Input:focus::-webkit-input-placeholder {
+  color: rgba(256, 256, 256, 0.9);
 }
 
-#Search-Input::-moz-input-placeholder{
+#Search-Input::-webkit-input-placeholder {
+  color: rgba(256, 256, 256, 0.3);
+  transition: color .2s; 
+}
+
+#Search-Input::-moz-input-placeholder {
   color: white;
 }
 
