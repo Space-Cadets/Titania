@@ -23,7 +23,7 @@ module.exports = {
 
   // Trying this (@ Al Kenobi you're my only hope)
   search: function(query, type) {
-    
+
     // Query is term, type is either instructor or course
     request(base + type + '/f/' + query, function(err, res) {
       if (err) {
@@ -74,24 +74,4 @@ module.exports = {
     })
   }
 
-  // Api call -- MODEL (@Al why is this here and not in login actions, jw)
-  // loginUser: function(email, password) {
-  //   request.post('http://localhost:5000/auth')
-  //   .send({'username': email, 'password': password})
-  //   .end(function(err, res) {
-  //       if (err) {
-  //         // Handle fail
-  //         AppDispatcher.handleViewAction({
-  //           actionType: LoginConstants.LOGIN_USER_FAIL,
-  //           messages: res.body.description
-  //         });
-  //       }
-  //       console.log(res.body);
-  //       // Handle success
-  //       AppDispatcher.handleViewAction({
-  //         actionType: LoginConstants.LOGIN_USER_SUCCESS,
-  //         token: res.body['access_token']
-  //       });
-  //   });
-  // }
 };
