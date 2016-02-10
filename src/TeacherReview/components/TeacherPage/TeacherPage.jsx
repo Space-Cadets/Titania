@@ -76,10 +76,12 @@ module.exports = React.createClass({
           <CourseLinks />
         </div>
         
+        {/* 
         <div id="trait-row-container">
           <div className="row-title">Traits</div>
           <div id="trait-row"></div>
         </div>
+        */}
 
         <div id="review-row-container">
           <div className="row-title">Reviews</div>

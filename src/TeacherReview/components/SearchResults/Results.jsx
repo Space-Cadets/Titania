@@ -36,7 +36,14 @@ module.exports = React.createClass({
   		return <Result name={r.course_name} key={i} type={'course'} />;
     });
     
-    return (<div id="feed-container">Results: {res}</div>);
+    return (<div id="feed-container">
+      <div id="Feed-Title"> 
+          <h3><i className="fa fa-book"></i> Results</h3>
+      </div>
+      <div id="Results-Container">
+        {res}
+      </div>
+    </div>);
   },
 
   _onChange: function() {
