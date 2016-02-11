@@ -8,7 +8,7 @@ var Result  = require('./Result.jsx');
 // Maybe
 var DashStore = require('../../stores/dashStore.js');
 
-// Test Query for now 
+// Test Query for now
 // (TODO) fetch from flux store or URL params
 var opts = {url: 'http://localhost:5000/courses/f/analysis'};
 
@@ -35,9 +35,9 @@ module.exports = React.createClass({
   	var res = this.state.results.map(function(r, i) {
   		return <Result name={r.course_name} key={i} type={'course'} />;
     });
-    
+
     return (<div id="feed-container">
-      <div id="Feed-Title"> 
+      <div id="Feed-Title">
           <h3><i className="fa fa-book"></i> Results</h3>
       </div>
       <div id="Results-Container">

@@ -131,7 +131,7 @@ body {
   color: white;
   height: 23px;
   font-size: 14px;
-  background: #06BF06;
+  background: #389EF5; /* the green that we had before: #06BF06;*/
   outline: none;
   border: 0;
 }
@@ -146,7 +146,7 @@ body {
 
 #Search-Input::-webkit-input-placeholder {
   color: rgba(256, 256, 256, 0.3);
-  transition: color .2s; 
+  transition: color .2s;
 }
 
 #Search-Input::-moz-input-placeholder {

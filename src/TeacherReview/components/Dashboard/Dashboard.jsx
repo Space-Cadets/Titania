@@ -60,7 +60,7 @@ module.exports = React.createClass({
   render: function() {
     return (
     <div>
-      <Navbar name="Kent"/>
+      <Navbar />
       <div id="content-box">
         <Feed />
       </div>

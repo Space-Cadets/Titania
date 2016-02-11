@@ -1,15 +1,15 @@
 /**
  * Component for Searching Courses -- Wraps the Results, and handles input
  */
-var React       = require('react');
-var Router      = require('react-router');
+var React          = require('react');
+var Router         = require('react-router');
 
 //Components
-var DashStore   = require('../../stores/dashStore.js');
-var DashActions = require('../../actions/dashActions.js');
-var Navbar      = require('../Shared/NavbarIn.jsx');
-var TrendColumn = require('../Shared/TrendColumn.jsx');
-var Results     = require('./Results.jsx');
+var DashStore      = require('../../stores/dashStore.js');
+var DashActions    = require('../../actions/dashActions.js');
+var Navbar         = require('../Shared/NavbarIn.jsx');
+var TrendColumn    = require('../Shared/TrendColumn.jsx');
+var Results        = require('./Results.jsx');
 
 /**
  * Utility functions for Search Results Page
@@ -35,6 +35,7 @@ module.exports = React.createClass({
   //Fires post-mount,
   componentDidMount: function() {
     DashStore.addChangeListener(this._onChange);
+    DashActions.search(this.props.params.query, this.props.params.type);
   },
 
   // Remove change listers from stores
@@ -48,7 +49,7 @@ module.exports = React.createClass({
 
   render: function() {
     return (<div>
-      <Navbar name="Kent"/>
+      <Navbar />
       <div id="content-box">
         <Results />
       </div>
