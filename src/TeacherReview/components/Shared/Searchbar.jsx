@@ -35,7 +35,7 @@ module.exports = React.createClass({
 	},
 
 	onClick: function() {
-		var type = this.state.course ? "courses" : "instructor";
+		var type = this.state.course ? "courses" : "instructors";
 		
 		this.context.router.push({
 			pathname: "/results/" + type + "/" + this.state.query
@@ -46,13 +46,13 @@ module.exports = React.createClass({
 
 	render: function() {
 		return (<div id="Search-Container">
-			<i onClick={this.onClick} className="fa fa-search"></i>
+			<span className="fa fa-search icon"></span>
 			<input id="Search-Input" onKeyUp={this.onKeyUp} placeholder="Search" type="text"></input>
 			<select onChange={this.onChange} id="Search-Dropdown" defaultValue="Course">
 				<option value="Course">Course</option>
 				<option value="Instructor">Instructor</option>
 			</select>
-			{/*<button className="Review-btn"></button>*/}
+			<button className="btn" onClick={this.onClick}>Go</button>
 		</div>);
 	}
 

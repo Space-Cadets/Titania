@@ -20,7 +20,7 @@ ReactDOM.render(<Router history={browserHistory}>
                   <Route path="/" component={Dashboard} />
                   <Route path="/register" component={Signup} />
                   <Route path="/login" component={Login} />
-                  <Route path="/TeacherPage/*" component={TeacherPage} />
-                  <Route path="/courses/*" component={CoursePage} />
+                  <Route path="/instructor/*" component={TeacherPage} />
+                  <Route path="/course/*" component={CoursePage} />
                   <Route path="/results/:type/:query" component={SearchResults} />
                 </Router>, document.getElementById('TeacherReview'));

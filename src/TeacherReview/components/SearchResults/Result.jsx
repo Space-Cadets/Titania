@@ -4,7 +4,10 @@ var bh = require('react-router').browserHistory;
 module.exports = React.createClass({
 
 	onClick: function() {
-		bh.push('/courses/' + this.props.name);
+		if (this.props.type === 'course')
+			bh.push('/course/' + this.props.name);
+		else
+			bh.push('/instructor/' + this.props.name);
 	},
 
 	render: function() {

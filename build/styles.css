@@ -110,7 +110,7 @@ body {
 }
 
 #Search-Input {
-  width: 68%;
+  width: 65%;
   color: white;
   border: none;
   margin: auto;
@@ -126,8 +126,9 @@ body {
 }
 
 #Search-Dropdown {
-  width: 22%;
+  width: 16%;
   padding: 5px;
+  margin-right: 5px;
   color: white;
   height: 23px;
   font-size: 14px;
@@ -138,6 +139,9 @@ body {
 
 #Search-Input:focus{
   outline: none;
+}
+
+.icon {
 }
 
 #Search-Input:focus::-webkit-input-placeholder {
@@ -156,16 +160,20 @@ body {
 #Search-Container {
   border: none;
   border-radius: 2px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
   width: 50%;
   min-height: 35px;
   max-height: 35px !important;
   font-size: 15px;
   text-indent: 5px;
-  padding: 0px;
   max-width: 900px;
   background: #67BAFF;
   color: white;
   margin: auto;
+  padding: 0px 10px 0px 10px;
 }
 
 #Search-Container > i {
@@ -551,7 +559,6 @@ body {
   padding: 10px;
 }
 
-
 #post-btn {
   width: 66%;
   height: 40px;
@@ -655,7 +662,20 @@ body {
   background-color: #f7f7f7;
   transition: box-shadow .2s;
   box-shadow: 2px 1px 4px rgba(0,0,0,.35);
+}
 
+.btn {
+  border: 0;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 2px;
+  background-color: #f7f7f7;
+  transition: box-shadow .2s;
+  box-shadow: 2px 1px 4px rgba(0, 0, 0, 0.35);
+}
+
+.btn:hover {
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.35);
 }
 
 #Review-btn:hover {
