@@ -21,7 +21,6 @@ module.exports = {
     });
   },
 
-  // Trying this (@ Al Kenobi you're my only hope)
   search: function(query, type) {
 
     // Query is term, type is either instructor or course

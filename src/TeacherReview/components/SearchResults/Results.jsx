@@ -10,7 +10,7 @@ var DashStore = require('../../stores/dashStore.js');
 
 // Test Query for now
 // (TODO) fetch from flux store or URL params
-var opts = {url: 'http://localhost:5000/courses/f/analysis'};
+// var opts = {url: 'http://localhost:5000/courses/f/analysis'};
 
 function getSearchState() {
   return {
@@ -33,12 +33,18 @@ module.exports = React.createClass({
 
   render: function() {
   	var res = this.state.results.map(function(r, i) {
-  		return <Result name={r.course_name} key={i} type={'course'} />;
+      if (r.name)
+        return <Result name={r.name} key={i} type={'instructor'} />
+      else
+  		  return <Result name={r.course_name} key={i} type={'course'} />;
     });
 
     return (<div id="feed-container">
-      <div id="Feed-Title">
-          <h3><i className="fa fa-book"></i> Results</h3>
+      <div className="Title"> 
+        <div className="stump">
+          <i className="fa fa-book"></i> 
+          Results
+        </div>
       </div>
       <div id="Results-Container">
         {res}

@@ -1,40 +1,46 @@
-var React 				 = require('react');
+var React 		   = require('react');
 var browserHistory = require('react-router').browserHistory;
-var DashActions 	 = require('../../actions/DashActions.js');
+var DashActions    = require('../../actions/DashActions.js');
 
 module.exports = React.createClass({
 	contextTypes: {
 		router: React.PropTypes.object.isRequired
 	},
+
 	getInitialState: function() {
 		return {
 			query: '',
 			course: true
 		};
 	},
+
 	onKeyUp: function(e) {
 		if (e.keyCode === 13) {
-			var type = this.state.course ? "courses" : "teacher";
+			var type = this.state.course ? "courses" : "instructors";
+			
 			this.context.router.push({
 				pathname: "/results/" + type + "/" + this.state.query
 			});
+
 			DashActions.search(this.state.query, type);
 		} else {
-			this.setState({
-				query: e.target.value
-			});
+			this.setState({ query: e.target.value });
 		}
 	},
+
 	onChange: function() {
 		this.setState({
 			course: !this.state.course
 		});
 	},
+
 	onClick: function() {
-		var type = this.state.course ? "courses" : "teacher";
+		var type = this.state.course ? "courses" : "instructor";
+		
 		this.context.router.push({
 			pathname: "/results/" + type + "/" + this.state.query
 		});
+
 		DashActions.search(this.state.query, type);
 	},
 
@@ -46,6 +52,7 @@ module.exports = React.createClass({
 				<option value="Course">Course</option>
 				<option value="Instructor">Instructor</option>
 			</select>
+			{/*<button className="Review-btn"></button>*/}
 		</div>);
 	}
 

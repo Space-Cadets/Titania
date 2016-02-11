@@ -438,8 +438,6 @@ body {
   flex-wrap: nowrap;
 }
 
-
-
 #Login-Signup-Button {
   justify-content: center;
   background-color: #5cb85c;
@@ -519,8 +517,21 @@ body {
 }
 
 .Title {
-  background-color: #67BAFF;
-  padding: 10px;
+  background-color: #FF5F1B;
+  padding: 10px 0px 10px 0px;
+  width: 100%;
+}
+
+.stump  i {
+  margin-right: 10px;
+}
+
+.stump {
+  margin: auto;
+  color: white;
+  display: flex;
+  font-weight: 300;
+  justify-content: center;
 }
 
 #Feed-Title {
@@ -575,7 +586,7 @@ body {
 
 .info-card {
   width: 50%;
-  min-height: 100px;
+  min-height: 130px;
   background: white;
   box-shadow: 0px 5px 25px #ccc;
 }
@@ -583,10 +594,9 @@ body {
 .link-card {
   background-color: white;
   /* Remove this height set later */
-  min-height: 100px;
+  min-height: 130px;
   width: 50%;
   margin-left: 20px;
-  padding: 10px;
   background: white;
   box-shadow: 0px 5px 25px #ccc;
 }
@@ -622,7 +632,6 @@ body {
 #review-row-container {
   width: 95%;
   display: flex;
-  padding: 10px;
   margin-top: 20px;
   margin-bottom: 15px;
   background: white;

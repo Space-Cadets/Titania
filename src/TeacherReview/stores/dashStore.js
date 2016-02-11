@@ -52,6 +52,10 @@ var dashStore = assign({}, EventEmitter.prototype, {
 
   getTeacherPage: function() {
     return _data.tpage;
+  },
+
+  getCoursePage: function() {
+    return _data.cpage;
   }
 });
 

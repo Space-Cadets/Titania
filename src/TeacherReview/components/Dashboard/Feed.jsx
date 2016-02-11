@@ -11,16 +11,15 @@ module.exports = React.createClass({
     render: function() {
         return (
         <div id="feed-container">
-            <div id="Feed-Title"> 
-                <h3><i className="fa fa-bookmark"></i> Feed</h3>
+            <div className="Title"> 
+                <div className="stump">
+                    <i className="fa fa-bookmark"></i> 
+                    Feed
+                </div>
             </div>
             <div className="feed-contents">
                 <div><Link to="/register">Go to Signup</Link></div>
                 <div><Link to="/login">Go to Login</Link></div>
-                <div><Link to="/courses/1">Go to Course 1</Link></div>
-                <div><Link to="/TeacherPage/1">Go to Teacher 1</Link></div>
-                <div><Link to="/results/teacher/Nancy Drew">Search for Prof</Link></div>
-                <div><Link to="/results/courses/Caligraphy">Search for Course</Link></div>
             </div>
         </div>);
     }

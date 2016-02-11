@@ -10,7 +10,7 @@ var DashActions = require('../../actions/DashActions.js');
 // Components
 var Navbar      = require('../Shared/NavbarIn.jsx');
 var TeacherCard = require('./TeacherCard.jsx');
-var CourseLinks = require('./CourseLinks.jsx');
+// var CourseLinks = require('./CourseLinks.jsx');
 var Review      = require('../Shared/Review.jsx');
 
 /**
@@ -21,7 +21,6 @@ function getState() {
     data: DashStore.getTeacherPage()
   };
 }
-
 
 /**
  * Component
@@ -44,7 +43,8 @@ module.exports = React.createClass({
 
   // Fires before mount
   componentWillMount: function() {
-    DashActions.loadTeacherPage('Anany Levitin');
+    var query = window.location.pathname.split('/')[2];
+    DashActions.loadTeacherPage(query);
   },
 
   // Fires post-mount, load data here
@@ -67,16 +67,31 @@ module.exports = React.createClass({
       </div>)
     });
 
+    var courses = this.state.courses.map(function(c, i) {
+      return <div key={i}>{c.department} {c.level} – {c.course_name}</div>;
+    });
+
     return (<div>
       <Navbar name="Kent"/>
       <div id="content">
 
         <div id="bio-row">
           <TeacherCard name={this.state.name} rating={this.state.rating}/>
-          <CourseLinks />
+
+      {/* (TODO) Make this it's own component once the load map bug is solved */}
+          <div className="link-card">
+            <div className="Title"> 
+              <div className="stump">
+                <i className="fa fa-graduation-cap"></i> 
+                Courses Taught
+              </div>
+            </div>
+            <div>{courses}</div>
+          </div>
+
         </div>
         
-        {/* 
+        {/* (TODO) Get traits logic done
         <div id="trait-row-container">
           <div className="row-title">Traits</div>
           <div id="trait-row"></div>
@@ -84,7 +99,9 @@ module.exports = React.createClass({
         */}
 
         <div id="review-row-container">
-          <div className="row-title">Reviews</div>
+          <div className="Title"> 
+              <div className="stump"><i className="fa fa-thumbs-o-up"></i> Reviews</div>
+          </div>
           <div id="review-row">{reviews}</div>
         </div>
 
