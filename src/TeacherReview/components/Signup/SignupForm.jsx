@@ -14,18 +14,25 @@ module.exports = React.createClass({
       password: ''
     };
   },
+
   submit: function() {
     //split up name, only want first element and last element
     //if they only put first name, then they're gonna have 2 first names.
-    if (this.state.password && this.state.email && this.state.name) {
-      var splitName = this.state.name.split(" ");
-      LoginActions.signupUser({
-        email: this.state.email,
-        firstName: splitName[0],
-        lastName: splitName[splitName.length - 1],
-        password: this.state.password
-      });
-    }
+    var splitName = this.state.name.split(" ");
+    this.setState({
+      email: this.refs.email.value,
+      name: this.refs.name.value,
+      password: this.refs.password.value
+    }, function() {
+      if (this.state.password && this.state.email && this.state.name) {
+        LoginActions.signupUser({
+          email: this.state.email,
+          firstName: splitName[0],
+          lastName: splitName[splitName.length - 1],
+          password: this.state.password
+        });
+      }
+    });
   },
 
   nameInput: function(e) {
@@ -62,7 +69,7 @@ module.exports = React.createClass({
             <h1 id="Login-Signup-Title">Dartboard</h1>
             <h5 id="Login-Signup-Description">Find teachers, rate classes, and more</h5>
             <div className="Login-Signup-Section Login-Signup-Item" className="Login-Signup-Section">
-              <input id="Login-Signup-Name" onKeyUp={this.nameInput} type="text" className="Login-Signup-Item-Full" placeholder="Your Name"/>
+              <input id="Login-Signup-Name" onKeyUp={this.nameInput} ref="name" type="text" className="Login-Signup-Item-Full" placeholder="Your Name"/>
             </div>
             <div className="Login-Signup-Item Login-Signup-Section">
               <input ref="email"

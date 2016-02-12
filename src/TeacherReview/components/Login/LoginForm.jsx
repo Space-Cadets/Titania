@@ -14,13 +14,17 @@ module.exports = React.createClass({
     };
   },
   submit: function() {
-    //don't send if forms are empty
-    if (this.state.password && this.state.email) {
-      LoginActions.loginUser({
-        username: this.state.email,
-        password: this.state.password
-      });
-    }
+    this.setState({
+      email: this.refs.email.value,
+      password: this.refs.password.value
+    }, function() {
+      if (this.state.password && this.state.email) {
+        LoginActions.loginUser({
+          username: this.state.email,
+          password: this.state.password
+        });
+      }
+    });
   },
 
   emailInput: function(e) {
