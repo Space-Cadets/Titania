@@ -1,7 +1,5 @@
 /**
  * Component for Course Page View
- *
- *  TODO: Init AJAX (in ComponentDidMount), Populate TeacherLinks & Card, Setup Store & Actions
  */
 var React       = require('react');
 var Router      = require('react-router');
@@ -11,12 +9,10 @@ var DashActions = require('../../actions/dashActions.js');
 // Components
 var Navbar       = require('../Shared/NavbarIn.jsx');
 var CourseCard   = require('./CourseCard.jsx');
-// var TeacherLinks = require('./TeacherLinks.jsx');
-var Trait        = require('../Shared/Trait.jsx');
-var Review       = require('../Shared/Review.jsx');
 
-// Data
-var trait_data = require('../../utils/courseTraits.json'); 
+// var TeacherLinks = require('./TeacherLinks.jsx');
+// var Trait        = require('../Shared/Trait.jsx');
+// var Review       = require('../Shared/Review.jsx'); 
 
 /**
  * Utility functions for Course Page

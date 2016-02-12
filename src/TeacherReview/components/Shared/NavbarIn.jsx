@@ -31,11 +31,14 @@ module.exports = React.createClass({
           </Link>
 
           <Searchbar />
-
+        {/*
           <button id="Review-btn" onClick={this.fire}>
             <i className="fa fa-pencil"></i>&nbsp;
             Post Review
           </button>
+        */}
+
+        <button className="btn">User</button>
         </span>
       </nav>
     );

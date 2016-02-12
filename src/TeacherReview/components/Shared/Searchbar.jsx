@@ -53,7 +53,7 @@ module.exports = React.createClass({
 				<option value="Course">Course</option>
 				<option value="Instructor">Instructor</option>
 			</select>
-			<button className="btn" onClick={this.onClick}>Go</button>
+			<button className="btn" onClick={this.onClick}>Search</button>
 		</div>);
 	}
 

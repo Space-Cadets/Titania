@@ -76,7 +76,7 @@ module.exports = React.createClass({
       <div id="content">
 
         <div id="bio-row">
-          <TeacherCard name={this.state.name} rating={this.state.rating}/>
+          <TeacherCard name={this.state.name} rating={this.state.rating} depts={this.state.depts}/>
 
       {/* (TODO) Make this it's own component once the load map bug is solved */}
           <div className="link-card">
@@ -86,7 +86,7 @@ module.exports = React.createClass({
                 Courses Taught
               </div>
             </div>
-            <div>{courses}</div>
+            <div className="contents">{courses}</div>
           </div>
 
         </div>

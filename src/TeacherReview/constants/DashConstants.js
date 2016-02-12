@@ -9,5 +9,7 @@ module.exports = keyMirror({
   TLOAD_SUCCESS:  null,
   TLOAD_FAILURE:  null,
   CLOAD_SUCCESS:  null,
-  CLOAD_FAILURE:  null
+  CLOAD_FAILURE:  null,
+  RLOAD_SUCCESS:  null,
+  RLOAD_FAILURE:  null
 });

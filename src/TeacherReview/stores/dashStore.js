@@ -25,6 +25,10 @@ function _cpage_load(results) {
   _data.cpage = results;
 }
 
+function _recreviews_load(results) {
+  _data.recent_reviews = results;
+}
+
 /**
  * Object through which store data is accessed -- *NOT MUTATED*
  */
@@ -56,6 +60,10 @@ var dashStore = assign({}, EventEmitter.prototype, {
 
   getCoursePage: function() {
     return _data.cpage;
+  },
+
+  getRecentReviews: function() {
+    return _data.recent_reviews;
   }
 });
 
@@ -80,6 +88,11 @@ dashStore.dispatchToken = AppDispatcher.register(function(payload) {
     case DashConstants.CLOAD_SUCCESS:
       _cpage_load(action.info);
       console.log(action, 'class information recieved');
+      break;
+
+    case DashConstants.RLOAD_SUCCESS:
+      _recreviews_load(action.reviews);
+      console.log(action, 'recent reviews recieved');
       break;
 
     // (TODO) Add FAILURE cases
