@@ -17,7 +17,7 @@ module.exports = React.createClass({
     //don't send if forms are empty
     if (this.state.password && this.state.email) {
       LoginActions.loginUser({
-        email: this.state.email,
+        username: this.state.email,
         password: this.state.password
       });
     }
