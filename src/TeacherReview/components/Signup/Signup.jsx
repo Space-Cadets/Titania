@@ -6,7 +6,7 @@ var Router       = require('react-router');
 var LoginStore   = require('../../stores/loginStore.js');
 var LoginActions = require('../../actions/LoginActions.js');
 var Signup       = require('./SignupForm.jsx');
-var Navbar       = require('../Shared/SignupNavbar.jsx');
+var Navbar       = require('./SignupNavbar.jsx');
 var Footer       = require('../Shared/Footer.jsx');
 
 var Router = require('react-router').Router;
