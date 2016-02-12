@@ -79,6 +79,18 @@ module.exports = {
       });
 
     })
-  }
+  },
+  sendReview: function(review) {
+    //login should be done server side -- give ambiguous errors ('either email or pw incorrect')
+    request.post({ url: 'http://localhost:5000/reviews', json: true, body: review },
+      function(err, res, body) {
+        if (err || res.statusCode !== 200 && res.statusCode !== 401) {
+          //handle fail
+          console.log(res);
+        }
+        //handle success
+        console.log(review + " " + res);
+    });
+  },
 
 };

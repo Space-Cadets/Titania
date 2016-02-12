@@ -14,8 +14,12 @@ var Searchbar = require('./Searchbar.jsx');
 
 module.exports = React.createClass({
 
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
+
   fire: function() {
-    DashActions.search('Analysis', 'courses');
+    this.context.router.push("/form");
   },
 
   render: function() {
