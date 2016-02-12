@@ -24,7 +24,11 @@ module.exports = {
   search: function(query, type) {
 
     // Query is term, type is either instructor or course
-    request(base + type + '/f/' + query, function(err, res) {
+    request({ url: base + type + '/f/' + query,
+      headers: {
+        'Authorization': "JWT " + localStorage.accessToken || window.token
+      }
+    }, function(err, res) {
       if (err) {
         AppDispatcher.handleViewAction({
           actionType: DashConstants.SEARCH_FAILURE,
@@ -57,7 +61,11 @@ module.exports = {
   },
 
   loadCoursePage: function(name) {
-    request(base + 'courses/' + name, function(err, res) {
+    request({ url: base + 'courses/' + name,
+      headers: {
+        'Authorization': "JWT " + localStorage.accessToken || window.token
+      }
+    }, function(err, res) {
       if (err) {
         AppDispatcher.handleViewAction({
           actionType: DashConstants.CLOAD_FAILURE,

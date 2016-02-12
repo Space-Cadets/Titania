@@ -28,7 +28,7 @@ function _signup(info) {
 //login should only show notification for failure
 function _login(token) {
   window.token = token; //keep token as a global for those private browsers (ಥ ͜ʖಥ)
-  localStorage.dartboardToken = token; //set it up
+  localStorage.accessToken = token; //set it up
   browserHistory.push('/'); //re-route to dashboard
 }
 
