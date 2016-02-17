@@ -9,11 +9,22 @@ var React = require('react');
 */
 
 module.exports = React.createClass({
+	divStyle: {
+		'width': '80%' 
+	},
+
+
+	textStyle: {
+		'width': '100%',
+		'fontSize': '15px'
+	},
+
 	render: function() {
 		return (
-			<div>
-			<div className="prompt"> Write a little here</div>
-			<br />
-			<textarea></textarea></div>);
+			<div style={this.divStyle}>
+				<div className="prompt"> Write a little here</div>
+				<br />
+				<textarea style={this.textStyle}></textarea>
+			</div>);
 	}
 });

@@ -17,11 +17,16 @@ Flow:
 */
 
 module.exports = React.createClass({
-	getInitialState: function() {
-		return ({ instructor: null, course: null });
-	},
+  getInitialState: function() {
+    return ({ instructor: null, course: null });
+  },
 
-	render: function() {
-		return (<div>Select Instructor, then Select Section (course)</div>);
-	}
+  render: function() {
+    return (
+    <div>
+      <div>
+        <input type="text" className="type-input" placeholder="Search for instructor" />
+      </div>
+    </div>);
+  }
 });

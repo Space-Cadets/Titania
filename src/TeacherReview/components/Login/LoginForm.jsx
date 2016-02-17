@@ -13,6 +13,7 @@ module.exports = React.createClass({
       password: ''
     };
   },
+  
   submit: function() {
     this.setState({
       email: this.refs.email.value,
