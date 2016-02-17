@@ -199,6 +199,39 @@ body {
   padding: 0px 10px 0px 10px;
 }
 
+.input-container {
+  border: none;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 35px;
+  max-height: 35px !important;
+  font-size: 15px;
+  text-indent: 5px;
+  max-width: 900px;
+  margin: auto;
+  padding: 0px 10px 0px 10px;
+}
+
+.padle {
+  margin-left: 10px;
+}
+
+#Instructor-Container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-around;
+}
+
+#Section-Container {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-around;
+}
+
+
 #Search-Container > i {
   width: 6%;
 }

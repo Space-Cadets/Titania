@@ -25,7 +25,16 @@ module.exports = React.createClass({
     return (
     <div>
       <div>
-        <input type="text" className="type-input" placeholder="Search for instructor" />
+        <div className="input-container"> 
+          <input type="text" className="type-input" placeholder="Search for instructor" />
+          <button className="btn padle">Go</button>
+        </div>
+        <div id="Instructor-Container">
+        IC
+        </div>
+        <div id="Section-Container">
+        SC
+        </div>
       </div>
     </div>);
   }
