@@ -26,7 +26,8 @@ module.exports = {
     // Query is term, type is either instructor or course
     request({ url: base + type + '/f/' + query,
       headers: {
-        'Authorization': "JWT " + localStorage.accessToken || window.token
+        'Authorization': "JWT " + localStorage.accessToken || window.token,
+        'Content-Type': "application/json"
       }
     }, function(err, res) {
       if (err) {
@@ -63,7 +64,8 @@ module.exports = {
   loadCoursePage: function(name) {
     request({ url: base + 'courses/' + name,
       headers: {
-        'Authorization': "JWT " + localStorage.accessToken || window.token
+        'Authorization': "JWT " + localStorage.accessToken || window.token,
+        'Content-Type': "application/json"
       }
     }, function(err, res) {
       if (err) {
@@ -100,7 +102,7 @@ module.exports = {
       if (err) {
         AppDispatcher.handleViewAction({
           actionType: DashConstants.RLOAD_FAILURE,
-          status: JSON.parse(res.body).status 
+          status: JSON.parse(res.body).status
         });
       }
 

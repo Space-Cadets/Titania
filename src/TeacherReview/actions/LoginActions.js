@@ -55,7 +55,11 @@ module.exports = {
   //api call
   loginUser: function(userInfo) {
     //login should be done server side -- give ambiguous errors ('either email or pw incorrect')
-    request.post({ url: 'http://localhost:5000/auth', json: true, body: userInfo },
+    request.post({ url: 'http://localhost:5000/auth', json: true, body: userInfo,
+      headers: {
+        "Content-Type": "application/json"
+      }
+    },
       function(err, res, body) {
         if (err || res.statusCode !== 200 && res.statusCode !== 401) {
           //handle fail
@@ -88,7 +92,11 @@ module.exports = {
       });
       return;
     }
-    request.post({ url: 'http://localhost:5000/signup', json: true, body: userInfo },
+    request.post({ url: 'http://localhost:5000/signup', json: true, body: userInfo,
+      headers: {
+        "Content-Type": "application/json"
+      }
+    },
       function(err, res, body) {
         if (err || res.statusCode !== 200 && res.statusCode !== 401) {
           AppDispatcher.handleViewAction({
