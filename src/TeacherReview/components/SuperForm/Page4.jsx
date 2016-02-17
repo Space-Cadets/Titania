@@ -10,6 +10,10 @@ var React = require('react');
 
 module.exports = React.createClass({
 	render: function() {
-		return (<div>Write a little here</div>);
+		return (
+			<div>
+			<div className="prompt"> Write a little here</div>
+			<br />
+			<textarea></textarea></div>);
 	}
 });
