@@ -13,12 +13,15 @@ var Searchbar = require('./Searchbar.jsx');
 
 
 module.exports = React.createClass({
+  getInitialState: function() {
+    return null;
+  },
 
   contextTypes: {
     router: React.PropTypes.object.isRequired
   },
 
-  fire: function() {
+  onClick: function() {
     this.context.router.push("/form");
   },
 
@@ -38,7 +41,7 @@ module.exports = React.createClass({
           </button>
         */}
 
-        <button className="btn">User</button>
+        <button onClick={this.onClick} className="btn">{this.props.name}</button>
         </span>
       </nav>
     );

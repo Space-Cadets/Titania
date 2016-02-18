@@ -46,6 +46,7 @@ module.exports = React.createClass({
   //Fires post-mount, load data here!
   componentDidMount: function() {
     DashStore.addChangeListener(this._onChange);
+    DashActions.getUser();
   },
 
   // Remove change listers from stores
@@ -57,10 +58,15 @@ module.exports = React.createClass({
   componentDidUpdate: function() {
   },
 
+  //rerender on different route -- Fixes reload for components (componentDidMount triggered again)
+  routerWillLeave: function() {
+    return true;
+  },
+
   render: function() {
     return (
     <div>
-      <Navbar />
+      <Navbar name={this.state.data.user.name}/>
       <div id="content-box">
         <Feed />
       </div>

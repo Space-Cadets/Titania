@@ -1,18 +1,25 @@
 /**
  * Store for Dashboard Application
  */
-var AppDispatcher    = require('../dispatchers/AppDispatcher.js');
-var DashConstants    = require('../constants/DashConstants.js');
-var EventEmitter     = require('events').EventEmitter;
-var assign           = require('object-assign');
-var CHANGE_EVENT     = 'change';
-var _data            = {};
+var AppDispatcher       = require('../dispatchers/AppDispatcher.js');
+var DashConstants       = require('../constants/DashConstants.js');
+var EventEmitter        = require('events').EventEmitter;
+var assign              = require('object-assign');
+var CHANGE_EVENT        = 'change';
+var _data               = {};
+    _data.user          = {};
+    _data.user.reviews  = {};
+    _data.user.name     = "Student";
 
 
 /**
  * Utility functions for store -- for mutating store data
  */
 
+function _getUser(user) {
+  //later maybe populate other types of data? Or consolidate this into feed request?
+  _data.user.name = user.firstName + " " + user.lastName;
+}
 function _stash_search(results) {
   _data.results = results;
 }
@@ -93,6 +100,11 @@ dashStore.dispatchToken = AppDispatcher.register(function(payload) {
     case DashConstants.RLOAD_SUCCESS:
       _recreviews_load(action.reviews);
       console.log(action, 'recent reviews recieved');
+      break;
+
+    case DashConstants.GET_USER:
+      _getUser(action.user);
+      console.log(action, 'user logger in');
       break;
 
     // (TODO) Add FAILURE cases

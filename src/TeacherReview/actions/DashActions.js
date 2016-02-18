@@ -4,9 +4,10 @@
  */
 
 // Filters actions for one way data flow
-var AppDispatcher = require('../dispatchers/AppDispatcher.js');
-var DashConstants = require('../constants/DashConstants.js');
-var request       = require('request');
+var AppDispatcher  = require('../dispatchers/AppDispatcher.js');
+var DashConstants  = require('../constants/DashConstants.js');
+var request        = require('request');
+var browserHistory = require('react-router').browserHistory;
 
 // To Change
 var base = 'http://localhost:5000/';
@@ -16,9 +17,39 @@ module.exports = {
   // Generic dispatcher call -- BOILERPLATE
   doSomething: function(something) {
     AppDispatcher.handleSetterAction({
-      actionType: LoginConstants.DO_SOMETHING,
+      actionType: DashConstants.DO_SOMETHING,
       something: something
     });
+  },
+
+  getUser: function() {
+    if (!window.token && !localStorage.accessToken) {
+      console.log(localStorage.accessToken + " " + window.token);
+      localStorage.accessToken = "";
+      browserHistory.push("/register");
+    }
+    request.get({ url: base + 'user',
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization': "JWT " + localStorage.accessToken || window.token
+      }
+    },
+      function(err, res, body) {
+        if (err || res.statusCode !== 200 && res.statusCode !== 401) {
+          //handle fail
+          /*
+          localStorage.accessToken = "";
+          browserHistory.push("/register");
+          */
+          return;
+        }
+        //handle success
+        AppDispatcher.handleViewAction({
+          actionType: DashConstants.GET_USER,
+          user: body
+        });
+    });
+
   },
 
   search: function(query, type) {

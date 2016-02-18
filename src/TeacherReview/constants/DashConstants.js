@@ -11,5 +11,6 @@ module.exports = keyMirror({
   CLOAD_SUCCESS:  null,
   CLOAD_FAILURE:  null,
   RLOAD_SUCCESS:  null,
-  RLOAD_FAILURE:  null
+  RLOAD_FAILURE:  null,
+  GET_USER:       null
 });

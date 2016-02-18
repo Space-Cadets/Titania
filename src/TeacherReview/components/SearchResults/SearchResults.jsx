@@ -43,6 +43,11 @@ module.exports = React.createClass({
     DashStore.removeChangeListener(this._onChange);
   },
 
+  //rerender on different route
+  routerWillLeave: function() {
+    return true;
+  },
+
   //fires on every change
   componentDidUpdate: function() {
   },
