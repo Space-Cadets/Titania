@@ -752,7 +752,8 @@ body {
 .btn {
   border: 0;
   cursor: pointer;
-  font-size: 13px;
+  margin: 10px;
+  font-size: 15px;
   border-radius: 2px;
   background-color: #f7f7f7;
   transition: box-shadow .2s;

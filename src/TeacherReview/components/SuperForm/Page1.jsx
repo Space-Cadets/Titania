@@ -18,7 +18,15 @@ Flow:
 
 module.exports = React.createClass({
   getInitialState: function() {
-    return ({ instructor: null, course: null });
+    return ({ query: null, instructor: null, course: null });
+  },
+
+  onKeyUp: function(e) {
+    if (e.keyCode === 13) {
+      DashActions.search(this.state.query, 'instructors');
+    } else {
+      this.setState({ query: e.target.value });
+    }
   },
 
   render: function() {
@@ -26,16 +34,22 @@ module.exports = React.createClass({
     <div>
       <div>
         <div className="input-container"> 
-          <input type="text" className="type-input" placeholder="Search for instructor" />
-          <button className="btn padle">Go</button>
+          <input type="text" className="type-input" onKeyUp={this.onKeyUp} 
+            placeholder="Search for instructor" />
+          <button className="btn padle" onClick={this.search}>
+            <span className="fa fa-search icon"></span>
+          </button>
         </div>
-        <div id="Instructor-Container">
-        IC
-        </div>
-        <div id="Section-Container">
-        SC
-        </div>
+
+        <div id="Instructor-Container"></div>
+        
+        <div id="Section-Container"></div>
+        
       </div>
     </div>);
+  },
+
+  search: function() {
+    DashActions.search(this.state.query, 'instructors');
   }
 });

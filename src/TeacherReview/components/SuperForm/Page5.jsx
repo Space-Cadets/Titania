@@ -14,17 +14,16 @@ module.exports = React.createClass({
 		return (
 		<div>
 			<div>Would you like to post this anonymously?</div>
-			<div className="onoffswitch">
-			    <input type="checkbox" name="onoffswitch" className="onoffswitch-checkbox" id="myonoffswitch"  onClick={this.onClick} />
-			    <label className="onoffswitch-label" htmlFor="myonoffswitch">
-			        <span className="onoffswitch-inner"></span>
-			        <span className="onoffswitch-switch"></span>
-			    </label>
-			</div>
+			<button className="btn" onClick={this.postAnon}>Post as me</button>
+			<button className="btn" onClick={this.postMe}>Post anonymously</button>
 		</div>);
 	},
 
-	onClick: function() {
-		this.setState({choice: !(this.state.choice) })
+	postAnon: function() {
+		console.log('Anon');
+	},
+
+	postMe: function() {
+		console.log('Me');
 	}
 });
