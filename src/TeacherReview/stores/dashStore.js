@@ -5,7 +5,9 @@ var AppDispatcher       = require('../dispatchers/AppDispatcher.js');
 var DashConstants       = require('../constants/DashConstants.js');
 var EventEmitter        = require('events').EventEmitter;
 var assign              = require('object-assign');
+
 var CHANGE_EVENT        = 'change';
+
 var _data               = {};
     _data.user          = {};
     _data.user.reviews  = {};
@@ -20,6 +22,7 @@ function _getUser(user) {
   //later maybe populate other types of data? Or consolidate this into feed request?
   _data.user.name = user.firstName + " " + user.lastName;
 }
+
 function _stash_search(results) {
   _data.results = results;
 }
