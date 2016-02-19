@@ -14,7 +14,9 @@ var Searchbar = require('./Searchbar.jsx');
 
 module.exports = React.createClass({
   getInitialState: function() {
-    return null;
+    return {
+      showDropdown: false
+    };
   },
 
   contextTypes: {
@@ -22,7 +24,40 @@ module.exports = React.createClass({
   },
 
   onClick: function() {
-    this.context.router.push("/form");
+    this.setState({
+      showDropdown: !this.state.showDropdown
+    });
+  },
+
+  dropdownOff: function(e) {
+    if (e.target.id !== 'dropdown') {
+      this.setState({
+        showDropdown: false
+      });
+    }
+  },
+
+  componentDidMount: function () {
+    window.addEventListener('click', this.dropdownOff, false);
+  },
+
+
+  componentWillUnmount: function(){
+    window.removeEventListener('click', this.dropdownOff, false);
+  },
+
+  renderDropdown: function() {
+    if (this.state.showDropdown) {
+      return (
+        <div id="Nav-dropdown">
+          <div>yo</div>
+          <div>yo</div>
+          <div>ma</div>
+          <div>yo</div>
+          <div>ma</div>
+        </div>
+      );
+    }
   },
 
   render: function() {
@@ -32,17 +67,11 @@ module.exports = React.createClass({
           <Link to="/" className="Logo-Dash">
             <h1 className="Login-Logo">Dartboard</h1>
           </Link>
-
           <Searchbar />
-        {/*
-          <button id="Review-btn" onClick={this.fire}>
-            <i className="fa fa-pencil"></i>&nbsp;
-            Post Review
-          </button>
-        */}
-
-        <button onClick={this.onClick} className="btn">{this.props.name}</button>
+          <button onClick={this.onClick} id="dropdown" className="btn">{this.props.name}</button>
+          {this.renderDropdown()}
         </span>
+
       </nav>
     );
   }

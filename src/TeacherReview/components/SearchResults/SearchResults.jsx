@@ -16,7 +16,7 @@ var Results        = require('./Results.jsx');
  */
 function getState() {
   return {
-    data: DashStore.getSearchResults()
+    data: DashStore.getData()
   };
 }
 
@@ -35,7 +35,6 @@ module.exports = React.createClass({
   //Fires post-mount,
   componentDidMount: function() {
     DashStore.addChangeListener(this._onChange);
-    DashActions.search(this.props.params.query, this.props.params.type);
   },
 
   // Remove change listers from stores
@@ -54,7 +53,7 @@ module.exports = React.createClass({
 
   render: function() {
     return (<div>
-      <Navbar />
+      <Navbar name={this.state.data.user.name}/>
       <div id="content-box">
         <Results />
       </div>

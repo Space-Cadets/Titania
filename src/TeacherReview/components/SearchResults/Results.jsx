@@ -40,9 +40,9 @@ module.exports = React.createClass({
     });
 
     return (<div id="feed-container">
-      <div className="Title"> 
+      <div className="Title">
         <div className="stump">
-          <i className="fa fa-book"></i> 
+          <i className="fa fa-book"></i>
           Results
         </div>
       </div>
