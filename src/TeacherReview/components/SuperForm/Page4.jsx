@@ -2,7 +2,7 @@ var React = require('react');
 
 // Flow
 
-/* 
+/*
 
 	1. User types in content -- save to store on next or prev action
 
@@ -10,7 +10,7 @@ var React = require('react');
 
 module.exports = React.createClass({
 	divStyle: {
-		'width': '80%' 
+		'width': '80%'
 	},
 
 
@@ -26,5 +26,6 @@ module.exports = React.createClass({
 				<br />
 				<textarea style={this.textStyle}></textarea>
 			</div>);
+
 	}
 });
