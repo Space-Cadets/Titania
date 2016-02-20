@@ -13,14 +13,31 @@ var _data               = {};
     _data.user.reviews  = {};
     _data.user.name     = "Student";
 
+_data.form = {
+  instructor: '',
+  course: '',
+  istars: 0,
+  cstars: 0,
+  itraits: [],
+  ctraits: [],
+  review: ''
+}
 
 /**
- * Utility functions for store -- for mutating store data
+ * Utility functions for store - for mutating store data
  */
 
 function _getUser(user) {
   //later maybe populate other types of data? Or consolidate this into feed request?
   _data.user.name = user.firstName + " " + user.lastName;
+}
+
+function _set_instructor(instructor) {
+  _data.form.instructor = instructor;
+}
+
+function _set_course(course) {
+  _data.form.course = course;
 }
 
 function _stash_search(results) {
@@ -109,6 +126,32 @@ dashStore.dispatchToken = AppDispatcher.register(function(payload) {
       _getUser(action.user);
       console.log(action, 'user logger in');
       break;
+
+    case DashConstants.SET_FORM_SECTION:
+      _setSection(action.instructor, action.course);
+      console.log(action, 'form stage 1 sent');
+      break;
+
+    case DashConstants.SET_FORM_INSTRUCTOR:
+      _set_instructor(action.instructor);
+      console.log(action, 'set instructor');
+      break;
+
+    case DashConstants.SET_FORM_COURSE:
+      _set_course(action.course);
+      console.log(action, 'set course');
+      break;
+
+    case DashConstants.RATE_INSTRUCTOR:
+      _rate_instructor(action.rating)
+      console.log(action, 'rated instructor');
+      break;
+
+    case DashConstants.RATE_COURSE:
+      _rate_course(action.rating);
+      console.log(action, 'rated course');
+      break;
+
 
     // (TODO) Add FAILURE cases
 

@@ -1,9 +1,16 @@
 var React = require('React');
 
+var DashActions = require('../../actions/DashActions.js');
+var DashStore   = require('../../stores/dashStore.js');
+
 var Star = React.createClass({
 	render: function() {
-		return (<span className={"fa fa-3x fa-star star-" + this.props.active}>
+		return (<span className={"fa fa-2x fa-star star-" + this.props.active} onClick={this.onClick}>
 			</span>);
+	},
+
+	onClick: function(e) {
+		console.log(e);
 	}
 })
 

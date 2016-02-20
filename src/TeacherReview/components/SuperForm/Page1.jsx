@@ -2,8 +2,9 @@ var React = require('react');
 
 var DashActions = require('../../actions/DashActions.js');
 var DashStore   = require('../../stores/dashStore.js');
-var Instructor  = require('./Instructor.jsx');
 
+var Instructor  = require('./Instructor.jsx');
+var Course      = require('./Course.jsx');
 /* Implement items for this component 
 
 Flow: 
@@ -18,24 +19,40 @@ Flow:
 */
 
 function searchInstructor(term) {
-  return {
-    results: DashStore.getSearchResults().slice(0, 5)
+  // (TODO) Optimize this 
+  var instructor = DashStore.getTeacherPage();
+
+  if (instructor) {
+    return {
+      results: DashStore.getSearchResults().slice(0, 5),
+      sections: DashStore.getTeacherPage().courses
+    }
+  } else {
+    return {
+      results: DashStore.getSearchResults().slice(0, 5),
+      sections: []
+    }
   }
 }
 
 module.exports = React.createClass({
   getInitialState: function() {
-    return ({ query: '', results: [], instructor: null, course: null });
+    return ({ 
+      query: '', 
+      results:  [], 
+      sections: [],
+      course: null, 
+      instructor: null });
   },
 
   onKeyUp: function(e) {
+    // (Bug) Store maintains teacher course sections so they will show up if
+    // you navigate from the teacher page to review
     if (e.keyCode === 13) {
       DashActions.search(this.state.query, 'instructors');
     } else {
       this.setState({ query: e.target.value });
     }
-
-    console.log(this.state)
   },
 
   componentDidMount: function() {
@@ -51,8 +68,8 @@ module.exports = React.createClass({
       return <Instructor label={item.name} key={i} />;
     });
 
-    var courses = [].map(function(item, i) {
-      return <div label={item.name} key={i}>{item.name}</div>;
+    var courses = this.state.sections.map(function(item, i) {
+      return <Course label={item.course_name} prof={item} key={i} />;
     });
 
     return (

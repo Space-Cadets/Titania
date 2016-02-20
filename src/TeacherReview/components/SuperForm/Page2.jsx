@@ -13,7 +13,7 @@ Flow:
 
 */
 module.exports = React.createClass({
-  spaceStyles: {'margin': '15px'},
+  spaceStyles: {'margin': '25px'},
 
   colStyle: {
     'display': 'flex',

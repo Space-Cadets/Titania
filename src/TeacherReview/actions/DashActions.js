@@ -146,6 +146,33 @@ module.exports = {
       });
 
     });
-  }
+  },
 
+  setFormInstructor: function(inst) {
+    AppDispatcher.handleViewAction({
+      actionType: DashConstants.SET_FORM_INSTRUCTOR,
+      instructor: inst
+    });
+  },
+
+  setFormCourse: function(course) {
+    AppDispatcher.handleViewAction({
+      actionType: DashConstants.SET_FORM_COURSE,
+      course: course
+    });
+  },
+
+  rateInstructor: function(num) {
+    AppDispatcher.handleViewAction({
+      actionType: DashConstants.RATE_INSTRUCTOR,
+      rating: num
+    });
+  },
+
+  rateCourse: function(num) {
+    AppDispatcher.handleViewAction({
+      actionType: DashConstants.RATE_COURSE,
+      rating: num
+    });
+  }
 };

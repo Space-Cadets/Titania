@@ -90,20 +90,34 @@ body {
 .star-off:hover {
 	color: gold;
 }
-
-.option-tag {
+.instructor-tag {
   margin: 5px;
   padding: 5px;
   cursor: pointer;
   background-color: white;
   color: #2895f1;
-  border: 1px solid;
   border-radius: 2px;
+  transition: color .2s, background-color .2s;
 }
 
-.option-tag:hover {
+.instructor-tag:hover {
   color: white;
   background-color: #2895f1;
+}
+
+.course-tag {
+  margin: 5px;
+  padding: 5px;
+  cursor: pointer;
+  background-color: white;
+  color: red;
+  border-radius: 2px;
+  transition: color .2s, background-color .2s;
+}
+
+.course-tag:hover {
+  color: white;
+  background-color: red;
 }
 
 #trait-row {

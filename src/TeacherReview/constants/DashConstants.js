@@ -12,5 +12,7 @@ module.exports = keyMirror({
   CLOAD_FAILURE:  null,
   RLOAD_SUCCESS:  null,
   RLOAD_FAILURE:  null,
-  GET_USER:       null
+  GET_USER:       null,
+  SET_FORM_INSTRUCTOR: null,
+  SET_FORM_COURSE: null
 });

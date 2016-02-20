@@ -1,13 +1,17 @@
 var React = require('react');
 
+var DashActions = require('../../actions/DashActions.js');
+
 module.exports = React.createClass({
   render: function() {
-    return (<div className="option-tag" onClick={this.instructorClick}>
+    return (<div className="instructor-tag" onClick={this.instructorClick}>
       {this.props.label}
     </div>);
   },
 
   instructorClick: function(e) {
-    console.log(e.target.innerText, 'selected');
+    DashActions.loadTeacherPage(e.target.innerText);
+    DashActions.setFormInstructor(e.target.innerText);
+    DashActions.setFormCourse('');
   }
 });
