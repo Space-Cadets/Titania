@@ -10,7 +10,13 @@ var Star = React.createClass({
 	},
 
 	onClick: function(e) {
-		console.log(e);
+		// A hack
+		var parent = e.target.parentElement.parentElement;
+		
+		if (parent.innerText.indexOf('Instructor') > -1)
+			DashActions.rateInstructor(this.props.num);
+		else if (parent.innerText.indexOf('Course') > -1)
+			DashActions.rateCourse(this.props.num);
 	}
 })
 
@@ -26,9 +32,9 @@ module.exports = React.createClass({
 
 		var stars = [0, 0, 0, 0, 0].map(function(v, i) {
 			if (i + 1 <= rating)
-				return <Star key={i} active="on" />
+				return <Star key={i} num={i + 1} active="on" />
 			
-			return <Star key={i} active="off"/>
+			return <Star key={i} num={i + 1} active="off"/>
 		});
 
 		return <div className="star-bar">{stars}</div>;

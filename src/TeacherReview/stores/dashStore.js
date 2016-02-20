@@ -8,19 +8,24 @@ var assign              = require('object-assign');
 
 var CHANGE_EVENT        = 'change';
 
-var _data               = {};
-    _data.user          = {};
-    _data.user.reviews  = {};
-    _data.user.name     = "Student";
+var _data = {
 
-_data.form = {
-  instructor: '',
-  course: '',
-  istars: 0,
-  cstars: 0,
-  itraits: [],
-  ctraits: [],
-  review: ''
+  // Model for _data user store
+  user: {
+    name: 'Student',
+    reviews: {}
+  },
+
+  // Model for _data form store
+  form: {
+    instructor: '',
+    course: '',
+    istars: 0,
+    cstars: 0,
+    itraits: [],
+    ctraits: [],
+    review: ''
+  }
 }
 
 /**
@@ -50,6 +55,14 @@ function _tpage_load(results) {
 
 function _cpage_load(results) {
   _data.cpage = results;
+}
+
+function _rate_instructor(num) {
+  _data.form.istars = num;
+}
+
+function _rate_course(num) {
+  _data.form.cstars = num;
 }
 
 function _recreviews_load(results) {
@@ -92,6 +105,7 @@ var dashStore = assign({}, EventEmitter.prototype, {
   getRecentReviews: function() {
     return _data.recent_reviews;
   }
+
 });
 
 /**
@@ -127,10 +141,10 @@ dashStore.dispatchToken = AppDispatcher.register(function(payload) {
       console.log(action, 'user logger in');
       break;
 
-    case DashConstants.SET_FORM_SECTION:
-      _setSection(action.instructor, action.course);
-      console.log(action, 'form stage 1 sent');
-      break;
+    // case DashConstants.SET_FORM_SECTION:
+    //   _setSection(action.instructor, action.course);
+    //   console.log(action, 'form stage 1 sent');
+    //   break;
 
     case DashConstants.SET_FORM_INSTRUCTOR:
       _set_instructor(action.instructor);
@@ -151,7 +165,6 @@ dashStore.dispatchToken = AppDispatcher.register(function(payload) {
       _rate_course(action.rating);
       console.log(action, 'rated course');
       break;
-
 
     // (TODO) Add FAILURE cases
 

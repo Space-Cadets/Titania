@@ -4,23 +4,17 @@
  */
 
 // Filters actions for one way data flow
-var AppDispatcher  = require('../dispatchers/AppDispatcher.js');
-var DashConstants  = require('../constants/DashConstants.js');
 var request        = require('request');
 var browserHistory = require('react-router').browserHistory;
+
+var AppDispatcher  = require('../dispatchers/AppDispatcher.js');
+var DashConstants  = require('../constants/DashConstants.js');
+
 
 // To Change
 var base = 'http://localhost:5000/';
 
 module.exports = {
-
-  // Generic dispatcher call -- BOILERPLATE
-  doSomething: function(something) {
-    AppDispatcher.handleSetterAction({
-      actionType: DashConstants.DO_SOMETHING,
-      something: something
-    });
-  },
 
   getUser: function() {
     if (!window.token && !localStorage.accessToken) {
@@ -28,6 +22,7 @@ module.exports = {
       localStorage.accessToken = "";
       browserHistory.push("/register");
     }
+
     request.get({ url: base + 'user',
       headers: {
         "Content-Type": "application/json",
@@ -36,14 +31,14 @@ module.exports = {
     },
       function(err, res, body) {
         if (err || res.statusCode !== 200 && res.statusCode !== 401) {
-          //handle fail
+          // Handle fail
           /*
           localStorage.accessToken = "";
           browserHistory.push("/register");
           */
           return;
         }
-        //handle success
+        // Handle success
         AppDispatcher.handleViewAction({
           actionType: DashConstants.GET_USER,
           user: body
@@ -115,14 +110,14 @@ module.exports = {
   },
 
   sendReview: function(review) {
-    //login should be done server side -- give ambiguous errors ('either email or pw incorrect')
+    // Login should be done server side -- give ambiguous errors ('either email or pw incorrect')
     request.post({ url: 'http://localhost:5000/reviews', json: true, body: review },
       function(err, res, body) {
         if (err || res.statusCode !== 200 && res.statusCode !== 401) {
-          //handle fail
+          // Handle fail
           console.log(res);
         }
-        //handle success
+        // Handle success
         console.log(review + " " + res);
     });
   },
@@ -170,6 +165,7 @@ module.exports = {
   },
 
   rateCourse: function(num) {
+    console.log('got here correctly')
     AppDispatcher.handleViewAction({
       actionType: DashConstants.RATE_COURSE,
       rating: num
