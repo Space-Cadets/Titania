@@ -165,7 +165,6 @@ module.exports = {
   },
 
   rateCourse: function(num) {
-    console.log('got here correctly')
     AppDispatcher.handleViewAction({
       actionType: DashConstants.RATE_COURSE,
       rating: num

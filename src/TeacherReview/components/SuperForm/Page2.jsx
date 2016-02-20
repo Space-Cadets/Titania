@@ -25,11 +25,11 @@ module.exports = React.createClass({
 		return (
 		<div>
 			<div style={this.spaceStyles}>
-        <div style={this.colStyle}> Rate Instructor <StarBar type='INS'/></div>
+        <div style={this.colStyle}> Rate Instructor <StarBar /></div>
       </div>
 
       <div style={this.spaceStyles}>
-			  <div style={this.colStyle}> Rate Course <StarBar type='COU' className='more'/></div>
+			  <div style={this.colStyle}> Rate Course <StarBar /></div>
       </div>
 
 		</div>);
