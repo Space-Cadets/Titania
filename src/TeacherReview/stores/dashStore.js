@@ -25,7 +25,11 @@ var _data = {
     itraits: [],
     ctraits: [],
     review: ''
-  }
+  },
+
+  itraits: [],
+
+  ctraits: []
 }
 
 /**
@@ -69,6 +73,16 @@ function _recreviews_load(results) {
   _data.recent_reviews = results;
 }
 
+function _set_course_traits(traits) {
+  _data.ctraits = traits;
+}
+
+function _set_instructor_traits(traits) {
+  _data.itraits = traits;
+}
+
+
+
 /**
  * Object through which store data is accessed -- *NOT MUTATED*
  */
@@ -104,6 +118,10 @@ var dashStore = assign({}, EventEmitter.prototype, {
 
   getRecentReviews: function() {
     return _data.recent_reviews;
+  },
+
+  getTraits: function() {
+    return {itraits: _data.itraits, ctraits: _data.ctraits};
   }
 
 });
@@ -141,11 +159,6 @@ dashStore.dispatchToken = AppDispatcher.register(function(payload) {
       console.log(action, 'user logger in');
       break;
 
-    // case DashConstants.SET_FORM_SECTION:
-    //   _setSection(action.instructor, action.course);
-    //   console.log(action, 'form stage 1 sent');
-    //   break;
-
     case DashConstants.SET_FORM_INSTRUCTOR:
       _set_instructor(action.instructor);
       console.log(action, 'set instructor');
@@ -164,6 +177,13 @@ dashStore.dispatchToken = AppDispatcher.register(function(payload) {
     case DashConstants.RATE_COURSE:
       _rate_course(action.rating);
       console.log(action, 'rated course');
+      break;
+
+    case DashConstants.GET_TRAITS:
+      // _get_traits();
+      console.log(action, 'storing traits');
+      _set_instructor_traits(action.itraits);
+      _set_course_traits(action.ctraits);
       break;
 
     // (TODO) Add FAILURE cases

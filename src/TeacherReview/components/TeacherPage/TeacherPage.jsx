@@ -92,10 +92,12 @@ module.exports = React.createClass({
         </div>
         
         {/* (TODO) Get traits logic done
+        
         <div id="trait-row-container">
           <div className="row-title">Traits</div>
           <div id="trait-row"></div>
         </div>
+        
         */}
 
         <div id="review-row-container">

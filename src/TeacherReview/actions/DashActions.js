@@ -23,19 +23,20 @@ module.exports = {
       browserHistory.push("/register");
     }
 
-    request.get({ url: base + 'user',
+    request.get({ url: base + 'me',
       headers: {
         "Content-Type": "application/json",
         'Authorization': "JWT " + localStorage.accessToken || window.token
       }
-    },
-      function(err, res, body) {
+    }, function(err, res, body) {
         if (err || res.statusCode !== 200 && res.statusCode !== 401) {
           // Handle fail
+
           /*
           localStorage.accessToken = "";
           browserHistory.push("/register");
           */
+          
           return;
         }
         // Handle success
@@ -141,6 +142,23 @@ module.exports = {
       });
 
     });
+  },
+
+  getTraits: function() {
+    request(base + 'traits', function(err, res) {
+      if (err) {
+        console.log('error');
+      } else {
+        var payload = JSON.parse(res.body);
+
+        AppDispatcher.handleViewAction({
+          actionType: DashConstants.GET_TRAITS,
+          status: payload.status,
+          ctraits: payload.course_traits,
+          itraits: payload.instructor_traits
+        });
+      }
+    })
   },
 
   setFormInstructor: function(inst) {

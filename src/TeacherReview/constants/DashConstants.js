@@ -13,6 +13,7 @@ module.exports = keyMirror({
   RLOAD_SUCCESS:       null,
   RLOAD_FAILURE:       null,
   GET_USER:            null,
+  GET_TRAITS:          null,
   RATE_COURSE:         null,
   RATE_INSTRUCTOR:     null,
   SET_FORM_COURSE:     null,
