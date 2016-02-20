@@ -2,6 +2,7 @@ var React = require('react');
 
 var DashActions = require('../../actions/DashActions.js');
 var DashStore   = require('../../stores/dashStore.js');
+var Instructor  = require('./Instructor.jsx');
 
 /* Implement items for this component 
 
@@ -18,7 +19,7 @@ Flow:
 
 function searchInstructor(term) {
   return {
-    results: DashStore.getSearchResults()
+    results: DashStore.getSearchResults().slice(0, 5)
   }
 }
 
@@ -29,7 +30,6 @@ module.exports = React.createClass({
 
   onKeyUp: function(e) {
     if (e.keyCode === 13) {
-      // this.setState(searchInstructor(this.state.query));
       DashActions.search(this.state.query, 'instructors');
     } else {
       this.setState({ query: e.target.value });
@@ -47,8 +47,12 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var fuzzy = this.state.results.map(function(item, i){
-      return (<p key={i}>{item.name}</p>);
+    var fuzzy = this.state.results.map(function(item, i) {
+      return <Instructor label={item.name} key={i} />;
+    });
+
+    var courses = [].map(function(item, i) {
+      return <div label={item.name} key={i}>{item.name}</div>;
     });
 
     return (
@@ -64,7 +68,7 @@ module.exports = React.createClass({
 
         <div id="Instructor-Container">{fuzzy}</div>
         
-        <div id="Section-Container"></div>
+        <div id="Section-Container">{courses}</div>
         
       </div>
     </div>);

@@ -73,20 +73,37 @@ body {
 }
 
 .star-on {
-	margin-right: 5px;
-	font-size: 30px;
 	color: gold;
+  font-size: 30px;
+  cursor: pointer;
+  margin-right: 5px;
 }
 
 .star-off {
-	margin-right: 5px;
-	font-size: 30px;
 	color: black;
-	transition: color .2s;
+  cursor: pointer;
+  font-size: 30px;
+	margin-right: 5px;
+  transition: color .2s;
 }
 
 .star-off:hover {
 	color: gold;
+}
+
+.option-tag {
+  margin: 5px;
+  padding: 5px;
+  cursor: pointer;
+  background-color: white;
+  color: #2895f1;
+  border: 1px solid;
+  border-radius: 2px;
+}
+
+.option-tag:hover {
+  color: white;
+  background-color: #2895f1;
 }
 
 #trait-row {
