@@ -17,6 +17,22 @@ module.exports = {
       actionType: DashConstants.ADD_REVIEW_TEXT,
       text: text
     });
+  },
+
+  addTrait: function(type, trait) {
+    AppDispatcher.handleViewAction({
+      actionType: DashConstants.ADD_TRAIT,
+      type: type,
+      trait: trait
+    })
+  },
+
+  removeTrait: function(type, trait) {
+    AppDispatcher.handleViewAction({
+      actionType: DashConstants.REMOVE_TRAIT,
+      type: type,
+      trait: trait
+    })
   }
-  
+
 };

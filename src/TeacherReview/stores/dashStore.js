@@ -85,6 +85,25 @@ function _set_review_text(text) {
   _data.form.review = text;
 }
 
+// Test these!
+function _add_trait(type, trait) {
+  if (type === 'course')
+    _data.form.ctraits.push(trait);
+  else if (type === 'instructor')
+    _data.form.itraits.push(trait);
+}
+
+function _remove_trait(type, trait) {
+
+  if (type === 'course') {
+    var ind = _data.form.ctraits.indexOf(trait);
+    _data.form.ctraits.splice(ind, 1);
+  } else if (type === 'instructor') {
+    var ind = _data.form.itraits.indexOf(trait);
+    _data.form.ctraits.splice(ind, 1);
+  }
+}
+
 /**
  * Object through which store data is accessed -- *NOT MUTATED*
  */
@@ -186,17 +205,25 @@ dashStore.dispatchToken = AppDispatcher.register(function(payload) {
       break;
 
     case DashConstants.GET_TRAITS:
-      // _get_traits();
       console.log(action, 'storing traits');
       _set_instructor_traits(action.itraits);
       _set_course_traits(action.ctraits);
       break;
 
     case DashConstants.ADD_REVIEW_TEXT:
-      console.log(action, 'modifying review text');
       _set_review_text(action.text);
       break;
 
+    case DashConstants.ADD_TRAIT:
+      console.log(action);
+      _add_trait(action.type, action.trait);
+      break;
+
+    case DashConstants.REMOVE_TRAIT:
+      console.log(action, 'removing');
+      _remove_trait(action.type, action.trait);
+      console.log(_data.form);
+      
     // (TODO) Add FAILURE cases
 
     default:

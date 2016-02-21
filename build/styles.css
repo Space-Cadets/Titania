@@ -351,15 +351,18 @@ body {
 }
 .Login-Logo:hover {
   cursor: pointer;
+  
 }
 
 .Login-Logo {
   color: #FFFFFF;
   /* Place the Logo all the way to the left */
   width: 12%;
+  display: flex;
   justify-content: flex-start;
   font-family: Aleu Web, Helvetica;
   margin: auto 1px auto 20px;
+  transition: color .2s;
 }
 
 #Nav-Contents > a {

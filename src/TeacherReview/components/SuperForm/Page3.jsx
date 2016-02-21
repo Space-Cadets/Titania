@@ -1,6 +1,7 @@
 var React = require('react');
 
 var DashActions = require('../../actions/DashActions.js');
+var FormActions = require('../../actions/FormActions.js');
 var DashStore   = require('../../stores/dashStore.js');
 
 /* 
@@ -16,8 +17,25 @@ Flow:
 */
 
 var Trait = React.createClass({
+  getInitialState: function() {
+    return ({ active: false });
+  },
+
   render: function() {
-    return <div className="instructor-tag">{this.props.label}</div>
+    return (<div className="instructor-tag" onClick={this.onClick}>
+      {this.props.label}
+    </div>);
+  },
+
+  onClick: function() {
+    console.log(this.state)
+    if (!this.state.active) {
+      FormActions.addTrait(this.props.type, this.props.label);
+      this.state.active = true;
+    } else {
+      FormActions.removeTrait(this.props.type, this.props.label);
+      this.state.active = false;
+    }
   }
 })
 

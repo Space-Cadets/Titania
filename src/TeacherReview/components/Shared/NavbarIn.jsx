@@ -65,7 +65,10 @@ module.exports = React.createClass({
       <nav id="In-Navbar">
         <span id="Nav-Contents">
           <Link to="/" className="Logo-Dash">
-            <h1 className="Login-Logo">Dartboard</h1>
+            <h1 className="Login-Logo">
+              <span className="fa fa-bell"></span> 
+              &nbsp;&nbsp;CourseVibe
+            </h1>
           </Link>
           <Searchbar />
           <button onClick={this.onClick} id="dropdown" className="btn">{this.props.name}</button>
