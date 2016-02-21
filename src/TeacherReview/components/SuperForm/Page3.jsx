@@ -58,7 +58,6 @@ module.exports = React.createClass({
 
   _onChange: function() {
     var bulk = DashStore.getTraits();
-    console.log(bulk);
     this.setState(bulk);
   }
 });

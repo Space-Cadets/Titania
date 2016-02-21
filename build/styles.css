@@ -964,6 +964,7 @@ body {
   min-height: 35px;
   text-indent: 5px;
   border-radius: 2px;
+  width: 80%;
   padding: 0px 0px 0px 5px;
   max-height: 35px !important;
 }

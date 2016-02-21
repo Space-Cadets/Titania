@@ -81,7 +81,9 @@ function _set_instructor_traits(traits) {
   _data.itraits = traits;
 }
 
-
+function _set_review_text(text) {
+  _data.form.review = text;
+}
 
 /**
  * Object through which store data is accessed -- *NOT MUTATED*
@@ -122,6 +124,10 @@ var dashStore = assign({}, EventEmitter.prototype, {
 
   getTraits: function() {
     return {itraits: _data.itraits, ctraits: _data.ctraits};
+  },
+
+  getReviewText: function() {
+    return _data.form.review;
   }
 
 });
@@ -184,6 +190,11 @@ dashStore.dispatchToken = AppDispatcher.register(function(payload) {
       console.log(action, 'storing traits');
       _set_instructor_traits(action.itraits);
       _set_course_traits(action.ctraits);
+      break;
+
+    case DashConstants.ADD_REVIEW_TEXT:
+      console.log(action, 'modifying review text');
+      _set_review_text(action.text);
       break;
 
     // (TODO) Add FAILURE cases

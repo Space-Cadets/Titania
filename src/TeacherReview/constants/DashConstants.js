@@ -17,5 +17,6 @@ module.exports = keyMirror({
   RATE_COURSE:         null,
   RATE_INSTRUCTOR:     null,
   SET_FORM_COURSE:     null,
-  SET_FORM_INSTRUCTOR: null
+  SET_FORM_INSTRUCTOR: null,
+  ADD_REVIEW_TEXT:     null
 });

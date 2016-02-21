@@ -73,12 +73,12 @@ module.exports = React.createClass({
     });
 
     return (
-    <div>
+    <div style={{'width': '100%'}}>
       <div>
         <div className="input-container"> 
-          <input type="text" className="type-input" onKeyUp={this.onKeyUp} 
+          <input className="type-input" type="text" onKeyUp={this.onKeyUp} 
             placeholder="Search for instructor" />
-          <button className="btn padle">
+          <button className="btn padle" onClick={this.onClick}>
             <span className="fa fa-search icon"></span>
           </button>
         </div>
@@ -89,6 +89,10 @@ module.exports = React.createClass({
         
       </div>
     </div>);
+  },
+
+  onClick: function() {
+    DashActions.search(this.state.query, 'instructors');
   },
 
   _onChange: function() {
