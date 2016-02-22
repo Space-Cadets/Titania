@@ -44,7 +44,6 @@ module.exports = React.createClass({
 
   componentDidMount: function() {
     DashStore.addChangeListener(this._onChange);
-    console.log(this.state);
   },
 
   componentWillUnmount: function() {
@@ -61,7 +60,7 @@ module.exports = React.createClass({
     });
 
     var courses = ts.sections.map(function(item, i) {
-      var toggle = (item.name === ts.course) ? 'on': 'off';
+      var toggle = (item.course_name === ts.course) ? 'on': 'off';
 
       return <Course active={toggle} label={item.course_name} prof={item} key={i} />;
     });
@@ -90,7 +89,6 @@ module.exports = React.createClass({
   },
 
   _onChange: function() {
-    console.log(this.state);
     this.setState({
       results: DashStore.getFuzzyReviewSearch().slice(0, 5),
       sections: DashStore.getFormCourses() || []

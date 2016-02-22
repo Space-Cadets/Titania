@@ -9,8 +9,7 @@ module.exports = React.createClass({
 
   render: function() {
     return (<div className={"course-tag tag-" + this.state.active} 
-    	onClick={this.courseClick}>
-      {this.props.label}
+    	onClick={this.courseClick}>{this.props.label}
     </div>);
   },
 
