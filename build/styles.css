@@ -93,10 +93,13 @@ body {
 .instructor-tag {
   margin: 5px;
   padding: 5px;
-  cursor: pointer;
-  background-color: white;
+  display: flex;
   color: #2895f1;
+  cursor: pointer;
+  text-align: center;
   border-radius: 2px;
+  align-items: center;
+  background-color: white;
   transition: color .2s, background-color .2s;
 }
 
@@ -111,12 +114,15 @@ body {
 }
 
 .course-tag {
+  color: red;
   margin: 5px;
   padding: 5px;
+  display: flex;
   cursor: pointer;
-  background-color: white;
-  color: red;
   border-radius: 2px;
+  text-align: center;
+  align-items: center;
+  background-color: white;
   transition: color .2s, background-color .2s;
 }
 
@@ -281,7 +287,7 @@ body {
 
 #Super-Form {
   min-height: 400px;
-  width: 60%;
+  width: 95%;
   background-color: beige;
   display: flex;
   flex-direction: column;
@@ -689,8 +695,10 @@ body {
 
 .feed-contents {
   padding-top: 20px;
-  padding-left: 20px;
+  margin: auto;
   display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .contents {

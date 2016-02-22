@@ -50,11 +50,8 @@ module.exports = React.createClass({
     if (this.state.showDropdown) {
       return (
         <div id="Nav-dropdown">
-          <div>yo</div>
-          <div>yo</div>
-          <div>ma</div>
-          <div>yo</div>
-          <div>ma</div>
+          <div><Link to="/register">Signup</Link></div>
+          <div><Link to="/login">Login</Link></div>
         </div>
       );
     }
