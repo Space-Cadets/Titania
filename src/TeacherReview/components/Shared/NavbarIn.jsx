@@ -10,6 +10,7 @@ var DashActions = require('../../actions/DashActions.js');
 
 // Import Components
 var Searchbar = require('./Searchbar.jsx');
+var Dropdown = require('./Dropdown.jsx');
 
 
 module.exports = React.createClass({
@@ -23,14 +24,18 @@ module.exports = React.createClass({
     router: React.PropTypes.object.isRequired
   },
 
-  onClick: function() {
-    this.setState({
-      showDropdown: !this.state.showDropdown
-    });
+  onClick: function(e) {
+    //manage dropdown clicks
+    if (e.target.className !== 'dropdownbb') {
+      this.setState({
+        showDropdown: !this.state.showDropdown
+      });
+    }
   },
 
   dropdownOff: function(e) {
-    if (e.target.id !== 'dropdown') {
+    if (e.target.id !== 'dropdown' && e.target.className !== 'dropdownbb' &&
+        e.target.parentNode.className !== 'dropdownbb') {
       this.setState({
         showDropdown: false
       });
@@ -49,10 +54,7 @@ module.exports = React.createClass({
   renderDropdown: function() {
     if (this.state.showDropdown) {
       return (
-        <div id="Nav-dropdown">
-          <div><Link to="/register">Signup</Link></div>
-          <div><Link to="/login">Login</Link></div>
-        </div>
+        <Dropdown />
       );
     }
   },
@@ -63,7 +65,7 @@ module.exports = React.createClass({
         <span id="Nav-Contents">
           <Link to="/" className="Logo-Dash">
             <h1 className="Login-Logo">
-              <span className="fa fa-bell"></span> 
+              <span className="fa fa-bell"></span>
               &nbsp;&nbsp;CourseVibe
             </h1>
           </Link>
