@@ -10,7 +10,37 @@ var browserHistory = require('react-router').browserHistory;
 var AppDispatcher  = require('../dispatchers/AppDispatcher.js');
 var DashConstants  = require('../constants/DashConstants.js');
 
+var base = 'http://localhost:5000/';
+
 module.exports = {
+
+  fuzzyReviewSearch: function(query) {
+    request({ url: base + 'instructors' + '/f/' + query,
+      headers: {
+        'Authorization': "JWT " + localStorage.accessToken || window.token,
+        'Content-Type': "application/json"
+      }
+    }, function(err, res) {
+      if (err) {
+        AppDispatcher.handleViewAction({
+          actionType: DashConstants.SEARCH_FAILURE,
+          messages: res.body.description
+        });
+      }
+
+      AppDispatcher.handleViewAction({
+        actionType: DashConstants.FUZZY_REVIEW_SEARCH,
+        results: JSON.parse(res.body).data
+      });
+    });
+  },
+
+  setCourses: function(courses) {
+    AppDispatcher.handleViewAction({
+      actionType: DashConstants.SET_COURSES,
+      courses: courses
+    });
+  },
 
   addReviewText: function(text) {
     AppDispatcher.handleViewAction({
@@ -24,7 +54,7 @@ module.exports = {
       actionType: DashConstants.ADD_TRAIT,
       type: type,
       trait: trait
-    })
+    });
   },
 
   removeTrait: function(type, trait) {
@@ -32,7 +62,7 @@ module.exports = {
       actionType: DashConstants.REMOVE_TRAIT,
       type: type,
       trait: trait
-    })
+    });
   }
 
 };

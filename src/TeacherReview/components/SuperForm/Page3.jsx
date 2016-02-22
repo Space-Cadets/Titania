@@ -18,30 +18,30 @@ Flow:
 
 var Trait = React.createClass({
   getInitialState: function() {
-    return ({ active: false });
+    return ({ active: 'off' });
   },
 
   render: function() {
-    return (<div className="instructor-tag" onClick={this.onClick}>
+    return (<div className={"instructor-tag tag-" + this.state.active} onClick={this.onClick} >
       {this.props.label}
     </div>);
   },
 
   onClick: function() {
-    console.log(this.state)
-    if (!this.state.active) {
+    // Clean up -- choose either state or props.
+    if (this.state.active === 'off') {
+      this.state.active = 'on';
       FormActions.addTrait(this.props.type, this.props.label);
-      this.state.active = true;
     } else {
+      this.state.active = 'off';
       FormActions.removeTrait(this.props.type, this.props.label);
-      this.state.active = false;
     }
   }
-})
+});
 
 module.exports = React.createClass({
   getInitialState: function() {
-    return ({itraits: [], ctraits: []});
+    return ({ itraits: [], ctraits: [], active_ctraits: [], active_itraits: [] });
   },
 
   componentWillMount: function() {
@@ -57,25 +57,34 @@ module.exports = React.createClass({
   },
 
   render: function() {
+    var aits = this.state.active_itraits,
+        acts = this.state.active_ctraits;
+
     var itraits = this.state.itraits.map(function(item, i) {
-      return <Trait label={item.description} key={i} type='Instructor' />
+      if (aits.indexOf(item.description) > -1)
+        return <Trait label={item.description} key={i} type='instructor' active={'on'} />
+
+      return <Trait label={item.description} key={i} type='instructor' active={'off'} />
     });
 
     var ctraits = this.state.ctraits.map(function(item, i) {
-      return <Trait label={item.description} key={i} type='course' />
+      if (acts.indexOf(item.description) > -1)
+        return <Trait label={item.description} key={i} type='course' active={'on'} />  
+
+      return <Trait label={item.description} key={i} type='course' active={'off'} />
     });
 
     return (
     <div>
-      <div>Instructor Traits</div>
-      <div id="Itraits-Container">{itraits}</div>
-      <div>Course Traits</div>
-      <div id="Ctraits-Container">{ctraits}</div>
+      <div>Instructor Traits</div><div id="Itraits-Container">{itraits}</div>
+      <div>Course Traits</div><div id="Ctraits-Container">{ctraits}</div>
     </div>);
   },
 
   _onChange: function() {
     var bulk = DashStore.getTraits();
+    bulk.active_itraits = DashStore.getITraits();
+    bulk.active_ctraits = DashStore.getCTraits();
     this.setState(bulk);
   }
 });

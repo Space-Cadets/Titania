@@ -25,11 +25,15 @@ module.exports = React.createClass({
 		return (
 		<div>
 			<div style={this.spaceStyles}>
-        <div style={this.colStyle}> Rate Instructor <StarBar /></div>
+        <div style={this.colStyle}> 
+          Rate Instructor <StarBar rating={2} type={'instructor'} />
+        </div>
       </div>
 
       <div style={this.spaceStyles}>
-			  <div style={this.colStyle}> Rate Course <StarBar /></div>
+			  <div style={this.colStyle}> 
+          Rate Course <StarBar rating={4} type={'course'} />
+        </div>
       </div>
 
 		</div>);

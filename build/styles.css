@@ -102,7 +102,12 @@ body {
 
 .instructor-tag:hover {
   color: white;
-  background-color: #2895f1;
+  background-color: rgba(40, 149, 241, 1);
+}
+
+.tag-on {
+  color: white;
+  background-color: rgba(40, 149, 241, 0.7);
 }
 
 .course-tag {

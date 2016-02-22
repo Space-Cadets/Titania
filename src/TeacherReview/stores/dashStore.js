@@ -18,6 +18,7 @@ var _data = {
 
   // Model for _data form store
   form: {
+    fuzzy: [],
     instructor: '',
     course: '',
     istars: 0,
@@ -59,6 +60,15 @@ function _tpage_load(results) {
 
 function _cpage_load(results) {
   _data.cpage = results;
+}
+
+function _fuzzy_review_search(results) {
+  _data.form.fuzzy = results;
+}
+
+// here
+function _set_form_courses(courses) {
+  _data.form.courses = courses;
 }
 
 function _rate_instructor(num) {
@@ -141,8 +151,32 @@ var dashStore = assign({}, EventEmitter.prototype, {
     return _data.recent_reviews;
   },
 
+  getFuzzyReviewSearch: function() {
+    return _data.form.fuzzy;
+  },
+
+  getFormCourses: function() {
+    return _data.form.courses;
+  },
+
+  getCourseRating: function() {
+    return _data.form.cstars;
+  },
+
+  getInstructorRating: function() {
+    return _data.form.istars;
+  },
+
   getTraits: function() {
     return {itraits: _data.itraits, ctraits: _data.ctraits};
+  },
+
+  getITraits: function() {
+    return _data.form.itraits;
+  },
+
+  getCTraits: function() {
+    return _data.form.ctraits;
   },
 
   getReviewText: function() {
@@ -194,6 +228,16 @@ dashStore.dispatchToken = AppDispatcher.register(function(payload) {
       console.log(action, 'set course');
       break;
 
+    case DashConstants.FUZZY_REVIEW_SEARCH:
+      _fuzzy_review_search(action.results);
+      console.log(action, 'successful search returned');
+      break;
+
+    case DashConstants.SET_COURSES:
+      _set_form_courses(action.courses);
+      console.log(action, 'got their courses');
+      break;
+
     case DashConstants.RATE_INSTRUCTOR:
       _rate_instructor(action.rating)
       console.log(action, 'rated instructor');
@@ -212,6 +256,7 @@ dashStore.dispatchToken = AppDispatcher.register(function(payload) {
 
     case DashConstants.ADD_REVIEW_TEXT:
       _set_review_text(action.text);
+      console.log(_data.form.review);
       break;
 
     case DashConstants.ADD_TRAIT:
@@ -220,9 +265,9 @@ dashStore.dispatchToken = AppDispatcher.register(function(payload) {
       break;
 
     case DashConstants.REMOVE_TRAIT:
-      console.log(action, 'removing');
-      _remove_trait(action.type, action.trait);
       console.log(_data.form);
+      _remove_trait(action.type, action.trait);
+      break;
       
     // (TODO) Add FAILURE cases
 

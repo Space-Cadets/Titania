@@ -1,5 +1,6 @@
 var React = require('react');
 
+var FormActions = require('../../actions/FormActions.js');
 var DashActions = require('../../actions/DashActions.js');
 var DashStore   = require('../../stores/dashStore.js');
 
@@ -18,23 +19,6 @@ Flow:
 
 */
 
-function searchInstructor(term) {
-  // (TODO) Optimize this 
-  var instructor = DashStore.getTeacherPage();
-
-  if (instructor) {
-    return {
-      results: DashStore.getSearchResults().slice(0, 5),
-      sections: DashStore.getTeacherPage().courses
-    }
-  } else {
-    return {
-      results: DashStore.getSearchResults().slice(0, 5),
-      sections: []
-    }
-  }
-}
-
 module.exports = React.createClass({
   getInitialState: function() {
     return ({ 
@@ -49,7 +33,7 @@ module.exports = React.createClass({
     // (Bug) Store maintains teacher course sections so they will show up if
     // you navigate from the teacher page to review
     if (e.keyCode === 13) {
-      DashActions.search(this.state.query, 'instructors');
+      FormActions.fuzzyReviewSearch(this.state.query);
     } else {
       this.setState({ query: e.target.value });
     }
@@ -65,7 +49,7 @@ module.exports = React.createClass({
 
   render: function() {
     var fuzzy = this.state.results.map(function(item, i) {
-      return <Instructor label={item.name} key={i} />;
+      return <Instructor label={item.name} key={i} courses={item.courses}/>;
     });
 
     var courses = this.state.sections.map(function(item, i) {
@@ -92,11 +76,14 @@ module.exports = React.createClass({
   },
 
   onClick: function() {
-    DashActions.search(this.state.query, 'instructors');
+    FormActions.fuzzyReviewSearch(this.state.query);
   },
 
   _onChange: function() {
-    this.setState(searchInstructor(this.state.query));
+    this.setState({
+      results: DashStore.getFuzzyReviewSearch().slice(0, 5),
+      sections: DashStore.getFormCourses() || []
+    });
   }
 
 });
