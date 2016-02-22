@@ -19,19 +19,22 @@ Flow:
 
 */
 
+
+
 module.exports = React.createClass({
   getInitialState: function() {
+    var load = DashStore.getFullForm();
+
     return ({ 
-      query: '', 
-      results:  [], 
-      sections: [],
-      course: null, 
-      instructor: null });
+      query:      '', 
+      results:    load.fuzzy.slice(0,5) || [], 
+      sections:   load.courses          || [],
+      course:     load.course           || null, 
+      instructor: load.instructor       || null 
+    });
   },
 
   onKeyUp: function(e) {
-    // (Bug) Store maintains teacher course sections so they will show up if
-    // you navigate from the teacher page to review
     if (e.keyCode === 13) {
       FormActions.fuzzyReviewSearch(this.state.query);
     } else {
@@ -41,6 +44,7 @@ module.exports = React.createClass({
 
   componentDidMount: function() {
     DashStore.addChangeListener(this._onChange);
+    console.log(this.state);
   },
 
   componentWillUnmount: function() {
@@ -48,12 +52,18 @@ module.exports = React.createClass({
   },
 
   render: function() {
-    var fuzzy = this.state.results.map(function(item, i) {
-      return <Instructor label={item.name} key={i} courses={item.courses}/>;
+    var ts = this.state;
+
+    var fuzzy = ts.results.map(function(item, i) {
+      var toggle = (item.name === ts.instructor) ? 'on': 'off';
+
+      return <Instructor active={toggle} label={item.name} key={i} courses={item.courses}/>;
     });
 
-    var courses = this.state.sections.map(function(item, i) {
-      return <Course label={item.course_name} prof={item} key={i} />;
+    var courses = ts.sections.map(function(item, i) {
+      var toggle = (item.name === ts.course) ? 'on': 'off';
+
+      return <Course active={toggle} label={item.course_name} prof={item} key={i} />;
     });
 
     return (
@@ -80,6 +90,7 @@ module.exports = React.createClass({
   },
 
   _onChange: function() {
+    console.log(this.state);
     this.setState({
       results: DashStore.getFuzzyReviewSearch().slice(0, 5),
       sections: DashStore.getFormCourses() || []

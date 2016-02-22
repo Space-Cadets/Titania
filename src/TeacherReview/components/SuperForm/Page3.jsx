@@ -18,7 +18,7 @@ Flow:
 
 var Trait = React.createClass({
   getInitialState: function() {
-    return ({ active: 'off' });
+    return ({ active: this.props.active });
   },
 
   render: function() {
@@ -41,7 +41,12 @@ var Trait = React.createClass({
 
 module.exports = React.createClass({
   getInitialState: function() {
-    return ({ itraits: [], ctraits: [], active_ctraits: [], active_itraits: [] });
+    return ({ 
+      itraits: [], 
+      ctraits: [], 
+      active_ctraits: DashStore.getCTraits(), 
+      active_itraits: DashStore.getITraits(),
+    });
   },
 
   componentWillMount: function() {

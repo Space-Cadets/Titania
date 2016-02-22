@@ -181,6 +181,10 @@ var dashStore = assign({}, EventEmitter.prototype, {
 
   getReviewText: function() {
     return _data.form.review;
+  },
+
+  getFullForm: function() {
+    return _data.form;
   }
 
 });

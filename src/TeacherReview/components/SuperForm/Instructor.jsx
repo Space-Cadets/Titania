@@ -4,16 +4,20 @@ var DashActions = require('../../actions/DashActions.js');
 var FormActions = require('../../actions/FormActions.js');
 
 module.exports = React.createClass({
+  getInitialState: function() {
+    return ({ active: this.props.active });
+  },
+
   render: function() {
-    return (<div className="instructor-tag" onClick={this.instructorClick}>
-      {this.props.label}
+    return (<div className={"instructor-tag tag-" + this.state.active} 
+      onClick={this.instructorClick}>{this.props.label}
     </div>);
   },
 
   instructorClick: function(e) {
-    // FormActions.fetchCourses(e.target.innerText);
     DashActions.setFormInstructor(e.target.innerText);
     FormActions.setCourses(this.props.courses);
-    console.log(this.props);
+
+    (this.state.active === 'on') ? this.state.active = 'off' : this.state.active = 'on'
   }
 });
