@@ -17,12 +17,12 @@ module.exports = React.createClass({
 	onKeyUp: function(e) {
 		if (e.keyCode === 13) {
 			var type = this.state.course ? "courses" : "instructors";
-
+			if (location.pathname !== '/') {
+				DashActions.search(this.state.query, type);
+			}
 			this.context.router.push({
 				pathname: "/results/" + type + "/" + this.state.query
 			});
-
-			DashActions.search(this.state.query, type);
 			console.log(this.state.query + " " + type);
 		} else {
 			this.setState({ query: e.target.value });
@@ -37,12 +37,12 @@ module.exports = React.createClass({
 
 	onClick: function() {
 		var type = this.state.course ? "courses" : "instructors";
-
+		if (location.pathname !== '/') {
+			DashActions.search(this.state.query, type);
+		}
 		this.context.router.push({
 			pathname: "/results/" + type + "/" + this.state.query
 		});
-
-		DashActions.search(this.state.query, type);
 	},
 
 	render: function() {

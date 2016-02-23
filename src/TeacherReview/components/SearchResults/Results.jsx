@@ -20,7 +20,9 @@ function getSearchState() {
 
 module.exports = React.createClass({
 	getInitialState: function() {
-    return {results: []}
+    return {
+      results: []
+    };
   },
 
   componentDidMount: function() {

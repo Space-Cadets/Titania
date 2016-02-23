@@ -12,7 +12,7 @@ var CourseCard   = require('./CourseCard.jsx');
 
 // var TeacherLinks = require('./TeacherLinks.jsx');
 // var Trait        = require('../Shared/Trait.jsx');
-// var Review       = require('../Shared/Review.jsx'); 
+// var Review       = require('../Shared/Review.jsx');
 
 /**
  * Utility functions for Course Page
@@ -83,16 +83,16 @@ module.exports = React.createClass({
 
     return (
       <div>
-        <Navbar name="Kent"/>
+        <Navbar name="Flux Spaghetti"/>
         <div id="content">
           <div id="bio-row">
-            <CourseCard name={this.state.name} subject={this.state.subject} 
+            <CourseCard name={this.state.name} subject={this.state.subject}
               rating={this.state.rating} level={this.state.level} />
             {/* <TeacherLinks instructors={this.state.instructors} />*/}
             <div className="link-card">
-              <div className="Title"> 
+              <div className="Title">
                 <div className="stump">
-                  <i className="fa fa-graduation-cap"></i> 
+                  <i className="fa fa-graduation-cap"></i>
                   Taught By
                 </div>
               </div>
@@ -110,9 +110,9 @@ module.exports = React.createClass({
           */}
 
           <div id="review-row-container">
-              <div className="Title"> 
+              <div className="Title">
                   <div className="stump">
-                    <i className="fa fa-thumbs-o-up"></i> 
+                    <i className="fa fa-thumbs-o-up"></i>
                     Reviews
                   </div>
               </div>
@@ -133,7 +133,7 @@ module.exports = React.createClass({
       reviews: payload.data.reviews,
       subject: payload.data.subject,
       level: payload.data.subject_level,
-      rating: payload.data.rating, 
+      rating: payload.data.rating,
       name: payload.data.name
     });
   }

@@ -30,7 +30,10 @@ var _data = {
 
   itraits: [],
 
-  ctraits: []
+  ctraits: [],
+
+  results: []
+  
 }
 
 /**
