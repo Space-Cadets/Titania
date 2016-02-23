@@ -46,7 +46,7 @@ module.exports = React.createClass({
   //Fires post-mount, load data here!
   componentDidMount: function() {
     DashStore.addChangeListener(this._onChange);
-    // DashActions.getUser();
+    DashActions.getUser();
   },
 
   // Remove change listers from stores

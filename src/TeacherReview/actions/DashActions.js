@@ -18,25 +18,19 @@ module.exports = {
 
   getUser: function() {
     if (!window.token && !localStorage.accessToken) {
-      console.log(localStorage.accessToken + " " + window.token);
       localStorage.accessToken = "";
       browserHistory.push("/register");
     }
 
-    request.get({ url: base + 'me',
+    request.get({ url: base + 'user', json: true,
       headers: {
-        "Content-Type": "application/json",
         'Authorization': "JWT " + localStorage.accessToken || window.token
       }
     }, function(err, res, body) {
         if (err || res.statusCode !== 200 && res.statusCode !== 401) {
           // Handle fail
-
-          /*
           localStorage.accessToken = "";
-          browserHistory.push("/register");
-          */
-          
+          browserHistory.push("/login");
           return;
         }
         // Handle success

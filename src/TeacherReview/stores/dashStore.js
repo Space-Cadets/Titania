@@ -39,7 +39,7 @@ var _data = {
 
 function _getUser(user) {
   //later maybe populate other types of data? Or consolidate this into feed request?
-  _data.user.name = user.firstName + " " + user.lastName;
+  _data.user.name = user.user.first_name + " " + user.user.last_name;
 }
 
 function _set_instructor(instructor) {
@@ -219,7 +219,6 @@ dashStore.dispatchToken = AppDispatcher.register(function(payload) {
 
     case DashConstants.GET_USER:
       _getUser(action.user);
-      console.log(action, 'user logger in');
       break;
 
     case DashConstants.SET_FORM_INSTRUCTOR:
@@ -272,7 +271,7 @@ dashStore.dispatchToken = AppDispatcher.register(function(payload) {
       console.log(_data.form);
       _remove_trait(action.type, action.trait);
       break;
-      
+
     // (TODO) Add FAILURE cases
 
     default:

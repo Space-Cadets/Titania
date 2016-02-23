@@ -35,7 +35,7 @@ module.exports = React.createClass({
 
   dropdownOff: function(e) {
     if (e.target.id !== 'dropdown' && e.target.className !== 'dropdownbb' &&
-        e.target.parentNode.className !== 'dropdownbb') {
+        e.target.parentNode.className !== 'dropdownbb' && e.target.parentNode.id != 'dropdown') {
       this.setState({
         showDropdown: false
       });
@@ -70,7 +70,10 @@ module.exports = React.createClass({
             </h1>
           </Link>
           <Searchbar />
-          <button onClick={this.onClick} id="dropdown" className="btn">{this.props.name}</button>
+          <button onClick={this.onClick} id="dropdown" className="btn">
+            {this.props.name}&nbsp;
+            <i className={this.state.showDropdown ? "fa fa-caret-up" : "fa fa-caret-down"}></i>
+          </button>
           {this.renderDropdown()}
         </span>
 

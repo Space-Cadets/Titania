@@ -385,12 +385,16 @@ body {
   text-decoration: none;
 }
 
+#dropdown {
+  margin: 10px;
+}
+
 #Nav-dropdown {
   z-index: 5;
   position: absolute;
   width: 170px;
   background-color: white;
-  top: 45px;
+  top: 50px;
   right: 30px;
   border: 1px solid #ccc;
   border-radius: 2px;
@@ -841,7 +845,6 @@ body {
 .btn {
   border: 0;
   cursor: pointer;
-  margin: 10px;
   padding: 5px;
   font-size: 15px;
   border-radius: 2px;
