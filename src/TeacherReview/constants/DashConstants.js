@@ -33,8 +33,10 @@ module.exports = keyMirror({
   ADD_TRAIT:           null,
   REMOVE_TRAIT:        null,
 
-  SEND_REVIEW:         null,
-  SEND_TRAITS:         null,
-  CLEAR_RFORM:         null
+  SEND_REVIEW_SUCCESS: null,
+  SEND_REVIEW_FAILURE: null,
+  SEND_TRAITS_SUCCESS: null,
+  SEND_TRAITS_FAILURE: null,
 
+  CLEAR_RFORM:         null
 });

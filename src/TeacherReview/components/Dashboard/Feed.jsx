@@ -53,10 +53,6 @@ module.exports = React.createClass({
     </div>);
   },
 
-  debug: function() {
-    console.log(this.state);
-  },
-
   _onChange: function() {
     this.setState({
       reviews: DashStore.getRecentReviews()

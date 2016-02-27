@@ -15,6 +15,16 @@ var _data                          = {};
     _data.login.notification       = {};
     _data.login.notification.show  = false;
 
+// var _data = {
+//   signup: {
+//     notification: { show: false }
+//   },
+
+//   login: {
+//     notification: { show: false }
+//   }
+// }
+
 /**
  * Utility functions for store -- for mutating store data
  */

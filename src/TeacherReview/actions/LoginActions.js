@@ -3,12 +3,11 @@
  * -- Send calls that will be lined up to mutate data in store
  */
 
-//filters actions for one way data flow
-var AppDispatcher  = require('../dispatchers/AppDispatcher.js');
-//defined user actions
-var LoginConstants = require('../constants/LoginConstants.js');
 //request -- Ajax
 var request        = require('request');
+//filters actions for one way data flow
+var AppDispatcher  = require('../dispatchers/AppDispatcher.js');
+var LoginConstants = require('../constants/LoginConstants.js');
 
 function validateSignupForm(userInfo) {
   //check Email

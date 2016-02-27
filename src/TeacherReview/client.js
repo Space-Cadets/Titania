@@ -17,7 +17,7 @@ var browserHistory = ReactRouter.browserHistory;
 var Router         = ReactRouter.Router;
 var Route          = ReactRouter.Route;
 
-//run router
+// Run Router
 ReactDOM.render(<Router history={browserHistory}>
                   <Route path="/" component={Dashboard} />
                   <Route path="/register" component={Signup} />
