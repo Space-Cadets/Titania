@@ -196,13 +196,13 @@ body {
 }
 
 #Search-Dropdown {
-  width: 16%;
+  width: 20%;
   padding: 5px;
-  margin-right: 5px;
+  margin-left: 10px;
   color: white;
   height: 23px;
   font-size: 14px;
-  background: #389EF5; /* the green that we had before: #06BF06;*/
+  background: #389EF5; /* the green that we had before: #06BF06; */
   outline: none;
   border: 0;
 }
@@ -711,7 +711,7 @@ body {
   padding-top: 20px;
   margin: auto;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
 }
 

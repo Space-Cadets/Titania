@@ -32,7 +32,9 @@ var _data = {
 
   ctraits: [],
 
-  results: []
+  results: [],
+
+  recent_reviews: []
   
 }
 
@@ -63,6 +65,10 @@ function _tpage_load(results) {
 
 function _cpage_load(results) {
   _data.cpage = results;
+}
+
+function _set_recent_reviews(reviews) {
+  _data.recent_reviews = reviews;
 }
 
 function _fuzzy_review_search(results) {
@@ -188,7 +194,7 @@ var dashStore = assign({}, EventEmitter.prototype, {
 
   getFullForm: function() {
     return _data.form;
-  }
+  },
 
 });
 
@@ -273,6 +279,11 @@ dashStore.dispatchToken = AppDispatcher.register(function(payload) {
     case DashConstants.REMOVE_TRAIT:
       console.log(_data.form);
       _remove_trait(action.type, action.trait);
+      break;
+
+    case DashConstants.GET_NEW_REVIEWS:
+      _set_recent_reviews(action.reviews);
+      console.log(_data.recent_reviews);
       break;
 
     // (TODO) Add FAILURE cases

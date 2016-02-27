@@ -20,7 +20,7 @@ module.exports = keyMirror({
   GET_TRAITS:          null,
 
   FUZZY_REVIEW_SEARCH: null,
-  SET_COURSES:       null,
+  SET_COURSES:         null,
   
   RATE_COURSE:         null,
   RATE_INSTRUCTOR:     null,
@@ -31,5 +31,10 @@ module.exports = keyMirror({
   ADD_REVIEW_TEXT:     null,
   
   ADD_TRAIT:           null,
-  REMOVE_TRAIT:        null
+  REMOVE_TRAIT:        null,
+
+  SEND_REVIEW:         null,
+  SEND_TRAITS:         null,
+  CLEAR_RFORM:         null
+
 });

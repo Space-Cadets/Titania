@@ -48,11 +48,12 @@ module.exports = React.createClass({
 	render: function() {
 		return (<div id="Search-Container">
 			<span className="fa fa-search icon"></span>
-			<input id="Search-Input" onKeyUp={this.onKeyUp} placeholder="Search" type="text"></input>
-			<select onChange={this.onChange} id="Search-Dropdown" defaultValue="Course">
+			<select onChange={this.onChange} id="Search-Dropdown" defaultValue="Instructor">
 				<option value="Course">Course</option>
 				<option value="Instructor">Instructor</option>
 			</select>
+			<input id="Search-Input" onKeyUp={this.onKeyUp} placeholder="Search" type="text"></input>
+			
 			<button className="btn" onClick={this.onClick}>Search</button>
 		</div>);
 	}

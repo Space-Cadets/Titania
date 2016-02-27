@@ -12,7 +12,6 @@ var Dashboard      = require('./components/Dashboard/Dashboard.jsx');
 var SearchResults  = require('./components/SearchResults/SearchResults.jsx');
 var TeacherPage    = require('./components/TeacherPage/TeacherPage.jsx');
 var CoursePage     = require('./components/CoursePage/CoursePage.jsx');
-var Form           = require('./components/Form/Form.jsx');
 
 var browserHistory = ReactRouter.browserHistory;
 var Router         = ReactRouter.Router;
@@ -26,5 +25,4 @@ ReactDOM.render(<Router history={browserHistory}>
                   <Route path="/instructor/*" component={TeacherPage} />
                   <Route path="/course/*" component={CoursePage} />
                   <Route path="/results/:type/:query" component={SearchResults} />
-                  <Route path="/form" component={Form} />
                 </Router>, document.getElementById('TeacherReview'));
