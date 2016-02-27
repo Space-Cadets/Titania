@@ -9,7 +9,6 @@ var DashActions = require('../../actions/dashActions.js');
 
 //Components
 var Navbar      = require('../Shared/NavbarIn.jsx');
-var Post        = require('../Shared/Post.jsx');
 var Footer      = require('../Shared/Footer.jsx');
 var TrendColumn = require('../Shared/TrendColumn.jsx');
 var Feed        = require('./Feed.jsx');

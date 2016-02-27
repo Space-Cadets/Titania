@@ -291,11 +291,10 @@ body {
 }
 
 #Super-Form {
-  min-height: 400px;
-  width: 95%;
-  background-color: beige;
   display: flex;
+  min-height: 400px;
   flex-direction: column;
+  background-color: beige;
   justify-content: space-between;
 }
 
@@ -708,7 +707,6 @@ body {
 }
 
 .feed-contents {
-  padding-top: 20px;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -872,14 +870,9 @@ body {
 }
 
 .review {
-  border: solid 1px;
-  border-radius: 3px;
-  height: 25px;
-  padding: 10px;
-  margin: 5px;
-  margin-top: 15px;
-  font-size: 12px;
-  border-color: rgb(0, 0, 190);
+  margin: 10px;
+  background: white;
+  box-shadow: 0px 5px 25px #ccc;
 }
 /**
  * End Global Styles -----------------------------------------------------------

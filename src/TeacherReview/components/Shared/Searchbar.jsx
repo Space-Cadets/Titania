@@ -10,7 +10,7 @@ module.exports = React.createClass({
 	getInitialState: function() {
 		return {
 			query: '',
-			course: true
+			course: false
 		};
 	},
 

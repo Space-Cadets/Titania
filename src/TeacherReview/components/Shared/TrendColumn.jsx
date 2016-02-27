@@ -5,7 +5,6 @@ var React = require('react');
 
 //Components
 var Link  = require('react-router').Link;
-var PostButton = require('./Post.jsx');
 var Trending = require('./Trending.jsx');
 
 module.exports = React.createClass({

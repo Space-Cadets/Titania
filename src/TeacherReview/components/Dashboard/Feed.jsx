@@ -8,12 +8,8 @@ var Link        = require('react-router').Link;
 var DashStore   = require('../../stores/dashStore.js');
 var DashActions = require('../../actions/dashActions.js');
 
+var Review = require('../Shared/Review.jsx');
 var FormContainer = require('../SuperForm/FormContainer.jsx');
-var RecentReview  = React.createClass({
-  render: function() {
-    return (<div>{this.props.content}</div>);
-  }
-});
 
 module.exports = React.createClass({
   componentWillMount: function() {
@@ -35,11 +31,11 @@ module.exports = React.createClass({
 
   render: function() {
     var reviews = this.state.reviews.map(function(r, i) {
-      return (<div key={i}>
-        <h4>{r.course} with {r.instructor_name}</h4>
-        <p>{r.subject} {r.subject_level} <em>{r.date_created}</em></p>
-        <p>{r.text}</p>
-      </div>);
+      return (<Review courseName={r.course} date={r.date_created}
+        classRating={r.class_rating} instructorRating={r.inst_rating}
+        instructorName={r.instructor_name} subject={r.subject}
+        crn={r.section_crn} level={r.subject_level} key={i} 
+        author={r.student} text={r.text} />);
     });
 
     return (
