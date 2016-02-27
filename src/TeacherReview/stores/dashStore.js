@@ -104,6 +104,19 @@ function _set_review_text(text) {
   _data.form.review = text;
 }
 
+function _clear_rform() {
+  _data.form = {
+    fuzzy: [],
+    instructor: '',
+    course: '',
+    istars: 0,
+    cstars: 0,
+    itraits: [],
+    ctraits: [],
+    review: ''
+  }
+}
+
 // Test these!
 function _add_trait(type, trait) {
   if (type === 'course')
@@ -284,6 +297,11 @@ dashStore.dispatchToken = AppDispatcher.register(function(payload) {
     case DashConstants.GET_NEW_REVIEWS:
       _set_recent_reviews(action.reviews);
       console.log(_data.recent_reviews);
+      break;
+
+    case DashConstants.CLEAR_RFORM:
+      _clear_rform();
+      console.log(_data.form);
       break;
 
     // (TODO) Add FAILURE cases

@@ -1,18 +1,21 @@
 /**
  * Component for Course Page View
  */
+// Libs
 var React       = require('react');
-var Router      = require('react-router');
-var DashStore   = require('../../stores/dashStore.js');
-var DashActions = require('../../actions/dashActions.js');
+var Router       = require('react-router');
+var Link         = require('react-router').Link;
+
+// Flux Parts
+var DashStore    = require('../../stores/dashStore.js');
+var DashActions  = require('../../actions/dashActions.js');
 
 // Components
-var Navbar       = require('../Shared/NavbarIn.jsx');
 var CourseCard   = require('./CourseCard.jsx');
+var Review       = require('../Shared/Review.jsx');
+var Navbar       = require('../Shared/NavbarIn.jsx');
+// var Trait     = require('../Shared/Trait.jsx');
 
-// var TeacherLinks = require('./TeacherLinks.jsx');
-// var Trait        = require('../Shared/Trait.jsx');
-// var Review       = require('../Shared/Review.jsx');
 
 /**
  * Utility functions for Course Page
@@ -68,17 +71,16 @@ module.exports = React.createClass({
 
     // Get array of review components
     var reviews = this.state.reviews.map(function(r, i) {
-      return (
-        <div key={i}>
-          <h4>{r.course} with {r.instructor_name}</h4>
-          <p>{r.subject} {r.subject_level} <em>{r.date_created}</em></p>
-          <p>{r.text}</p>
-        </div>
-      );
+      return (<Review courseName={r.course} date={r.date_created}
+        classRating={r.class_rating} instructorRating={r.inst_rating}
+        instructorName={r.instructor_name} subject={r.subject}
+        crn={r.section_crn} level={r.subject_level} key={i} 
+        author={r.student} text={r.text} />);
     });
 
     var instructors = this.state.instructors.map(function(ins, i) {
-      return <div key={i}>{ins.name} {ins.rating}</div>
+      var hyper = '/instructor/' + ins.name;
+      return <div key={i}><Link to={hyper}>{ins.name}</Link></div>
     });
 
     return (

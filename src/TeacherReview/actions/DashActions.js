@@ -104,28 +104,6 @@ module.exports = {
     })
   },
 
-  sendReview: function(review) {
-    // (TODO) TEST ALOT!
-    request.post({ url: 'http://localhost:5000/reviews', json: true, body: review },
-      function(err, res, body) {
-        if (err || res.statusCode !== 200 && res.statusCode !== 401) {
-          // (TODO) Handle fail
-          AppDispatcher.handleViewAction({
-            actionType: DashConstants.SEND_REVIEW_FAILURE,
-            status: res.body.status
-          });
-        }
-        // Handle success
-        console.log(review + " " + res);
-
-        AppDispatcher.handleViewAction({
-          actionType: DashConstants.SEND_REVIEW_SUCCESS,
-          status: res.body.message
-        });
-        
-    });
-  },
-
   loadRecentReviews: function() {
 
     request(base + 'recent', function(err, res) {

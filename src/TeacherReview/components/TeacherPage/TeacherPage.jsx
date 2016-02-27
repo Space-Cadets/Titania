@@ -3,6 +3,7 @@
  */
 var React       = require('react');
 var Router      = require('react-router');
+var Link        = require('react-router').Link;
 var request     = require('request');
 var DashStore   = require('../../stores/dashStore.js');
 var DashActions = require('../../actions/DashActions.js');
@@ -10,7 +11,6 @@ var DashActions = require('../../actions/DashActions.js');
 // Components
 var Navbar      = require('../Shared/NavbarIn.jsx');
 var TeacherCard = require('./TeacherCard.jsx');
-// var CourseLinks = require('./CourseLinks.jsx');
 var Review      = require('../Shared/Review.jsx');
 
 /**
@@ -58,17 +58,20 @@ module.exports = React.createClass({
 
   render: function() {
 
-    // (TODO) Make this its own (sexy) component
     var reviews = this.state.reviews.map(function(r, i) {
-      return (<div key={i}>
-        <h4>{r.course} with {r.instructor_name}</h4>
-        <p>{r.subject} {r.subject_level} <em>{r.date_created}</em></p>
-        <p>{r.text}</p>
-      </div>)
+      return (<Review courseName={r.course} date={r.date_created}
+        classRating={r.class_rating} instructorRating={r.inst_rating}
+        instructorName={r.instructor_name} subject={r.subject}
+        crn={r.section_crn} level={r.subject_level} key={i} 
+        author={r.student} text={r.text} />);
     });
 
     var courses = this.state.courses.map(function(c, i) {
-      return <div key={i}>{c.department} {c.level} – {c.course_name}</div>;
+      var hyper = '/course/' + c.course_name;
+      return (
+        <div key={i}>
+          <Link to={hyper}>{c.department} {c.level} {c.course_name}</Link>
+        </div>);
     });
 
     return (<div>

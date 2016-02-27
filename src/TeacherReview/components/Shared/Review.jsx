@@ -1,7 +1,9 @@
 /**
  *  Review Component -- Shows Review Text (passed via props)
  */
-var React = require('react');
+var React  = require('react');
+var Router = require('react-router');
+var Link   = require('react-router').Link;
 
 module.exports = React.createClass({
   render: function() {
@@ -22,8 +24,18 @@ module.exports = React.createClass({
         {/*this.props.text*/}
         {/*this.props.author ->*/}
 
-        <h4>{this.props.courseName} with {this.props.instructorName}</h4>
+        <h4>
+            <Link to={'/course/' + this.props.courseName}>
+                {this.props.courseName}
+            </Link> 
+            &nbsp;with&nbsp;
+            <Link to={'/instructor/' + this.props.instructorName}>
+                 {this.props.instructorName}
+            </Link>
+        </h4>
         <p>{this.props.subject} {this.props.level} <em>{this.props.date}</em></p>
+        <p>Course Rating: {this.props.classRating}</p>
+        <p>Instructor Rating: {this.props.instructorRating}</p>
         <p>{this.props.text}</p>
         
       </div>
