@@ -56,13 +56,13 @@ module.exports = React.createClass({
     var fuzzy = ts.results.map(function(item, i) {
       var toggle = (item.name === ts.instructor) ? 'on': 'off';
 
-      return <Instructor active={toggle} label={item.name} key={i} courses={item.courses}/>;
+      return <Instructor key={i} active={toggle} label={item.name} courses={item.courses}/>;
     });
 
     var courses = ts.sections.map(function(item, i) {
       var toggle = (item.course_name === ts.course) ? 'on': 'off';
 
-      return <Course active={toggle} label={item.course_name} prof={item} key={i} />;
+      return <Course key={i} active={toggle} label={item.course_name} prof={item} />
     });
 
     return (
@@ -89,10 +89,13 @@ module.exports = React.createClass({
   },
 
   _onChange: function() {
+    var load = DashStore.getFullForm();
     this.setState({
       results: DashStore.getFuzzyReviewSearch().slice(0, 5),
-      sections: DashStore.getFormCourses() || []
-    });
+      sections:   load.courses             || [],
+      course:     load.course              || null, 
+      instructor: load.instructor          || null 
+    });   
   }
 
 });
