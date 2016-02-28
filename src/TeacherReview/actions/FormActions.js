@@ -72,9 +72,18 @@ module.exports = {
     });
   },
 
+  // Bunch of bullshit from request as usual right here
+  validateReview: function(review) {
+    request.get({ url: 'http://localhost:5000/sections/Edward%20Kim/Independent%20Study' }, function(err, res, body) {
+      console.log(err)
+      console.log(res)
+      console.log(body)
+    })
+  },
+
   sendReview: function(review) {
     // (TODO) TEST ALOT!
-    request.post({ url: 'http://localhost:5000/reviews', json: true, body: review },
+    request.post({ url: base + 'reviews', json: true, body: review },
       function(err, res, body) {
         if (err || res.statusCode !== 200 && res.statusCode !== 401) {
           // (TODO) Handle fail
@@ -83,8 +92,9 @@ module.exports = {
             status: res.body.status
           });
         }
+        
         // Handle success
-        console.log(review + " " + res);
+        // console.log(review + " " + res);
 
         AppDispatcher.handleViewAction({
           actionType: DashConstants.SEND_REVIEW_SUCCESS,

@@ -15,8 +15,8 @@ module.exports = React.createClass({
     return (
     <div>
       <div>Would you like to post this anonymously?</div>
-      <button className="btn" onClick={this.postAnon}>Post as me</button>
-      <button className="btn" onClick={this.postMe}>Post anonymously</button>
+      <button className="btn" onClick={this.postMe}>Post as me</button>
+      <button className="btn" onClick={this.postAnon}>Post anonymously</button>
     </div>);
   },
 
@@ -27,13 +27,15 @@ module.exports = React.createClass({
       student: 'test1@villanova.edu', // (TODO)
       instructor: payload.instructor,
       section: 33000,                 // (TODO)
+      course: payload.course,              
       instRating: payload.istars,
       classRating: payload.cstars,
       reviewBody: payload.review
     };
 
-    FormActions.sendReview(groomed);
-    FormActions.clearForm();
+    FormActions.validateReview(groomed);
+    // FormActions.sendReview(groomed);
+    // FormActions.clearForm();
   },
 
   postMe: function() {

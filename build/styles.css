@@ -200,7 +200,6 @@ body {
 }
 
 #Search-Dropdown {
-  width: 20%;
   padding: 5px;
   margin-left: 10px;
   color: white;
@@ -213,9 +212,6 @@ body {
 
 #Search-Input:focus{
   outline: none;
-}
-
-.icon {
 }
 
 #Search-Input:focus::-webkit-input-placeholder {
