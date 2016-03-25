@@ -5,6 +5,7 @@ var FormStore   = require('../../stores/formStore.js');
 
 var Instructor  = require('./Instructor.jsx');
 var Course      = require('./Course.jsx');
+
 /* Implement items for this component 
 
 Flow: 
@@ -17,8 +18,6 @@ Flow:
  [4. If wrong professor, user clears prof, courses are wiped as well]
 
 */
-
-
 
 module.exports = React.createClass({
   getInitialState: function() {

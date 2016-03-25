@@ -1,9 +1,9 @@
-var AppDispatcher       = require('../dispatchers/AppDispatcher.js');
-var FormConstants       = require('../constants/FormConstants.js');
-var EventEmitter        = require('events').EventEmitter;
-var assign              = require('object-assign');
+var AppDispatcher = require('../dispatchers/AppDispatcher.js');
+var FormConstants = require('../constants/FormConstants.js');
+var EventEmitter  = require('events').EventEmitter;
+var assign        = require('object-assign');
 
-var CHANGE_EVENT        = 'change';
+var CHANGE_EVENT  = 'change';
 
 var _form = {
   fuzzy: [],
@@ -13,14 +13,18 @@ var _form = {
   cstars: 0,
   itraits: [],
   ctraits: [],
+  active_itraits: [],
+  active_ctraits: [],
   review: ''
 }
 
 function _add_trait(type, trait) {
-  if (type === 'course')
-    _form.ctraits.push(trait);
-  else if (type === 'instructor')
-    _form.itraits.push(trait);
+  if (type === 'course') {
+    _form.active_ctraits.push(trait);
+  }
+  else if (type === 'instructor') {
+    _form.active_itraits.push(trait);
+  }
 }
 
 function _clear_rform() {
@@ -32,6 +36,8 @@ function _clear_rform() {
     cstars: 0,
     itraits: [],
     ctraits: [],
+    active_itraits: [],
+    active_ctraits: [],
     review: ''
   };
 }
@@ -50,11 +56,11 @@ function _rate_instructor(num) {
 
 function _remove_trait(type, trait) {
   if (type === 'course') {
-    var ind = _form.ctraits.indexOf(trait);
-    _form.ctraits.splice(ind, 1);
+    var ind = _form.active_ctraits.indexOf(trait);
+    _form.active_ctraits.splice(ind, 1);
   } else if (type === 'instructor') {
-    var ind = _form.itraits.indexOf(trait);
-    _form.ctraits.splice(ind, 1);
+    var ind = _form.active_itraits.indexOf(trait);
+    _form.active_itraits.splice(ind, 1);
   }
 }
 
@@ -112,12 +118,14 @@ var formStore = assign({}, EventEmitter.prototype, {
     return _form.istars;
   },
 
+  // Maybe
   getITraits: function() {
-    return _form.itraits;
+    return _form.active_itraits;
   },
 
+  // Also Maybe
   getCTraits: function() {
-    return _form.ctraits;
+    return _form.active_ctraits;
   },
 
   getTraits: function() {
@@ -144,58 +152,47 @@ formStore.dispatchToken = AppDispatcher.register(function(payload) {
 
     case FormConstants.ADD_REVIEW_TEXT: ////
       _set_review_text(action.text);
-      console.log(_form.review);
       break;
 
     case FormConstants.ADD_TRAIT: ////
-      console.log(action);
       _add_trait(action.type, action.trait);
       break;
 
     case FormConstants.CLEAR_RFORM: ////
       _clear_rform();
-      console.log(_form);
       break;
 
     case FormConstants.FUZZY_REVIEW_SEARCH: ////
       _fuzzy_review_search(action.results);
-      console.log(action, 'successful search returned');
       break;
 
     case FormConstants.GET_TRAITS:
-      console.log(action, 'storing traits');
       _set_instructor_traits(action.itraits);
       _set_course_traits(action.ctraits);
       break;
 
     case FormConstants.RATE_COURSE: ////
       _rate_course(action.rating);
-      console.log(action, 'rated course');
       break;
 
     case FormConstants.RATE_INSTRUCTOR: ////
-      _rate_instructor(action.rating)
-      console.log(action, 'rated instructor');
+      _rate_instructor(action.rating);
       break;
 
     case FormConstants.REMOVE_TRAIT: ////
-      console.log(_form);
       _remove_trait(action.type, action.trait);
       break;
 
     case FormConstants.SET_FORM_COURSE: ////
       _set_course(action.course);
-      console.log(action, 'set course');
       break;
 
     case FormConstants.SET_FORM_INSTRUCTOR: ////
       _set_instructor(action.instructor);
-      console.log(action, 'set instructor');
       break;
 
     case FormConstants.SET_COURSES: ////
       _set_form_courses(action.courses);
-      console.log(action, 'got their courses');
       break;
 
     // (TODO) Add FAILURE cases

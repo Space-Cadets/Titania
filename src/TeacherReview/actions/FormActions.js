@@ -68,7 +68,6 @@ module.exports = {
         console.log('error');
       } else {
         var payload = JSON.parse(res.body);
-        console.log(payload);
         AppDispatcher.handleViewAction({
           actionType: FormConstants.GET_TRAITS,
           status: payload.status,
