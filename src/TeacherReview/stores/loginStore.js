@@ -7,23 +7,24 @@ var EventEmitter                   = require('events').EventEmitter;
 var assign                         = require('object-assign');
 var browserHistory                 = require('react-router').browserHistory;
 var CHANGE_EVENT                   = 'change';
-var _data                          = {};
-    _data.signup                   = {};
-    _data.signup.notification      = {};
-    _data.signup.notification.show = false;
-    _data.login                    = {};
-    _data.login.notification       = {};
-    _data.login.notification.show  = false;
 
-// var _data = {
-//   signup: {
-//     notification: { show: false }
-//   },
+// var _data                          = {};
+//     _data.signup                   = {};
+//     _data.signup.notification      = {};
+//     _data.signup.notification.show = false;
+//     _data.login                    = {};
+//     _data.login.notification       = {};
+//     _data.login.notification.show  = false;
 
-//   login: {
-//     notification: { show: false }
-//   }
-// }
+var _data = {
+  signup: {
+    notification: { show: false }
+  },
+
+  login: {
+    notification: { show: false }
+  }
+}
 
 /**
  * Utility functions for store -- for mutating store data

@@ -14,7 +14,33 @@ var base = 'http://localhost:5000/';
 
 module.exports = {
 
+  addReviewText: function(text) {
+  // Add text from review to form store
+    AppDispatcher.handleViewAction({
+      actionType: DashConstants.ADD_REVIEW_TEXT,
+      text: text
+    });
+  },
+
+  addTrait: function(type, trait) {
+  // Add trait (either instructor or course) to form store
+    AppDispatcher.handleViewAction({
+      actionType: DashConstants.ADD_TRAIT,
+      type: type,
+      trait: trait
+    });
+  },
+
+  clearForm: function() {
+  // Clear the form store (after review is submitted)
+    AppDispatcher.handleViewAction({
+      actionType: DashConstants.CLEAR_RFORM,
+      purpose: 'FORM COMPLETED'
+    });
+  },
+
   fuzzyReviewSearch: function(query) {
+  // get instructors for fuzzy search in form and add to form store
     request({ url: base + 'instructors' + '/f/' + query,
       headers: {
         'Authorization': "JWT " + localStorage.accessToken || window.token,
@@ -35,29 +61,8 @@ module.exports = {
     });
   },
 
-  setCourses: function(courses) {
-    AppDispatcher.handleViewAction({
-      actionType: DashConstants.SET_COURSES,
-      courses: courses
-    });
-  },
-
-  addReviewText: function(text) {
-    AppDispatcher.handleViewAction({
-      actionType: DashConstants.ADD_REVIEW_TEXT,
-      text: text
-    });
-  },
-
-  addTrait: function(type, trait) {
-    AppDispatcher.handleViewAction({
-      actionType: DashConstants.ADD_TRAIT,
-      type: type,
-      trait: trait
-    });
-  },
-
   removeTrait: function(type, trait) {
+  // Remove trait (either instructor or course) from form store
     AppDispatcher.handleViewAction({
       actionType: DashConstants.REMOVE_TRAIT,
       type: type,
@@ -65,24 +70,16 @@ module.exports = {
     });
   },
 
-  clearForm: function() {
+  setCourses: function(courses) {
+  // Set courses that instructor teaches in the form store
     AppDispatcher.handleViewAction({
-      actionType: DashConstants.CLEAR_RFORM,
-      purpose: 'FORM COMPLETED'
+      actionType: DashConstants.SET_COURSES,
+      courses: courses
     });
   },
 
-  // Bunch of bullshit from request as usual right here
-  validateReview: function(review) {
-    request.get({ url: 'http://localhost:5000/sections/Edward%20Kim/Independent%20Study' }, function(err, res, body) {
-      console.log(err)
-      console.log(res)
-      console.log(body)
-    })
-  },
-
   sendReview: function(review) {
-    // (TODO) TEST ALOT!
+  // Send review to Oberon -- Will change soon
     request.post({ url: base + 'reviews', json: true, body: review },
       function(err, res, body) {
         if (err || res.statusCode !== 200 && res.statusCode !== 401) {
@@ -92,9 +89,6 @@ module.exports = {
             status: res.body.status
           });
         }
-        
-        // Handle success
-        // console.log(review + " " + res);
 
         AppDispatcher.handleViewAction({
           actionType: DashConstants.SEND_REVIEW_SUCCESS,
@@ -103,6 +97,11 @@ module.exports = {
         
     });
   },
-
-
+  
+  validateReview: function(review) {
+  // TODO remove this or change to perform frontend validation
+    request.get({ url: 'http://localhost:5000/sections/Edward%20Kim/Independent%20Study' }, function(err, res, body) {
+        console.log(err, res, body);
+    });
+  }
 };

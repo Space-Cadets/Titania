@@ -7,6 +7,8 @@ var Link   = require('react-router').Link;
 
 module.exports = React.createClass({
   render: function() {
+    var d = new Date(this.props.date);
+
     return (
       <div className="review">
 
@@ -33,7 +35,7 @@ module.exports = React.createClass({
                  {this.props.instructorName}
             </Link>
         </h4>
-        <p>{this.props.subject} {this.props.level} <em>{this.props.date}</em></p>
+        <p>{this.props.subject} {this.props.level} <em>{d.toString()}</em></p>
         <p>Course Rating: {this.props.classRating}</p>
         <p>Instructor Rating: {this.props.instructorRating}</p>
         <p>{this.props.text}</p>
