@@ -8,7 +8,7 @@ var request        = require('request');
 var browserHistory = require('react-router').browserHistory;
 
 var AppDispatcher  = require('../dispatchers/AppDispatcher.js');
-var DashConstants  = require('../constants/DashConstants.js');
+var FormConstants  = require('../constants/FormConstants.js');
 
 var base = 'http://localhost:5000/';
 
@@ -17,7 +17,7 @@ module.exports = {
   addReviewText: function(text) {
   // Add text from review to form store
     AppDispatcher.handleViewAction({
-      actionType: DashConstants.ADD_REVIEW_TEXT,
+      actionType: FormConstants.ADD_REVIEW_TEXT,
       text: text
     });
   },
@@ -25,7 +25,7 @@ module.exports = {
   addTrait: function(type, trait) {
   // Add trait (either instructor or course) to form store
     AppDispatcher.handleViewAction({
-      actionType: DashConstants.ADD_TRAIT,
+      actionType: FormConstants.ADD_TRAIT,
       type: type,
       trait: trait
     });
@@ -34,7 +34,7 @@ module.exports = {
   clearForm: function() {
   // Clear the form store (after review is submitted)
     AppDispatcher.handleViewAction({
-      actionType: DashConstants.CLEAR_RFORM,
+      actionType: FormConstants.CLEAR_RFORM,
       purpose: 'FORM COMPLETED'
     });
   },
@@ -49,22 +49,54 @@ module.exports = {
     }, function(err, res) {
       if (err) {
         AppDispatcher.handleViewAction({
-          actionType: DashConstants.SEARCH_FAILURE,
+          actionType: FormConstants.SEARCH_FAILURE,
           messages: res.body.description
         });
       }
 
       AppDispatcher.handleViewAction({
-        actionType: DashConstants.FUZZY_REVIEW_SEARCH,
+        actionType: FormConstants.FUZZY_REVIEW_SEARCH,
         results: JSON.parse(res.body).data
       });
+    });
+  },
+
+  getTraits: function() {
+  // Get the traits for the form
+    request(base + 'traits', function(err, res) {
+      if (err) {
+        console.log('error');
+      } else {
+        var payload = JSON.parse(res.body);
+        console.log(payload);
+        AppDispatcher.handleViewAction({
+          actionType: FormConstants.GET_TRAITS,
+          status: payload.status,
+          ctraits: payload.course_traits,
+          itraits: payload.instructor_traits
+        });
+      }
+    })
+  },
+
+  rateCourse: function(num) {
+    AppDispatcher.handleViewAction({
+      actionType: FormConstants.RATE_COURSE,
+      rating: num
+    });
+  },
+
+  rateInstructor: function(num) {
+    AppDispatcher.handleViewAction({
+      actionType: FormConstants.RATE_INSTRUCTOR,
+      rating: num
     });
   },
 
   removeTrait: function(type, trait) {
   // Remove trait (either instructor or course) from form store
     AppDispatcher.handleViewAction({
-      actionType: DashConstants.REMOVE_TRAIT,
+      actionType: FormConstants.REMOVE_TRAIT,
       type: type,
       trait: trait
     });
@@ -73,7 +105,7 @@ module.exports = {
   setCourses: function(courses) {
   // Set courses that instructor teaches in the form store
     AppDispatcher.handleViewAction({
-      actionType: DashConstants.SET_COURSES,
+      actionType: FormConstants.SET_COURSES,
       courses: courses
     });
   },
@@ -85,13 +117,13 @@ module.exports = {
         if (err || res.statusCode !== 200 && res.statusCode !== 401) {
           // (TODO) Handle fail
           AppDispatcher.handleViewAction({
-            actionType: DashConstants.SEND_REVIEW_FAILURE,
+            actionType: FormConstants.SEND_REVIEW_FAILURE,
             status: res.body.status
           });
         }
 
         AppDispatcher.handleViewAction({
-          actionType: DashConstants.SEND_REVIEW_SUCCESS,
+          actionType: FormConstants.SEND_REVIEW_SUCCESS,
           status: res.body.message
         });
         
@@ -103,5 +135,23 @@ module.exports = {
     request.get({ url: 'http://localhost:5000/sections/Edward%20Kim/Independent%20Study' }, function(err, res, body) {
         console.log(err, res, body);
     });
-  }
+  },
+
+  setFormCourse: function(course) {
+  // TODO Move this to Form Actions
+  // Store the selected form course
+    AppDispatcher.handleViewAction({
+      actionType: FormConstants.SET_FORM_COURSE,
+      course: course
+    });
+  },
+
+  setFormInstructor: function(inst) {
+  // TODO Move this to Form Actions
+  // Store the selected form instructor 
+    AppDispatcher.handleViewAction({
+      actionType: FormConstants.SET_FORM_INSTRUCTOR,
+      instructor: inst
+    });
+  },
 };

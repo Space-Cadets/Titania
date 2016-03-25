@@ -8,6 +8,8 @@ module.exports = keyMirror({
   
   FUZZY_REVIEW_SEARCH: null, //
   
+  GET_TRAITS:          null,
+
   RATE_COURSE:         null, //
   RATE_INSTRUCTOR:     null, //
   REMOVE_TRAIT:        null, //

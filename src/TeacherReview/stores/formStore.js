@@ -62,8 +62,16 @@ function _set_course(course) {
   _form.course = course;
 }
 
+function _set_course_traits(traits) {
+  _form.ctraits = traits;
+}
+
 function _set_instructor(instructor) {
   _form.instructor = instructor;
+}
+
+function _set_instructor_traits(traits) {
+  _form.itraits = traits;
 }
 
 function _set_form_courses(courses) {
@@ -112,6 +120,10 @@ var formStore = assign({}, EventEmitter.prototype, {
     return _form.ctraits;
   },
 
+  getTraits: function() {
+    return {itraits: _form.itraits, ctraits: _form.ctraits};
+  },
+
   getReviewText: function() {
     return _form.review;
   },
@@ -148,6 +160,12 @@ formStore.dispatchToken = AppDispatcher.register(function(payload) {
     case FormConstants.FUZZY_REVIEW_SEARCH: ////
       _fuzzy_review_search(action.results);
       console.log(action, 'successful search returned');
+      break;
+
+    case FormConstants.GET_TRAITS:
+      console.log(action, 'storing traits');
+      _set_instructor_traits(action.itraits);
+      _set_course_traits(action.ctraits);
       break;
 
     case FormConstants.RATE_COURSE: ////

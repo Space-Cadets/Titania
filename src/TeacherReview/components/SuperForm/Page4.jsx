@@ -1,8 +1,7 @@
 var React = require('react');
 
-var DashActions = require('../../actions/DashActions.js');
 var FormActions = require('../../actions/FormActions.js');
-var DashStore   = require('../../stores/dashStore.js')
+var FormStore   = require('../../stores/formStore.js')
 
 // Flow
 
@@ -29,15 +28,15 @@ module.exports = React.createClass({
   },
 
   componentDidMount: function() {
-    DashStore.addChangeListener(this._onChange);
+    FormStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount: function() {
-    DashStore.removeChangeListener(this._onChange);
+    FormStore.removeChangeListener(this._onChange);
   },
 
   getInitialState: function() {
-    return ({ text: DashStore.getReviewText() });
+    return ({ text: FormStore.getReviewText() });
   },
 
   onType: function(e) {
@@ -53,7 +52,7 @@ module.exports = React.createClass({
   },
 
   _onChange: function() {
-    this.setState({text: DashStore.getReviewText() });
+    this.setState({text: FormStore.getReviewText() });
   }
 
 });

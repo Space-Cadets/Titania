@@ -1,8 +1,7 @@
 var React = require('react');
 
 var FormActions = require('../../actions/FormActions.js');
-var DashActions = require('../../actions/DashActions.js');
-var DashStore   = require('../../stores/dashStore.js');
+var FormStore   = require('../../stores/formStore.js');
 
 var Instructor  = require('./Instructor.jsx');
 var Course      = require('./Course.jsx');
@@ -23,7 +22,7 @@ Flow:
 
 module.exports = React.createClass({
   getInitialState: function() {
-    var load = DashStore.getFullForm();
+    var load = FormStore.getFullForm();
 
     return ({ 
       query:      '', 
@@ -43,11 +42,11 @@ module.exports = React.createClass({
   },
 
   componentDidMount: function() {
-    DashStore.addChangeListener(this._onChange);
+    FormStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount: function() {
-    DashStore.removeChangeListener(this._onChange);
+    FormStore.removeChangeListener(this._onChange);
   },
 
   render: function() {
@@ -89,9 +88,9 @@ module.exports = React.createClass({
   },
 
   _onChange: function() {
-    var load = DashStore.getFullForm();
+    var load = FormStore.getFullForm();
     this.setState({
-      results: DashStore.getFuzzyReviewSearch().slice(0, 5),
+      results: FormStore.getFuzzyReviewSearch().slice(0, 5),
       sections:   load.courses             || [],
       course:     load.course              || null, 
       instructor: load.instructor          || null 

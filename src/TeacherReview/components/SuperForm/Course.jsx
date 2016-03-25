@@ -1,6 +1,6 @@
 var React = require('react');
 
-var DashActions = require('../../actions/DashActions.js');
+var FormActions = require('../../actions/FormActions.js');
 
 module.exports = React.createClass({
 
@@ -11,6 +11,6 @@ module.exports = React.createClass({
   },
 
   courseClick: function(e) {
-    DashActions.setFormCourse(e.target.innerText);
+    FormActions.setFormCourse(e.target.innerText);
   }
 });

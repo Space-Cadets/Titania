@@ -1,6 +1,5 @@
 var React = require('react');
 
-var DashActions = require('../../actions/DashActions.js');
 var FormActions = require('../../actions/FormActions.js');
 
 module.exports = React.createClass({
@@ -12,8 +11,8 @@ module.exports = React.createClass({
   },
 
   instructorClick: function(e) {
-    DashActions.setFormInstructor(e.target.innerText); // Set Form Instuctor
-    DashActions.setFormCourse(null);                   // Clear Form ection
+    FormActions.setFormInstructor(e.target.innerText); // Set Form Instuctor
+    FormActions.setFormCourse(null);                   // Clear Form ection
     FormActions.setCourses(this.props.courses);        // Set section options
   }
 });

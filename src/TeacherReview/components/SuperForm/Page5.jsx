@@ -1,8 +1,7 @@
 var React = require('react');
 
-var DashActions = require('../../actions/DashActions.js');
 var FormActions = require('../../actions/FormActions.js');
-var DashStore   = require('../../stores/dashStore.js');
+var FormStore   = require('../../stores/formStore.js');
 
 // Flow
 /* 
@@ -21,7 +20,7 @@ module.exports = React.createClass({
   },
 
   postAnon: function() {
-    var payload = DashStore.getFullForm();
+    var payload = FormStore.getFullForm();
 
     var groomed = {
       student: 'test1@villanova.edu', // (TODO)
@@ -39,7 +38,7 @@ module.exports = React.createClass({
   },
 
   postMe: function() {
-    var payload = DashStore.getFullForm();
+    var payload = FormStore.getFullForm();
 
     var groomed = {
       student: 'test1@villanova.edu', // (TODO)

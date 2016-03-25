@@ -1,7 +1,7 @@
 var React = require('React');
 
-var DashActions = require('../../actions/DashActions.js');
-var DashStore   = require('../../stores/dashStore.js');
+var FormActions = require('../../actions/FormActions.js');
+var FormStore   = require('../../stores/formStore.js');
 
 var Star = React.createClass({
   render: function() {
@@ -16,19 +16,19 @@ var Star = React.createClass({
 
   onClick: function(e) {
     if (this.props.type === 'instructor')
-      DashActions.rateInstructor(this.props.num);
+      FormActions.rateInstructor(this.props.num);
 
     else if (this.props.type === 'course')
-      DashActions.rateCourse(this.props.num);
+      FormActions.rateCourse(this.props.num);
   }
 });
 
 function getRating(type) {
   if (type === 'instructor')
-    return DashStore.getInstructorRating();
+    return FormStore.getInstructorRating();
 
   else if (type === 'course')
-    return DashStore.getCourseRating();
+    return FormStore.getCourseRating();
 }
 
 module.exports = React.createClass({
@@ -38,11 +38,11 @@ module.exports = React.createClass({
   },
 
   componentDidMount: function() {
-    DashStore.addChangeListener(this._onChange);
+    FormStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount: function() {
-    DashStore.removeChangeListener(this._onChange);
+    FormStore.removeChangeListener(this._onChange);
   },
 
   render: function() {
@@ -60,7 +60,6 @@ module.exports = React.createClass({
   },
 
   _onChange: function() {
-    // console.log(getRating(this.props.type));
     this.setState({rating: getRating(this.props.type)})
   }
 });

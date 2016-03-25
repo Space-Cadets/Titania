@@ -8,7 +8,6 @@ module.exports = keyMirror({
   CLOAD_FAILURE:       null,
 
   GET_USER:            null,
-  GET_TRAITS:          null,
 
   RLOAD_SUCCESS:       null,
   RLOAD_FAILURE:       null,

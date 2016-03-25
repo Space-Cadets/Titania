@@ -1,8 +1,7 @@
 var React = require('react');
 
-var DashActions = require('../../actions/DashActions.js');
 var FormActions = require('../../actions/FormActions.js');
-var DashStore   = require('../../stores/dashStore.js');
+var FormStore   = require('../../stores/formStore.js');
 
 /* 
 Implement items for this component 
@@ -44,21 +43,21 @@ module.exports = React.createClass({
     return ({ 
       itraits: [], 
       ctraits: [], 
-      active_ctraits: DashStore.getCTraits(), 
-      active_itraits: DashStore.getITraits(),
+      active_ctraits: FormStore.getCTraits(), 
+      active_itraits: FormStore.getITraits(),
     });
   },
 
   componentWillMount: function() {
-    DashActions.getTraits();
+    FormActions.getTraits();
   },
 
   componentDidMount: function() {
-    DashStore.addChangeListener(this._onChange);
+    FormStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount: function() {
-    DashStore.removeChangeListener(this._onChange);
+    FormStore.removeChangeListener(this._onChange);
   },
 
   render: function() {
@@ -87,9 +86,9 @@ module.exports = React.createClass({
   },
 
   _onChange: function() {
-    var bulk = DashStore.getTraits();
-    bulk.active_itraits = DashStore.getITraits();
-    bulk.active_ctraits = DashStore.getCTraits();
+    var bulk = FormStore.getTraits();
+    bulk.active_itraits = FormStore.getITraits();
+    bulk.active_ctraits = FormStore.getCTraits();
     this.setState(bulk);
   }
 });

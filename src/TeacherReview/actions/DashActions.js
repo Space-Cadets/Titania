@@ -16,24 +16,6 @@ var base = 'http://localhost:5000/';
 
 module.exports = {
 
-  getTraits: function() {
-  // Get the traits for the dash store (why is this here?)
-    request(base + 'traits', function(err, res) {
-      if (err) {
-        console.log('error');
-      } else {
-        var payload = JSON.parse(res.body);
-
-        AppDispatcher.handleViewAction({
-          actionType: DashConstants.GET_TRAITS,
-          status: payload.status,
-          ctraits: payload.course_traits,
-          itraits: payload.instructor_traits
-        });
-      }
-    })
-  },
-
   getUser: function() {
   // Get user information and put in Dash store
     if (!window.token && !localStorage.accessToken) {
@@ -122,20 +104,6 @@ module.exports = {
     });
   },
 
-  rateCourse: function(num) {
-    AppDispatcher.handleViewAction({
-      actionType: DashConstants.RATE_COURSE,
-      rating: num
-    });
-  },
-
-  rateInstructor: function(num) {
-    AppDispatcher.handleViewAction({
-      actionType: DashConstants.RATE_INSTRUCTOR,
-      rating: num
-    });
-  },
-
   search: function(query, type) {
   // Get results of fuzzy search (instructor or course) 
   // Query is term, type is either instructor or course
@@ -159,22 +127,4 @@ module.exports = {
 
     })
   },
-
-  setFormCourse: function(course) {
-  // TODO Move this to Form Actions
-  // Store the selected form course
-    AppDispatcher.handleViewAction({
-      actionType: DashConstants.SET_FORM_COURSE,
-      course: course
-    });
-  },
-
-  setFormInstructor: function(inst) {
-  // TODO Move this to Form Actions
-  // Store the selected form instructor 
-    AppDispatcher.handleViewAction({
-      actionType: DashConstants.SET_FORM_INSTRUCTOR,
-      instructor: inst
-    });
-  }
 };
