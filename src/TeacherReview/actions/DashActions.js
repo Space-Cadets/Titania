@@ -20,10 +20,12 @@ module.exports = {
   // Get user information and put in Dash store
     if (!window.token && !localStorage.accessToken) {
       localStorage.accessToken = "";
-      browserHistory.push("/register");
+      browserHistory.push("/login");
     }
 
-    request.get({ url: base + 'user', json: true,
+    request.get({ 
+      url: base + 'user', 
+      json: true,
       headers: {
         'Authorization': "JWT " + localStorage.accessToken || window.token
       }
@@ -44,7 +46,9 @@ module.exports = {
 
   loadCoursePage: function(name) {
   // Load the course information for a course page and put in dash store
-    request({ url: base + 'courses/' + name,
+    request({ 
+      url: base + 'courses/' + name,
+      json: true,
       headers: {
         'Authorization': "JWT " + localStorage.accessToken || window.token,
         'Content-Type': "application/json"
@@ -67,7 +71,14 @@ module.exports = {
 
   loadRecentReviews: function() {
   // Get the most recent reviews for the dash store
-    request(base + 'recent', function(err, res) {
+    request({
+      url: base + 'recent',
+      json: true,
+      headers: {
+        'Authorization': "JWT " + localStorage.accessToken || window.token,
+        'Content-Type': "application/json"
+      }
+    }, function(err, res) {
       if (err) {
         AppDispatcher.handleViewAction({
           actionType: DashConstants.RLOAD_FAILURE,
@@ -89,7 +100,14 @@ module.exports = {
   loadTeacherPage: function(name) {
   // TODO rename this to instructor if possible
   // Load the instructor information for a instructor page and put in dash store
-    request(base + 'instructors/' + name, function(err, res) {
+    request({
+      url: base + 'instructors/' + name, 
+      json: true,
+      headers: {
+        'Authorization': "JWT " + localStorage.accessToken || window.token,
+        'Content-Type': "application/json"
+      }
+    }, function(err, res) {
       if (err) {
         AppDispatcher.handleViewAction({
           actionType: DashConstants.TLOAD_FAILURE,
@@ -101,13 +119,16 @@ module.exports = {
         actionType: DashConstants.TLOAD_SUCCESS,
         info: JSON.parse(res.body).data
       });
+
     });
   },
 
   search: function(query, type) {
   // Get results of fuzzy search (instructor or course) 
   // Query is term, type is either instructor or course
-    request({ url: base + type + '/f/' + query,
+    request({ 
+      url: base + type + '/f/' + query,
+      json: true,
       headers: {
         'Authorization': "JWT " + localStorage.accessToken || window.token,
         'Content-Type': "application/json"
@@ -125,6 +146,6 @@ module.exports = {
         results: JSON.parse(res.body).data
       });
 
-    })
+    });
   },
 };

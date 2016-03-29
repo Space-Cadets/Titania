@@ -45,7 +45,8 @@ module.exports = React.createClass({
       course: 'TOP: Game Development', // (TODO)
       instRating: payload.istars,
       classRating: payload.cstars,
-      reviewBody: payload.review
+      reviewBody: payload.review,
+      traits: [0, 1, 2, 3, 4, 5]
     };
     
     FormActions.validateReview(groomed);
