@@ -23,10 +23,9 @@ module.exports = React.createClass({
     var payload = FormStore.getFullForm();
 
     var groomed = {
-      student: 'test1@villanova.edu', // (TODO)
+      student: 'test1@villanova.edu',  // (TODO)
       instructor: payload.instructor,
-      section: 33000,                 // (TODO)
-      course: payload.course,              
+      course: 'TOP: Game Development', // (TODO)
       instRating: payload.istars,
       classRating: payload.cstars,
       reviewBody: payload.review
@@ -41,15 +40,16 @@ module.exports = React.createClass({
     var payload = FormStore.getFullForm();
 
     var groomed = {
-      student: 'test1@villanova.edu', // (TODO)
+      student: 'test1@villanova.edu',  // (TODO)
       instructor: payload.instructor,
-      section: 33000,                 // (TODO)
+      course: 'TOP: Game Development', // (TODO)
       instRating: payload.istars,
       classRating: payload.cstars,
       reviewBody: payload.review
     };
-
-    FormActions.sendReview(groomed);
-    FormActions.clearForm();
+    
+    FormActions.validateReview(groomed);
+    // FormActions.sendReview(groomed);
+    // FormActions.clearForm();
   }
 });
