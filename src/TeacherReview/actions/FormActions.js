@@ -118,6 +118,7 @@ module.exports = {
 
   sendReview: function(review) {
   // Send review to Oberon -- Will change soon
+  
     request.post({ 
       url: base + 'reviews', 
       json: true, 
@@ -139,15 +140,6 @@ module.exports = {
           status: res.body.message
         });
         
-    });
-  },
-  
-  validateReview: function(review) {
-  // TODO remove this or change to perform frontend validation
-    request.get({ 
-      url: 'http://localhost:5000/sections/Edward%20Kim/Independent%20Study' 
-    }, function(err, res, body) {
-        console.log(err, res, body);
     });
   },
 
