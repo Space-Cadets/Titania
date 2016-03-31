@@ -13,6 +13,7 @@ var _data = {
   // Model for _data user store
   user: {
     name: 'Student',
+    email: 'student@villanova.edu',
     reviews: {}
   },
 
@@ -35,7 +36,7 @@ var _data = {
   results: [],
 
   recent_reviews: []
-  
+
 }
 
 /**
@@ -45,6 +46,7 @@ var _data = {
 function _getUser(user) {
   //later maybe populate other types of data? Or consolidate this into feed request?
   _data.user.name = user.user.first_name + " " + user.user.last_name;
+  _data.user.email = user.user.identity;
 }
 
 function _set_instructor(instructor) {
