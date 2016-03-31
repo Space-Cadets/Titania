@@ -20,6 +20,10 @@ var Route          = ReactRouter.Route;
 // Run Router
 ReactDOM.render(<Router history={browserHistory}>
                   <Route path="/" component={Dashboard} />
+                  {/*
+                  <Route path="/about" component={About} />
+                  <Route path="/help" component={Help} />
+                  <Route path="/user/:userID" component={User} />*/}
                   <Route path="/register" component={Signup} />
                   <Route path="/login" component={Login} />
                   <Route path="/instructor/*" component={TeacherPage} />

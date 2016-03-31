@@ -23,8 +23,8 @@ module.exports = {
       browserHistory.push("/login");
     }
 
-    request.get({ 
-      url: base + 'user', 
+    request.get({
+      url: base + 'user',
       json: true,
       headers: {
         'Authorization': "JWT " + localStorage.accessToken || window.token
@@ -46,7 +46,7 @@ module.exports = {
 
   loadCoursePage: function(name) {
   // Load the course information for a course page and put in dash store
-    request({ 
+    request({
       url: base + 'courses/' + name,
       json: true,
       headers: {
@@ -86,7 +86,7 @@ module.exports = {
         });
       }
 
-      var payload = JSON.parse(res.body);
+      var payload = res.body
 
       AppDispatcher.handleViewAction({
         actionType: DashConstants.RLOAD_SUCCESS,
@@ -101,7 +101,7 @@ module.exports = {
   // TODO rename this to instructor if possible
   // Load the instructor information for a instructor page and put in dash store
     request({
-      url: base + 'instructors/' + name, 
+      url: base + 'instructors/' + name,
       json: true,
       headers: {
         'Authorization': "JWT " + localStorage.accessToken || window.token,
@@ -124,9 +124,9 @@ module.exports = {
   },
 
   search: function(query, type) {
-  // Get results of fuzzy search (instructor or course) 
+  // Get results of fuzzy search (instructor or course)
   // Query is term, type is either instructor or course
-    request({ 
+    request({
       url: base + type + '/f/' + query,
       json: true,
       headers: {
