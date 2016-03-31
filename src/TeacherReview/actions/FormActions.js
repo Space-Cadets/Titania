@@ -41,10 +41,11 @@ module.exports = {
 
   fuzzyReviewSearch: function(query) {
   // get instructors for fuzzy search in form and add to form store
-    request({ url: base + 'instructors' + '/f/' + query,
+    request({ 
+      url: base + 'instructors' + '/f/' + query,
+      json: true,
       headers: {
         'Authorization': "JWT " + localStorage.accessToken || window.token,
-        'Content-Type': "application/json"
       }
     }, function(err, res) {
       if (err) {
@@ -56,18 +57,24 @@ module.exports = {
 
       AppDispatcher.handleViewAction({
         actionType: FormConstants.FUZZY_REVIEW_SEARCH,
-        results: JSON.parse(res.body).data
+        results: res.body.data
       });
     });
   },
 
   getTraits: function() {
   // Get the traits for the form
-    request(base + 'traits', function(err, res) {
+    request({
+      url: base + 'traits',
+      json: true,
+      headers: {
+        'Authorization': "JWT " + localStorage.accessToken || window.token,
+      }
+    }, function(err, res) {
       if (err) {
         console.log('error');
       } else {
-        var payload = JSON.parse(res.body);
+        var payload = res.body;
         AppDispatcher.handleViewAction({
           actionType: FormConstants.GET_TRAITS,
           status: payload.status,
@@ -111,8 +118,14 @@ module.exports = {
 
   sendReview: function(review) {
   // Send review to Oberon -- Will change soon
-    request.post({ url: base + 'reviews', json: true, body: review },
-      function(err, res, body) {
+    request.post({ 
+      url: base + 'reviews', 
+      json: true, 
+      body: review,
+      headers: {
+        'Authorization': "JWT " + localStorage.accessToken || window.token,
+      }
+    }, function(err, res, body) {
         if (err || res.statusCode !== 200 && res.statusCode !== 401) {
           // (TODO) Handle fail
           AppDispatcher.handleViewAction({
@@ -131,7 +144,9 @@ module.exports = {
   
   validateReview: function(review) {
   // TODO remove this or change to perform frontend validation
-    request.get({ url: 'http://localhost:5000/sections/Edward%20Kim/Independent%20Study' }, function(err, res, body) {
+    request.get({ 
+      url: 'http://localhost:5000/sections/Edward%20Kim/Independent%20Study' 
+    }, function(err, res, body) {
         console.log(err, res, body);
     });
   },
