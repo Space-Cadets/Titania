@@ -63,7 +63,7 @@ module.exports = {
 
       AppDispatcher.handleViewAction({
         actionType: DashConstants.CLOAD_SUCCESS,
-        info: JSON.parse(res.body).data
+        info: res.body.data
       });
 
     })
@@ -82,7 +82,7 @@ module.exports = {
       if (err) {
         AppDispatcher.handleViewAction({
           actionType: DashConstants.RLOAD_FAILURE,
-          status: JSON.parse(res.body).status
+          status: res.body.status
         });
       }
 
@@ -117,7 +117,7 @@ module.exports = {
 
       AppDispatcher.handleViewAction({
         actionType: DashConstants.TLOAD_SUCCESS,
-        info: JSON.parse(res.body).data
+        info: res.body.data
       });
 
     });
@@ -143,7 +143,7 @@ module.exports = {
 
       AppDispatcher.handleViewAction({
         actionType: DashConstants.SEARCH_SUCCESS,
-        results: JSON.parse(res.body).data
+        results: res.body.data
       });
 
     });
