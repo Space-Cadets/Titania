@@ -75,6 +75,7 @@ module.exports = {
         console.log('error');
       } else {
         var payload = res.body;
+        console.log(res);
         AppDispatcher.handleViewAction({
           actionType: FormConstants.GET_TRAITS,
           status: payload.status,
