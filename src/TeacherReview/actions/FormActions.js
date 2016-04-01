@@ -75,12 +75,11 @@ module.exports = {
         console.log('error');
       } else {
         var payload = res.body;
-        console.log(res);
         AppDispatcher.handleViewAction({
           actionType: FormConstants.GET_TRAITS,
           status: payload.status,
-          ctraits: payload.course_traits,
-          itraits: payload.instructor_traits
+          ctraits: payload.data.slice(10, 20), // temporary constant numbers
+          itraits: payload.data.slice(0, 10) // TODO calculate or split backend
         });
       }
     })
@@ -119,7 +118,7 @@ module.exports = {
 
   sendReview: function(review) {
   // Send review to Oberon -- Will change soon
-  
+    debugger;
     request.post({ 
       url: base + 'reviews', 
       json: true, 
@@ -145,7 +144,6 @@ module.exports = {
   },
 
   setFormCourse: function(course) {
-  // TODO Move this to Form Actions
   // Store the selected form course
     AppDispatcher.handleViewAction({
       actionType: FormConstants.SET_FORM_COURSE,
@@ -154,7 +152,6 @@ module.exports = {
   },
 
   setFormInstructor: function(inst) {
-  // TODO Move this to Form Actions
   // Store the selected form instructor 
     AppDispatcher.handleViewAction({
       actionType: FormConstants.SET_FORM_INSTRUCTOR,

@@ -66,16 +66,16 @@ module.exports = React.createClass({
 
     var itraits = this.state.itraits.map(function(item, i) {
       if (aits.indexOf(item.description) > -1)
-        return <Trait label={item.description} key={i} type='instructor' active={'on'} />
+        return <Trait label={item.description} key={item.id} type='instructor' active={'on'} />
 
-      return <Trait label={item.description} key={i} type='instructor' active={'off'} />
+      return <Trait label={item.description} key={item.id} type='instructor' active={'off'} />
     });
 
     var ctraits = this.state.ctraits.map(function(item, i) {
       if (acts.indexOf(item.description) > -1)
-        return <Trait label={item.description} key={i} type='course' active={'on'} />  
+        return <Trait label={item.description} key={item.id} type='course' active={'on'} />  
 
-      return <Trait label={item.description} key={i} type='course' active={'off'} />
+      return <Trait label={item.description} key={item.id} type='course' active={'off'} />
     });
 
     return (

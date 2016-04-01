@@ -169,6 +169,7 @@ formStore.dispatchToken = AppDispatcher.register(function(payload) {
     case FormConstants.GET_TRAITS:
       _set_instructor_traits(action.itraits);
       _set_course_traits(action.ctraits);
+      console.log('action', action);
       break;
 
     case FormConstants.RATE_COURSE: ////
